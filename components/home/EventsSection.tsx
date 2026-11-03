@@ -2,20 +2,18 @@
 
 import { useMemo } from "react";
 import { useInfiniteCarousel } from "@/hooks/useInfiniteCarousel";
-import { Event } from "@/types";
 import EventCard from "./EventCard";
 import { CAROUSEL_CONFIG } from "@/constants/carousel";
+import { getUpcomingEvents } from "@/constants/weeklySchedule";
 
 export default function EventsSection() {
-  const events: Event[] = [
-    { id: 1, title: "Event Title 1", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
-    { id: 2, title: "Event Title 2", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
-    { id: 3, title: "Event Title 3", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
-    { id: 4, title: "Event Title 4", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
-  ];
+  // Get dynamic upcoming events from weekly schedule
+  const events = useMemo(() => getUpcomingEvents(), []);
 
   // Memoize the infinite events array to prevent recreation on every render
-  const infiniteEvents = useMemo(() => [...events, ...events, ...events], []);
+  const infiniteEvents = useMemo(() => [...events, ...events, ...events], [events]);
+
+  const totalSlides = events.length;
 
   const {
     currentSlide,
@@ -27,14 +25,14 @@ export default function EventsSection() {
     handleTouchMove,
     handleTouchEnd,
   } = useInfiniteCarousel({
-    totalSlides: CAROUSEL_CONFIG.EVENTS.totalSlides,
+    totalSlides: totalSlides,
     autoRotate: CAROUSEL_CONFIG.EVENTS.autoRotate,
     autoRotateInterval: CAROUSEL_CONFIG.EVENTS.interval,
   });
 
   const handleDotClick = (targetIndex: number) => {
-    // Always navigate to the middle set (indices 4-7) to avoid edge resets
-    const targetSlide = 4 + targetIndex;
+    // Always navigate to the middle set to avoid edge resets
+    const targetSlide = totalSlides + targetIndex;
     changeSlide(targetSlide);
   };
 
@@ -104,12 +102,12 @@ export default function EventsSection() {
         </div>
 
         <div className="flex gap-3 justify-center mt-8">
-          {[0, 1, 2, 3].map((index) => (
+          {events.map((_, index) => (
             <button
               key={index}
               onClick={() => handleDotClick(index)}
               className={`transition-all duration-300 ${
-                currentSlide % 4 === index
+                currentSlide % totalSlides === index
                   ? "w-8 h-2 bg-brand-red rounded-full"
                   : "w-2 h-2 bg-brand-gray/30 rounded-full hover:bg-brand-gray/50"
               }`}

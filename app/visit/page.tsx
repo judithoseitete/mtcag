@@ -1,35 +1,11 @@
 ﻿import Footer from "@/components/layout/Footer";
+import { weeklySchedule } from "@/constants/weeklySchedule";
+
 export default function VisitPage() {
-  const weeklySchedule = [
-    {
-      day: "Sundays",
-      events: [
-        { time: "8:00 AM - 10:30 AM", event: "Sunday Service" },
-        { time: "11:00 AM - 12:00 PM", event: "Men Ministry Meeting" },
-      ],
-    },
-    {
-      day: "Mondays",
-      events: [
-        { time: "6:45 PM - 8:00 PM", event: "Women Ministry Meeting" },
-        { time: "6:45 PM - 8:00 PM", event: "Youth Ministry Meeting" },
-      ],
-    },
-    { day: "Tuesdays", events: [] },
-    {
-      day: "Wednesdays",
-      events: [{ time: "7:00 PM - 8:00 PM", event: "Bible Study" }],
-    },
-    {
-      day: "Thursdays",
-      events: [{ time: "10:30 PM - 12:00 PM", event: "Miracle Hour" }],
-    },
-    {
-      day: "Fridays",
-      events: [{ time: "7:00 PM - 8:00 PM", event: "Congregational Prayer" }],
-    },
-    { day: "Saturdays", events: [] },
-  ];
+  const formattedSchedule = weeklySchedule.map(day => ({
+    day: day.day + "s",
+    events: day.events
+  }));
 
   return (
     <>
