@@ -1,7 +1,13 @@
 export default function VisitPage() {
   const weeklySchedule = [
     { day: "Sunday", events: ["9:00 AM - Sunday Service"] },
-    { day: "Monday", events: [] },
+    { 
+      day: "Monday", 
+      events: [
+        "7:00 PM - 8:00 PM - Youth Ministry Meeting",
+        "7:00 PM - 8:00 PM - Women Ministry Meeting"
+      ] 
+    },
     { day: "Tuesday", events: [] },
     { day: "Wednesday", events: ["6:00 PM - Bible Study"] },
     { day: "Thursday", events: [] },
