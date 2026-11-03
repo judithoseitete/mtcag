@@ -37,7 +37,7 @@ export default function EventsSection() {
   };
 
   return (
-    <section className="bg-white min-h-[80vh] flex items-center py-8 md:py-20">
+    <section className="bg-brand-neutral min-h-[80vh] flex items-center py-8 md:py-20">
       <div className="w-full">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12 px-4">
           Upcoming events
@@ -62,7 +62,7 @@ export default function EventsSection() {
 
           <button
             onClick={goToPrevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 hover:bg-white p-3 rounded-full shadow-lg"
             aria-label="Previous event"
           >
             <svg
@@ -82,7 +82,7 @@ export default function EventsSection() {
 
           <button
             onClick={goToNextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 hover:bg-white p-3 rounded-full shadow-lg"
             aria-label="Next event"
           >
             <svg
@@ -108,7 +108,7 @@ export default function EventsSection() {
               onClick={() => handleDotClick(index)}
               className={`transition-all duration-300 ${
                 currentSlide % totalSlides === index
-                  ? "w-8 h-2 bg-brand-red rounded-full"
+                  ? "w-8 h-2 bg-brand-yellow rounded-full"
                   : "w-2 h-2 bg-brand-gray/30 rounded-full hover:bg-brand-gray/50"
               }`}
               aria-label={`Go to event ${index + 1}`}

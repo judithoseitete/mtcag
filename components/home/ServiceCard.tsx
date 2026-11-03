@@ -26,10 +26,10 @@ export default function ServiceCard({
         {title}
       </h3>
       <p
-        className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-6"
+        className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-red mb-6"
         dangerouslySetInnerHTML={{ __html: mainText }}
       />
-      <button className="px-6 py-3 border-2 border-brand-blue text-brand-blue font-semibold rounded-lg hover:bg-brand-blue hover:text-white transition-colors">
+      <button className="px-6 py-3 border-2 border-brand-gray text-brand-gray font-semibold rounded-lg hover:bg-brand-gray hover:text-white transition-colors">
         {buttonText}
       </button>
     </div>
