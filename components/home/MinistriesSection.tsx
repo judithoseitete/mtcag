@@ -1,8 +1,8 @@
 export default function MinistriesSection() {
   const ministries = [
     { name: "Men", description: "Building strong men of faith" },
-    { name: "Women", description: "Empowering women in Christ" },
-    { name: "Youth", description: "Guiding the next generation" },
+    { name: "Women", description: "Empowering women who worship the Lord" },
+    { name: "Youth", description: "The youth alive, the work is done" },
     { name: "Pathfinders", description: "Young men of destiny" },
     { name: "Young Singles", description: "Growing together in faith" },
     { name: "Children", description: "Nurturing young hearts" },
@@ -21,7 +21,7 @@ export default function MinistriesSection() {
             {ministries.slice(0, 2).map((ministry) => (
               <div
                 key={ministry.name}
-                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {ministry.name}
@@ -36,7 +36,7 @@ export default function MinistriesSection() {
             {ministries.slice(2, 5).map((ministry) => (
               <div
                 key={ministry.name}
-                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {ministry.name}
@@ -51,7 +51,7 @@ export default function MinistriesSection() {
             {ministries.slice(5, 6).map((ministry) => (
               <div
                 key={ministry.name}
-                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {ministry.name}
@@ -65,6 +65,3 @@ export default function MinistriesSection() {
     </section>
   );
 }
-
-
-
