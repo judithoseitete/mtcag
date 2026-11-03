@@ -17,7 +17,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white border-b border-brand-gray/10 sticky top-0 z-50">
+    <header className="bg-white border-b-2 border-brand-gray/20 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16 md:h-20">
           {/* Mobile Menu Button - LEFT SIDE on mobile only */}
