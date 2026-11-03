@@ -219,7 +219,7 @@ export default function VisitPage() {
         </div>
       </section>
     </main>
-    <Footer bgColor="white" />
+    <Footer bgColor="neutral" />
     </>
   );
 }
