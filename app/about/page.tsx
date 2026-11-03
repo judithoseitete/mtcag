@@ -147,7 +147,6 @@ export default function AboutPage() {
         </section>
 
         {/* Department Leaders */}
-        {/* Department Leaders */}
         <section className="py-16 md:py-20 bg-brand-gray">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-12">
@@ -189,5 +188,4 @@ export default function AboutPage() {
       <Footer bgColor="gray" />
     </>
   );
-  <Footer bgColor="gray" />;
 }

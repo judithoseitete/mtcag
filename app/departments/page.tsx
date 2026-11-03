@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import DepartmentTabs from "@/components/departments/DepartmentTabs";
-import ExecutiveCard from "@/components/departments/ExecutiveCard";
+import ExecutivesGrid from "@/components/departments/ExecutivesGrid";
 import Footer from "@/components/layout/Footer";
 import { departments } from "@/constants/departments";
 import { Clock, MapPin } from "lucide-react";
@@ -55,28 +55,7 @@ export default function DepartmentsPage() {
               </div>
 
               {/* Main Department Executives */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <ExecutiveCard
-                  title="President"
-                  name={activeDepartment.executives.president}
-                />
-                <ExecutiveCard
-                  title="Vice President"
-                  name={activeDepartment.executives.vicePresident}
-                />
-                <ExecutiveCard
-                  title="Treasurer"
-                  name={activeDepartment.executives.treasurer}
-                />
-                <ExecutiveCard
-                  title="Organizer"
-                  name={activeDepartment.executives.organizer}
-                />
-                <ExecutiveCard
-                  title="Secretary"
-                  name={activeDepartment.executives.secretary}
-                />
-              </div>
+              <ExecutivesGrid executives={activeDepartment.executives} />
             </div>
 
             {/* Sub-Departments */}
@@ -128,33 +107,10 @@ export default function DepartmentsPage() {
 
                     {/* Sub-Department Executives */}
                     {subDept.executives && (
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                        <ExecutiveCard
-                          title="President"
-                          name={subDept.executives.president}
-                          size="small"
-                        />
-                        <ExecutiveCard
-                          title="Vice President"
-                          name={subDept.executives.vicePresident}
-                          size="small"
-                        />
-                        <ExecutiveCard
-                          title="Treasurer"
-                          name={subDept.executives.treasurer}
-                          size="small"
-                        />
-                        <ExecutiveCard
-                          title="Organizer"
-                          name={subDept.executives.organizer}
-                          size="small"
-                        />
-                        <ExecutiveCard
-                          title="Secretary"
-                          name={subDept.executives.secretary}
-                          size="small"
-                        />
-                      </div>
+                      <ExecutivesGrid
+                        executives={subDept.executives}
+                        size="small"
+                      />
                     )}
                   </div>
                 ))}

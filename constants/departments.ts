@@ -1,3 +1,5 @@
+﻿import { Executives } from "@/types";
+
 export interface SubDepartment {
   id: string;
   name: string;
@@ -6,13 +8,7 @@ export interface SubDepartment {
   meetingTime?: string;
   location?: string;
   description?: string;
-  executives?: {
-    president: string;
-    vicePresident: string;
-    treasurer: string;
-    organizer: string;
-    secretary: string;
-  };
+  executives?: Executives;
 }
 
 export interface Department {
@@ -20,13 +16,7 @@ export interface Department {
   name: string;
   description: string;
   motto?: string;
-  executives: {
-    president: string;
-    vicePresident: string;
-    treasurer: string;
-    organizer: string;
-    secretary: string;
-  };
+  executives: Executives;
   subDepartments: SubDepartment[];
 }
 
