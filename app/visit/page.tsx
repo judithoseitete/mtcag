@@ -152,92 +152,62 @@
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray mb-12">
-            Order of Service
+            What to expect for a Sunday service
           </h2>
           <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="bg-brand-gray text-white">
-                    <th className="px-8 py-6 text-left text-xl font-bold w-24">
-                      #
-                    </th>
-                    <th className="px-8 py-6 text-left text-xl font-bold">
-                      Service Item
+                    <th className="px-8 py-4 text-left text-xl font-bold">
+                      Order of service
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      1
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
-                      Opening Prayer
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Opening prayer
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      2
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
-                      Praise and Worship
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Praise and worship
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      3
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
-                      First Offering
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      First offering
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      4
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                       Tithes
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      5
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                       Announcements
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      6
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
-                      Music Ministration
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Music ministration
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      7
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                       Sermon
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      8
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
-                      Project Offering
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Project offering
                     </td>
                   </tr>
                   <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
-                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
-                      9
-                    </td>
-                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
-                      Sunday School Session
+                    <td className="px-8 py-4 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Sunday school session
                     </td>
                   </tr>
                 </tbody>
