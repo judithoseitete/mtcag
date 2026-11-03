@@ -136,7 +136,8 @@ export default function DepartmentsPage() {
         </section>
       )}
 
-      <Footer />
+      <Footer bgColor="white" cardVariant="dark" />
     </main>
   );
 }
+
