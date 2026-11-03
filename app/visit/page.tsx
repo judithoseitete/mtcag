@@ -1,4 +1,4 @@
-export default function VisitPage() {
+﻿export default function VisitPage() {
   const weeklySchedule = [
     {
       day: "Sundays",
@@ -17,7 +17,10 @@ export default function VisitPage() {
       events: [{ time: "7:00 PM - 8:00 PM", event: "Bible Study" }],
     },
     { day: "Thursdays", events: [] },
-    { day: "Fridays", events: [] },
+    {
+      day: "Fridays",
+      events: [{ time: "7:00 PM - 8:00 PM", event: "Congregational Prayer" }],
+    },
     { day: "Saturdays", events: [] },
   ];
 
