@@ -195,7 +195,7 @@ export default function VisitPage() {
         </div>
       </section>
     </main>
-    <Footer bgColor="neutral" />
+    <Footer bgColor="white" cardVariant="dark" />
     </>
   );
 }

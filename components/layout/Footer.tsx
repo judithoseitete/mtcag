@@ -5,9 +5,10 @@ import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
 
 interface FooterProps {
   bgColor?: "white" | "gray" | "neutral";
+  cardVariant?: "light" | "dark";
 }
 
-export default function Footer({ bgColor = "gray" }: FooterProps) {
+export default function Footer({ bgColor = "gray", cardVariant = "light" }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -18,14 +19,31 @@ export default function Footer({ bgColor = "gray" }: FooterProps) {
     neutral: "bg-brand-neutral",
   };
 
+  const cardStyles = {
+    light: {
+      bg: "bg-white",
+      textPrimary: "text-brand-gray",
+      textSecondary: "text-brand-gray/70",
+      border: "border-brand-neutral",
+    },
+    dark: {
+      bg: "bg-brand-gray",
+      textPrimary: "text-white",
+      textSecondary: "text-white/70",
+      border: "border-brand-gray",
+    },
+  };
+
+  const card = cardStyles[cardVariant];
+
   return (
     <footer className={`${bgColorMap[bgColor]} px-4 sm:px-6 lg:px-8`}>
-      <div className="bg-white text-brand-gray border-2 border-brand-neutral rounded-t-3xl pt-12 md:pt-16">
+      <div className={`${card.bg} ${card.textPrimary} border-2 ${card.border} rounded-t-3xl pt-12 md:pt-16`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="md:col-span-2">
               <h3 className="text-2xl font-bold mb-4">More Than Conquerors AG</h3>
-              <p className="text-brand-gray/70 mb-6">
+              <p className={`${card.textSecondary} mb-6`}>
                 In all these things, we are more than conquerors through Him who
                 loved us.
               </p>
@@ -68,7 +86,7 @@ export default function Footer({ bgColor = "gray" }: FooterProps) {
               <div className="space-y-3">
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 flex-shrink-0 mt-1" />
-                  <p className="text-brand-gray/70">
+                  <p className={card.textSecondary}>
                     JP6C+37G, Sowutoum
                     <br />
                     Accra, Ghana
@@ -78,7 +96,7 @@ export default function Footer({ bgColor = "gray" }: FooterProps) {
                   <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
                   <a
                     href="tel:+233244251800"
-                    className="text-brand-gray/70 hover:text-brand-red transition-colors"
+                    className={`${card.textSecondary} hover:text-brand-red transition-colors`}
                   >
                     +233 (0) 24 425 1800
                   </a>
@@ -87,7 +105,7 @@ export default function Footer({ bgColor = "gray" }: FooterProps) {
                   <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
                   <a
                     href="mailto:mtcymauntieaku@gmail.com"
-                    className="text-brand-gray/70 hover:text-brand-red transition-colors"
+                    className={`${card.textSecondary} hover:text-brand-red transition-colors`}
                   >
                     mtcymauntieaku@gmail.com
                   </a>
@@ -99,7 +117,7 @@ export default function Footer({ bgColor = "gray" }: FooterProps) {
           <div className="mt-12 flex justify-center md:hidden">
             <button
               onClick={scrollToTop}
-              className="flex items-center space-x-2 text-brand-gray/70 hover:text-brand-red transition-colors"
+              className={`flex items-center space-x-2 ${card.textSecondary} hover:text-brand-red transition-colors`}
               aria-label="Back to top"
             >
               <span>Back to Top</span>
@@ -107,14 +125,14 @@ export default function Footer({ bgColor = "gray" }: FooterProps) {
             </button>
           </div>
 
-          <div className="border-t border-brand-gray/20 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-brand-gray/60 text-sm text-center md:text-left">
+          <div className={`border-t ${cardVariant === "light" ? "border-brand-gray/20" : "border-white/20"} mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4`}>
+            <p className={`${cardVariant === "light" ? "text-brand-gray/60" : "text-white/60"} text-sm text-center md:text-left`}>
               Copyright {new Date().getFullYear()} More Than Conquerors Assemblies
               of God. All rights reserved.
             </p>
             <button
               onClick={scrollToTop}
-              className="hidden md:flex items-center space-x-2 text-brand-gray/70 hover:text-brand-red transition-colors"
+              className={`hidden md:flex items-center space-x-2 ${card.textSecondary} hover:text-brand-red transition-colors`}
               aria-label="Back to top"
             >
               <span>Back to Top</span>

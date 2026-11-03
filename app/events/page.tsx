@@ -47,7 +47,7 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <Footer bgColor="white" />
+      <Footer bgColor="white" cardVariant="dark" />
     </main>
   );
 }
