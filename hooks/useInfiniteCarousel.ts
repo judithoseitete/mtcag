@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect, useCallback } from "react";
-import { CAROUSEL_INTERVAL, SWIPE_THRESHOLD, INFINITE_CAROUSEL_RESET_DELAY } from "@/constants/carousel";
+import { CAROUSEL_INTERVAL, SWIPE_THRESHOLD } from "@/constants/carousel";
 
 interface UseInfiniteCarouselOptions {
   totalSlides: number;
@@ -20,6 +20,7 @@ export function useInfiniteCarousel({
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [resetTimer, setResetTimer] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   // Auto-rotate slides
   useEffect(() => {
@@ -29,7 +30,15 @@ export function useInfiniteCarousel({
       setCurrentSlide((prev) => {
         const newSlide = prev + 1;
         // Wrap from end back to middle set
-        if (newSlide >= totalSlides * 2) return totalSlides;
+        if (newSlide >= totalSlides * 2) {
+          setTimeout(() => {
+            setIsTransitioning(false);
+            setTimeout(() => {
+              setCurrentSlide(totalSlides);
+              setTimeout(() => setIsTransitioning(true), 50);
+            }, 50);
+          }, 700);
+        }
         onSlideChange?.(newSlide);
         return newSlide;
       });
@@ -40,6 +49,7 @@ export function useInfiniteCarousel({
 
   const changeSlide = useCallback(
     (newSlide: number) => {
+      setIsTransitioning(true);
       setCurrentSlide(newSlide);
       setResetTimer((prev) => prev + 1);
       onSlideChange?.(newSlide);
@@ -65,17 +75,33 @@ export function useInfiniteCarousel({
 
     if (isLeftSwipe) {
       const newSlide = currentSlide + 1;
+      setIsTransitioning(true);
       setCurrentSlide(newSlide);
       setResetTimer((prev) => prev + 1);
-      if (newSlide >= totalSlides * 2)
-        setTimeout(() => setCurrentSlide(totalSlides), INFINITE_CAROUSEL_RESET_DELAY);
+      if (newSlide >= totalSlides * 2) {
+        setTimeout(() => {
+          setIsTransitioning(false);
+          setTimeout(() => {
+            setCurrentSlide(totalSlides);
+            setTimeout(() => setIsTransitioning(true), 50);
+          }, 50);
+        }, 700);
+      }
     }
     if (isRightSwipe) {
       const newSlide = currentSlide - 1;
+      setIsTransitioning(true);
       setCurrentSlide(newSlide);
       setResetTimer((prev) => prev + 1);
-      if (newSlide < totalSlides)
-        setTimeout(() => setCurrentSlide(totalSlides * 2 - 1), INFINITE_CAROUSEL_RESET_DELAY);
+      if (newSlide < totalSlides) {
+        setTimeout(() => {
+          setIsTransitioning(false);
+          setTimeout(() => {
+            setCurrentSlide(totalSlides * 2 - 1);
+            setTimeout(() => setIsTransitioning(true), 50);
+          }, 50);
+        }, 700);
+      }
     }
 
     setTouchStart(0);
@@ -84,22 +110,39 @@ export function useInfiniteCarousel({
 
   const goToPrevSlide = useCallback(() => {
     const newSlide = currentSlide - 1;
+    setIsTransitioning(true);
     setCurrentSlide(newSlide);
     setResetTimer((prev) => prev + 1);
-    if (newSlide < totalSlides)
-      setTimeout(() => setCurrentSlide(totalSlides * 2 - 1), INFINITE_CAROUSEL_RESET_DELAY);
+    if (newSlide < totalSlides) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setTimeout(() => {
+          setCurrentSlide(totalSlides * 2 - 1);
+          setTimeout(() => setIsTransitioning(true), 50);
+        }, 50);
+      }, 700);
+    }
   }, [currentSlide, totalSlides]);
 
   const goToNextSlide = useCallback(() => {
     const newSlide = currentSlide + 1;
+    setIsTransitioning(true);
     setCurrentSlide(newSlide);
     setResetTimer((prev) => prev + 1);
-    if (newSlide >= totalSlides * 2)
-      setTimeout(() => setCurrentSlide(totalSlides), INFINITE_CAROUSEL_RESET_DELAY);
+    if (newSlide >= totalSlides * 2) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setTimeout(() => {
+          setCurrentSlide(totalSlides);
+          setTimeout(() => setIsTransitioning(true), 50);
+        }, 50);
+      }, 700);
+    }
   }, [currentSlide, totalSlides]);
 
   return {
     currentSlide,
+    isTransitioning,
     changeSlide,
     goToPrevSlide,
     goToNextSlide,

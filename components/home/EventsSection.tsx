@@ -19,6 +19,7 @@ export default function EventsSection() {
 
   const {
     currentSlide,
+    isTransitioning,
     changeSlide,
     goToPrevSlide,
     goToNextSlide,
@@ -31,8 +32,14 @@ export default function EventsSection() {
     autoRotateInterval: CAROUSEL_CONFIG.EVENTS.interval,
   });
 
+  const handleDotClick = (targetIndex: number) => {
+    // Always navigate to the middle set (indices 4-7) to avoid edge resets
+    const targetSlide = 4 + targetIndex;
+    changeSlide(targetSlide);
+  };
+
   return (
-    <section className="bg-white h-[120vh] flex items-center">
+    <section className="bg-white min-h-[80vh] flex items-center py-8 md:py-20">
       <div className="w-full">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12 px-4">
           Upcoming events
@@ -45,7 +52,7 @@ export default function EventsSection() {
           onTouchEnd={handleTouchEnd}
         >
           <div
-            className="flex gap-8 transition-transform duration-700 ease-in-out"
+            className={`flex gap-8 ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
             style={{
               transform: `translateX(calc(-${currentSlide * 70}% - ${currentSlide * 2}rem + 15%))`,
             }}
@@ -100,7 +107,7 @@ export default function EventsSection() {
           {[0, 1, 2, 3].map((index) => (
             <button
               key={index}
-              onClick={() => changeSlide(index + 4)}
+              onClick={() => handleDotClick(index)}
               className={`transition-all duration-300 ${
                 currentSlide % 4 === index
                   ? "w-8 h-2 bg-brand-red rounded-full"

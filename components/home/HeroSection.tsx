@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useEffect, useCallback } from "react";
@@ -52,9 +52,7 @@ export default function HeroSection() {
           currentSlide === 0 ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="absolute inset-0 bg-brand-gray">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 to-brand-red/80"></div>
-        </div>
+        <div className="absolute inset-0 bg-brand-gray"></div>
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -87,9 +85,7 @@ export default function HeroSection() {
           currentSlide === 1 ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="absolute inset-0 bg-brand-gray">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-red/90 to-brand-yellow/80"></div>
-        </div>
+        <div className="absolute inset-0 bg-brand-gray"></div>
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -166,4 +162,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
