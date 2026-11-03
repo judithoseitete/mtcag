@@ -1,4 +1,4 @@
-﻿export default function VisitPage() {
+export default function VisitPage() {
   const weeklySchedule = [
     { day: "Sunday", events: ["9:00 AM - Sunday Service"] },
     { day: "Monday", events: [] },
@@ -23,30 +23,28 @@
       {/* Weekly Calendar */}
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-gray text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-gray mb-12">
             Weekly Calendar
           </h2>
-          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="bg-brand-gray text-white">
-                    <th className="px-6 py-4 text-left text-lg font-bold">Day</th>
-                    <th className="px-6 py-4 text-left text-lg font-bold">Events</th>
+                    <th className="px-8 py-6 text-left text-xl font-bold">Day</th>
+                    <th className="px-8 py-6 text-left text-xl font-bold">Events</th>
                   </tr>
                 </thead>
                 <tbody>
                   {weeklySchedule.map((item, index) => (
                     <tr
                       key={item.day}
-                      className={`${
-                        index % 2 === 0 ? "bg-brand-neutral" : "bg-white"
-                      } hover:bg-brand-neutral/70 transition-colors`}
+className="bg-white hover:bg-brand-neutral/30 transition-colors"
                     >
-                      <td className="px-6 py-4 font-bold text-brand-gray border-b border-brand-neutral">
+                      <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
                         {item.day}
                       </td>
-                      <td className="px-6 py-4 text-brand-gray/80 border-b border-brand-neutral">
+                      <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                         {item.events.length > 0 ? (
                           <ul className="space-y-2">
                             {item.events.map((event, idx) => (
