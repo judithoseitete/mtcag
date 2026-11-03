@@ -11,8 +11,8 @@ export default function Footer() {
   return (
     <footer className="bg-brand-gray text-white border-t-2 border-brand-red">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          <div className="md:order-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="md:col-span-2">
             <h3 className="text-2xl font-bold mb-4">More Than Conquerors AG</h3>
             <p className="text-white/70 mb-6">
               In all these things, we are more than conquerors through Him who
@@ -67,7 +67,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="md:order-2">
+          <div className="md:col-span-1">
             <h4 className="text-xl font-bold mb-4">Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-start">
@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex justify-center sm:justify-end">
+        <div className="mt-12 flex justify-center md:hidden">
           <button
             onClick={scrollToTop}
             className="flex items-center space-x-2 text-white/70 hover:text-brand-red transition-colors"
@@ -111,11 +111,19 @@ export default function Footer() {
           </button>
         </div>
 
-        <div className="border-t border-white/20 mt-6 pt-8">
-          <p className="text-white/60 text-sm text-center sm:text-left">
+        <div className="border-t border-white/20 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/60 text-sm text-center md:text-left">
             Copyright {new Date().getFullYear()} More Than Conquerors Assemblies
             of God. All rights reserved.
           </p>
+          <button
+            onClick={scrollToTop}
+            className="hidden md:flex items-center space-x-2 text-white/70 hover:text-brand-red transition-colors"
+            aria-label="Back to top"
+          >
+            <span>Back to Top</span>
+            <ArrowUp className="w-5 h-5" />
+          </button>
         </div>
       </div>
     </footer>
