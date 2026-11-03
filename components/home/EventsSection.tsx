@@ -1,13 +1,8 @@
 ﻿"use client";
 
-import { useState, useEffect } from "react";
+import { useInfiniteCarousel } from "@/hooks/useInfiniteCarousel";
 
 export default function EventsSection() {
-  const [currentEventSlide, setCurrentEventSlide] = useState(4);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-  const [resetEventTimer, setResetEventTimer] = useState(0);
-  
   const events = [
     { id: 1, title: "Event Title 1", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
     { id: 2, title: "Event Title 2", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
@@ -17,48 +12,19 @@ export default function EventsSection() {
 
   const infiniteEvents = [...events, ...events, ...events];
 
-  // Auto-rotate event slides every 15 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentEventSlide((prev) => {
-        const newSlide = prev + 1;
-        if (newSlide >= 8) return 4;
-        return newSlide;
-      });
-    }, 15000);
-
-    return () => clearInterval(interval);
-  }, [resetEventTimer]);
-
-  // Event carousel touch handlers
-  const handleEventTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleEventTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleEventTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      const newSlide = currentEventSlide + 1;
-      setCurrentEventSlide(newSlide);
-      setResetEventTimer(prev => prev + 1);
-      if (newSlide >= 8) setTimeout(() => setCurrentEventSlide(4), 700);
-    }
-    if (isRightSwipe) {
-      const newSlide = currentEventSlide - 1;
-      setCurrentEventSlide(newSlide);
-      setResetEventTimer(prev => prev + 1);
-      if (newSlide < 4) setTimeout(() => setCurrentEventSlide(7), 700);
-    }
-  };
+  const {
+    currentSlide,
+    changeSlide,
+    goToPrevSlide,
+    goToNextSlide,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  } = useInfiniteCarousel({
+    totalSlides: 4,
+    autoRotate: true,
+    autoRotateInterval: 15000,
+  });
 
   return (
     <section className="bg-white h-[120vh] flex items-center">
@@ -69,18 +35,21 @@ export default function EventsSection() {
 
         <div
           className="relative overflow-hidden group"
-          onTouchStart={handleEventTouchStart}
-          onTouchMove={handleEventTouchMove}
-          onTouchEnd={handleEventTouchEnd}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div
             className="flex gap-8 transition-transform duration-700 ease-in-out"
             style={{
-              transform: `translateX(calc(-${currentEventSlide * 70}% - ${currentEventSlide * 2}rem + 15%))`,
+              transform: `translateX(calc(-${currentSlide * 70}% - ${currentSlide * 2}rem + 15%))`,
             }}
           >
             {infiniteEvents.map((event, index) => (
-              <div key={`${event.id}-${index}`} className="min-w-[70%] bg-brand-gray rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+              <div
+                key={`${event.id}-${index}`}
+                className="min-w-[70%] bg-brand-gray rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center"
+              >
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   {event.title}
                 </h3>
@@ -93,12 +62,7 @@ export default function EventsSection() {
           </div>
 
           <button
-            onClick={() => {
-              const newSlide = currentEventSlide - 1;
-              setCurrentEventSlide(newSlide);
-              setResetEventTimer(prev => prev + 1);
-              if (newSlide < 4) setTimeout(() => setCurrentEventSlide(7), 700);
-            }}
+            onClick={goToPrevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
             aria-label="Previous event"
           >
@@ -118,12 +82,7 @@ export default function EventsSection() {
           </button>
 
           <button
-            onClick={() => {
-              const newSlide = currentEventSlide + 1;
-              setCurrentEventSlide(newSlide);
-              setResetEventTimer(prev => prev + 1);
-              if (newSlide >= 8) setTimeout(() => setCurrentEventSlide(4), 700);
-            }}
+            onClick={goToNextSlide}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
             aria-label="Next event"
           >
@@ -147,9 +106,9 @@ export default function EventsSection() {
           {[0, 1, 2, 3].map((index) => (
             <button
               key={index}
-              onClick={() => { setCurrentEventSlide(index + 4); setResetEventTimer(prev => prev + 1); }}
+              onClick={() => changeSlide(index + 4)}
               className={`transition-all duration-300 ${
-                (currentEventSlide % 4) === index
+                currentSlide % 4 === index
                   ? "w-8 h-2 bg-brand-red rounded-full"
                   : "w-2 h-2 bg-brand-gray/30 rounded-full hover:bg-brand-gray/50"
               }`}

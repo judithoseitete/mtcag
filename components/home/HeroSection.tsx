@@ -1,27 +1,22 @@
 ﻿"use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
+import { useCarousel } from "@/hooks/useCarousel";
 
 export default function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-  const [resetTimer, setResetTimer] = useState(0);
-  const totalSlides = 2;
-
-  // Auto-rotate slides every 15 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 15000);
-
-    return () => clearInterval(interval);
-  }, [resetTimer]);
-
-  const changeSlide = (newSlide: number) => {
-    setCurrentSlide(newSlide);
-    setResetTimer((prev) => prev + 1);
-  };
+  const {
+    currentSlide,
+    changeSlide,
+    goToPrevSlide,
+    goToNextSlide,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  } = useCarousel({
+    totalSlides: 2,
+    autoRotate: true,
+    autoRotateInterval: 15000,
+  });
 
   // Keyboard navigation handler
   const handleKeyDown = useCallback(
@@ -29,11 +24,11 @@ export default function HeroSection() {
       if (e.key === "ArrowLeft" && currentSlide > 0) {
         changeSlide(currentSlide - 1);
       }
-      if (e.key === "ArrowRight" && currentSlide < totalSlides - 1) {
+      if (e.key === "ArrowRight" && currentSlide < 2 - 1) {
         changeSlide(currentSlide + 1);
       }
     },
-    [currentSlide]
+    [currentSlide, changeSlide]
   );
 
   // Keyboard navigation setup
@@ -41,42 +36,6 @@ export default function HeroSection() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
-
-  // Handle touch swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe && currentSlide < totalSlides - 1) {
-      changeSlide(currentSlide + 1);
-    }
-    if (isRightSwipe && currentSlide > 0) {
-      changeSlide(currentSlide - 1);
-    }
-  };
-
-  const goToPrevSlide = () => {
-    if (currentSlide > 0) {
-      changeSlide(currentSlide - 1);
-    }
-  };
-
-  const goToNextSlide = () => {
-    if (currentSlide < totalSlides - 1) {
-      changeSlide(currentSlide + 1);
-    }
-  };
 
   return (
     <section
@@ -162,7 +121,7 @@ export default function HeroSection() {
         </button>
       )}
 
-      {currentSlide < totalSlides - 1 && (
+      {currentSlide < 2 - 1 && (
         <button
           onClick={goToNextSlide}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
