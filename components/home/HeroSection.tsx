@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useCallback } from "react";
 import { useCarousel } from "@/hooks/useCarousel";
 import { CAROUSEL_CONFIG } from "@/constants/carousel";
@@ -66,9 +67,12 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="w-full sm:w-auto px-8 py-4 bg-brand-red text-white font-bold text-lg rounded-lg hover:bg-brand-red/90 transition-colors shadow-lg">
+              <Link
+                href="/visit"
+                className="w-full sm:w-auto px-8 py-4 bg-brand-red text-white font-bold text-lg rounded-lg hover:bg-brand-red/90 transition-colors shadow-lg inline-block text-center"
+              >
                 Plan Your Visit
-              </button>
+              </Link>
               <button className="w-full sm:w-auto px-8 py-4 bg-white text-brand-gray font-bold text-lg rounded-lg hover:bg-brand-neutral transition-colors shadow-lg">
                 Watch Online
               </button>
