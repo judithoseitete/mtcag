@@ -154,63 +154,95 @@
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray mb-12">
             Order of Service
           </h2>
-          <div className="max-w-3xl mx-auto">
-            <ol className="space-y-4">
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  1
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Opening Prayer</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  2
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Praise and Worship</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  3
-                </span>
-                <span className="text-lg text-brand-gray pt-1">First Offering</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  4
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Tithes</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  5
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Announcements</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  6
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Music Ministration</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  7
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Sermon</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  8
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Project Offering</span>
-              </li>
-              <li className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
-                  9
-                </span>
-                <span className="text-lg text-brand-gray pt-1">Sunday School Session</span>
-              </li>
-            </ol>
+          <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-brand-gray text-white">
+                    <th className="px-8 py-6 text-left text-xl font-bold w-24">
+                      #
+                    </th>
+                    <th className="px-8 py-6 text-left text-xl font-bold">
+                      Service Item
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      1
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Opening Prayer
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      2
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Praise and Worship
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      3
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      First Offering
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      4
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Tithes
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      5
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Announcements
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      6
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Music Ministration
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      7
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Sermon
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      8
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Project Offering
+                    </td>
+                  </tr>
+                  <tr className="bg-white hover:bg-brand-neutral/30 transition-colors">
+                    <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      9
+                    </td>
+                    <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      Sunday School Session
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
