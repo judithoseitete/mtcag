@@ -154,14 +154,14 @@ export default function AboutPage() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <PersonCard
-                title="Men's Department President"
+                title="Men's Ministry President"
                 name="Mr. Isaac Kobbie"
                 size="small"
                 layout="vertical"
                 textColor="light"
               />
               <PersonCard
-                title="Women's Department President"
+                title="Women's Ministry President"
                 name="Mrs. Enid Osei-Tete"
                 size="small"
                 layout="vertical"

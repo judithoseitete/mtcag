@@ -1,37 +1,102 @@
 ﻿"use client";
 
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { Department } from "@/constants/departments";
+
 interface DepartmentTabsProps {
-  departments: { id: string; name: string }[];
+  departments: Department[];
   activeTab: string;
+  activeSubTab: string | null;
   onTabChange: (tabId: string) => void;
+  onSubTabChange: (subTabId: string | null) => void;
 }
 
 export default function DepartmentTabs({
   departments,
   activeTab,
+  activeSubTab,
   onTabChange,
+  onSubTabChange,
 }: DepartmentTabsProps) {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const handleTabClick = (deptId: string) => {
+    onTabChange(deptId);
+    setOpenDropdown(null);
+  };
+
+  const handleSubTabClick = (subDeptId: string) => {
+    onSubTabChange(subDeptId);
+    setOpenDropdown(null);
+  };
+
+  const toggleDropdown = (deptId: string, hasSubDepts: boolean) => {
+    if (!hasSubDepts) return;
+    setOpenDropdown(openDropdown === deptId ? null : deptId);
+  };
+
   return (
     <div className="border-b border-brand-gray/20 mb-8 md:mb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex overflow-x-auto -mb-px custom-scrollbar">
           <div className="flex space-x-2 md:space-x-4">
-            {departments.map((dept) => (
-              <button
-                key={dept.id}
-                onClick={() => onTabChange(dept.id)}
-                className={`
-                  px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors
-                  ${
-                    activeTab === dept.id
-                      ? "border-brand-gray text-brand-gray"
-                      : "border-transparent text-brand-gray/60 hover:text-brand-gray hover:border-brand-gray/30"
-                  }
-                `}
-              >
-                {dept.name}
-              </button>
-            ))}
+            {departments.map((dept) => {
+              const hasSubDepts = dept.subDepartments.length > 0;
+              const isActive = activeTab === dept.id;
+              const isDropdownOpen = openDropdown === dept.id;
+
+              return (
+                <div key={dept.id} className="relative">
+                  <button
+                    onClick={() => handleTabClick(dept.id)}
+                    className={`
+                      px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors flex items-center gap-1
+                      ${
+                        isActive
+                          ? "border-brand-gray text-brand-gray"
+                          : "border-transparent text-brand-gray/60 hover:text-brand-gray hover:border-brand-gray/30"
+                      }
+                    `}
+                  >
+                    {dept.name}
+                    {hasSubDepts && (
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${
+                          isDropdownOpen ? "rotate-180" : ""
+                        }`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleDropdown(dept.id, hasSubDepts);
+                        }}
+                      />
+                    )}
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {hasSubDepts && isDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-lg border border-brand-gray/20 py-2 min-w-[200px] z-10">
+                      {dept.subDepartments.map((subDept) => (
+                        <button
+                          key={subDept.id}
+                          onClick={() => handleSubTabClick(subDept.id)}
+                          className={`
+                            w-full text-left px-4 py-2 text-sm transition-colors
+                            ${
+                              activeSubTab === subDept.id
+                                ? "bg-brand-gray text-white"
+                                : "text-brand-gray hover:bg-brand-neutral"
+                            }
+                          `}
+                        >
+                          {subDept.name}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

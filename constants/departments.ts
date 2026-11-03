@@ -23,7 +23,7 @@ export interface Department {
 export const departments: Department[] = [
   {
     id: "men",
-    name: "Men's Department",
+    name: "Men's Ministry",
     description:
       "Empowering men to be godly leaders in their homes, church, and community.",
     motto: "Strong in Faith, Bold in Action",
@@ -66,7 +66,7 @@ export const departments: Department[] = [
   },
   {
     id: "women",
-    name: "Women's Department",
+    name: "Women's Ministry",
     description:
       "Nurturing women in their faith journey and serving with excellence.",
     motto: "Women of Grace, Women of Strength",
@@ -126,7 +126,7 @@ export const departments: Department[] = [
   },
   {
     id: "youth",
-    name: "Youth Department",
+    name: "Youth Ministry",
     description:
       "Raising up the next generation of passionate followers of Christ.",
     motto: "On Fire for God",

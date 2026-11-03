@@ -7,60 +7,21 @@ import Footer from "@/components/layout/Footer";
 import { departments } from "@/constants/departments";
 import { Clock, MapPin } from "lucide-react";
 
-// Flatten departments and subdepartments into a single array for tabs
-interface FlatDepartment {
-  id: string;
-  name: string;
-  description: string;
-  motto?: string;
-  slogan?: string;
-  meetingTime?: string;
-  location?: string;
-  executives?: {
-    president: string;
-    vicePresident: string;
-    treasurer: string;
-    organizer: string;
-    secretary: string;
-  };
-}
-
-const flattenDepartments = (): FlatDepartment[] => {
-  const flattened: FlatDepartment[] = [];
-
-  departments.forEach((dept) => {
-    // Add main department
-    flattened.push({
-      id: dept.id,
-      name: dept.name,
-      description: dept.description,
-      motto: dept.motto,
-      executives: dept.executives,
-    });
-
-    // Add subdepartments
-    dept.subDepartments.forEach((subDept) => {
-      flattened.push({
-        id: subDept.id,
-        name: subDept.name,
-        description: subDept.description || "",
-        motto: subDept.motto,
-        slogan: subDept.slogan,
-        meetingTime: subDept.meetingTime,
-        location: subDept.location,
-        executives: subDept.executives,
-      });
-    });
-  });
-
-  return flattened;
-};
-
 export default function DepartmentsPage() {
-  const allDepartments = flattenDepartments();
-  const [activeTab, setActiveTab] = useState(allDepartments[0].id);
+  const [activeTab, setActiveTab] = useState(departments[0].id);
+  const [activeSubTab, setActiveSubTab] = useState<string | null>(null);
 
-  const activeDepartment = allDepartments.find((dept) => dept.id === activeTab);
+  const activeDepartment = departments.find((dept) => dept.id === activeTab);
+  
+  // If a subtab is active, show the subdepartment, otherwise show main department
+  const activeContent = activeSubTab
+    ? activeDepartment?.subDepartments.find((sub) => sub.id === activeSubTab)
+    : activeDepartment;
+
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    setActiveSubTab(null); // Reset subtab when changing main tab
+  };
 
   return (
     <main className="bg-white">
@@ -75,53 +36,52 @@ export default function DepartmentsPage() {
 
       {/* Department Tabs */}
       <DepartmentTabs
-        departments={allDepartments.map((dept) => ({
-          id: dept.id,
-          name: dept.name,
-        }))}
+        departments={departments}
         activeTab={activeTab}
-        onTabChange={setActiveTab}
+        activeSubTab={activeSubTab}
+        onTabChange={handleTabChange}
+        onSubTabChange={setActiveSubTab}
       />
 
       {/* Department Content */}
-      {activeDepartment && (
+      {activeContent && (
         <section className="py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Department Header */}
             <div className="mb-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-4">
-                {activeDepartment.name}
+                {activeContent.name}
               </h2>
               <p className="text-xl text-brand-gray/80 mb-3">
-                {activeDepartment.description}
+                {activeContent.description}
               </p>
               <div className="flex flex-col md:flex-row gap-3 text-brand-gray/70">
-                {activeDepartment.motto && (
+                {activeContent.motto && (
                   <p className="text-lg italic">
-                    &quot;{activeDepartment.motto}&quot;
+                    &quot;{activeContent.motto}&quot;
                   </p>
                 )}
-                {activeDepartment.slogan && activeDepartment.motto && (
+                {"slogan" in activeContent && activeContent.slogan && activeContent.motto && (
                   <span className="hidden md:inline">•</span>
                 )}
-                {activeDepartment.slogan && (
+                {"slogan" in activeContent && activeContent.slogan && (
                   <p className="text-lg italic">
-                    &quot;{activeDepartment.slogan}&quot;
+                    &quot;{activeContent.slogan}&quot;
                   </p>
                 )}
               </div>
-              {(activeDepartment.meetingTime || activeDepartment.location) && (
+              {("meetingTime" in activeContent || "location" in activeContent) && (
                 <div className="flex flex-col md:flex-row gap-4 mt-4">
-                  {activeDepartment.meetingTime && (
+                  {"meetingTime" in activeContent && activeContent.meetingTime && (
                     <div className="flex items-center gap-2 text-brand-gray/70">
                       <Clock className="w-5 h-5" />
-                      <span>{activeDepartment.meetingTime}</span>
+                      <span>{activeContent.meetingTime}</span>
                     </div>
                   )}
-                  {activeDepartment.location && (
+                  {"location" in activeContent && activeContent.location && (
                     <div className="flex items-center gap-2 text-brand-gray/70">
                       <MapPin className="w-5 h-5" />
-                      <span>{activeDepartment.location}</span>
+                      <span>{activeContent.location}</span>
                     </div>
                   )}
                 </div>
@@ -129,8 +89,8 @@ export default function DepartmentsPage() {
             </div>
 
             {/* Department Executives */}
-            {activeDepartment.executives && (
-              <ExecutivesGrid executives={activeDepartment.executives} />
+            {activeContent.executives && (
+              <ExecutivesGrid executives={activeContent.executives} />
             )}
           </div>
         </section>
@@ -140,4 +100,3 @@ export default function DepartmentsPage() {
     </main>
   );
 }
-

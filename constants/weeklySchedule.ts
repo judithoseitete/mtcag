@@ -5,15 +5,15 @@ export const weeklySchedule = [
     dayIndex: 0,
     events: [
       { time: "8:00 AM - 10:30 AM", event: "Sunday Service" },
-      { time: "11:00 AM - 12:00 PM", event: "Men's Department Meeting" },
+      { time: "11:00 AM - 12:00 PM", event: "Men's Ministry Meeting" },
     ],
   },
   {
     day: "Monday",
     dayIndex: 1,
     events: [
-      { time: "6:45 PM - 8:00 PM", event: "Women's Department Meeting" },
-      { time: "6:45 PM - 8:00 PM", event: "Youth Department Meeting" },
+      { time: "6:45 PM - 8:00 PM", event: "Women's Ministry Meeting" },
+      { time: "6:45 PM - 8:00 PM", event: "Youth Ministry Meeting" },
     ],
   },
   {
