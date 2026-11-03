@@ -2,7 +2,7 @@ import HeroSection from "@/components/home/HeroSection";
 import ServiceSection from "@/components/home/ServiceSection";
 import AboutSection from "@/components/home/AboutSection";
 import EventsSection from "@/components/home/EventsSection";
-import MinistriesSection from "@/components/home/MinistriesSection";
+import DepartmentsSection from "@/components/home/DepartmentsSection";
 import GivingSection from "@/components/home/GivingSection";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
       <ServiceSection />
       <AboutSection />
       <EventsSection />
-      <MinistriesSection />
+      <DepartmentsSection />
       <GivingSection />
     </main>
   );
