@@ -1,15 +1,30 @@
-﻿import Footer from "@/components/layout/Footer";
+﻿"use client";
+
+import { useState } from "react";
+import Footer from "@/components/layout/Footer";
 
 export default function GivePage() {
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const copyToClipboard = async (text: string, fieldName: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(fieldName);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
+  const bankAccountNumber = "[Account Number]";
+  const mobileMoneyNumber = "[Mobile Money Number]";
+
   return (
     <>
       <main className="min-h-screen bg-white">
         {/* Hero Section with Scripture */}
         <section className="bg-brand-gray py-16 md:py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Give
-            </h1>
             <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-4">
               "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
             </p>
@@ -58,7 +73,44 @@ export default function GivePage() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brand-gray">Account Number</p>
-                    <p className="text-lg font-mono">[Account Number]</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-lg font-mono">{bankAccountNumber}</p>
+                      <button
+                        onClick={() => copyToClipboard(bankAccountNumber, "bankAccount")}
+                        className="p-2 hover:bg-brand-gray/10 rounded-lg transition-colors"
+                        title="Copy to clipboard"
+                      >
+                        {copiedField === "bankAccount" ? (
+                          <svg
+                            className="w-5 h-5 text-green-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            className="w-5 h-5 text-brand-gray"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                            />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -94,17 +146,47 @@ export default function GivePage() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brand-gray">Number</p>
-                    <p className="text-lg font-mono">[Mobile Money Number]</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-lg font-mono">{mobileMoneyNumber}</p>
+                      <button
+                        onClick={() => copyToClipboard(mobileMoneyNumber, "mobileMoneyNumber")}
+                        className="p-2 hover:bg-brand-gray/10 rounded-lg transition-colors"
+                        title="Copy to clipboard"
+                      >
+                        {copiedField === "mobileMoneyNumber" ? (
+                          <svg
+                            className="w-5 h-5 text-green-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            className="w-5 h-5 text-brand-gray"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                            />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Additional Note */}
-            <div className="mt-12 text-center">
-              <p className="text-lg text-brand-gray/70">
-                Your generous gifts help support our mission and ministry. Thank you for your faithfulness.
-              </p>
             </div>
           </div>
         </section>
