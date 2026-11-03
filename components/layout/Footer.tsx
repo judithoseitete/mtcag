@@ -20,7 +20,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-6">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/p/More-Than-Conquerors-AG-Auntie-Aku-100095113467544/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-brand-red transition-colors"
