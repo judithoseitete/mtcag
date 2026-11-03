@@ -17,7 +17,7 @@ export default function GivePage() {
   };
 
   const bankAccountNumber = "[Account Number]";
-  const mobileMoneyNumber = "[Mobile Money Number]";
+  const mobileMoneyNumber = "0205090951";
 
   return (
     <>
@@ -138,7 +138,7 @@ export default function GivePage() {
                 <div className="space-y-3 text-brand-gray/80">
                   <div>
                     <p className="text-sm font-semibold text-brand-gray">Network</p>
-                    <p className="text-lg">[MTN/Vodafone/AirtelTigo]</p>
+                    <p className="text-lg">Telecel (Vodafone)</p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brand-gray">Name</p>
