@@ -1,9 +1,11 @@
 ﻿"use client";
 
 import { useInfiniteCarousel } from "@/hooks/useInfiniteCarousel";
+import { Event } from "@/types";
+import EventCard from "./EventCard";
 
 export default function EventsSection() {
-  const events = [
+  const events: Event[] = [
     { id: 1, title: "Event Title 1", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
     { id: 2, title: "Event Title 2", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
     { id: 3, title: "Event Title 3", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
@@ -46,18 +48,7 @@ export default function EventsSection() {
             }}
           >
             {infiniteEvents.map((event, index) => (
-              <div
-                key={`${event.id}-${index}`}
-                className="min-w-[70%] bg-brand-gray rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center"
-              >
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  {event.title}
-                </h3>
-                <p className="text-lg md:text-xl text-white/90 mb-4">
-                  {event.description}
-                </p>
-                <p className="text-brand-red font-semibold">{event.datetime}</p>
-              </div>
+              <EventCard key={`${event.id}-${index}`} event={event} />
             ))}
           </div>
 
