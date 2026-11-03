@@ -52,17 +52,17 @@ export default function DepartmentTabs({
   };
 
   return (
-    <div className="border-b border-brand-gray/20 mb-8 md:mb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex overflow-x-auto -mb-px custom-scrollbar">
-          <div className="flex space-x-2 md:space-x-4" ref={dropdownRef}>
+    <div className="border-b border-brand-gray/20 mb-8 md:mb-12 overflow-visible">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        <div className="flex overflow-x-auto overflow-y-visible -mb-px custom-scrollbar">
+          <div className="flex space-x-2 md:space-x-4 overflow-visible" ref={dropdownRef}>
             {departments.map((dept) => {
               const hasSubDepts = dept.subDepartments.length > 0;
               const isActive = activeTab === dept.id;
               const isDropdownOpen = openDropdown === dept.id;
 
               return (
-                <div key={dept.id} className="relative">
+                <div key={dept.id} className="relative" style={{ position: 'relative' }}>
                   <button
                     onClick={() => handleTabClick(dept.id, hasSubDepts)}
                     className={`
@@ -84,28 +84,38 @@ export default function DepartmentTabs({
                     )}
                   </button>
 
-                  {/* Dropdown Menu */}
+                  {/* Dropdown Menu - Using Portal-like positioning */}
                   {hasSubDepts && isDropdownOpen && (
-                    <div 
-                      className="absolute top-full left-0 mt-2 bg-white shadow-xl rounded-lg border-2 border-brand-gray/20 py-2 min-w-[220px] max-w-[300px] z-50"
-                    >
-                      {dept.subDepartments.map((subDept) => (
-                        <button
-                          key={subDept.id}
-                          onClick={() => handleSubTabClick(subDept.id)}
-                          className={`
-                            w-full text-left px-4 py-3 text-sm font-medium transition-colors whitespace-normal
-                            ${
-                              activeSubTab === subDept.id
-                                ? "bg-brand-gray text-white"
-                                : "text-brand-gray hover:bg-brand-neutral"
-                            }
-                          `}
-                        >
-                          {subDept.name}
-                        </button>
-                      ))}
-                    </div>
+                    <>
+                      <div 
+                        className="fixed inset-0 z-40"
+                        onClick={() => setOpenDropdown(null)}
+                      />
+                      <div 
+                        className="absolute top-full left-0 mt-2 bg-white shadow-2xl rounded-lg border-2 border-brand-gray/30 py-2 min-w-[240px] z-50"
+                        style={{
+                          maxHeight: 'none',
+                          overflow: 'visible'
+                        }}
+                      >
+                        {dept.subDepartments.map((subDept) => (
+                          <button
+                            key={subDept.id}
+                            onClick={() => handleSubTabClick(subDept.id)}
+                            className={`
+                              w-full text-left px-5 py-3 text-sm font-medium transition-colors block
+                              ${
+                                activeSubTab === subDept.id
+                                  ? "bg-brand-gray text-white"
+                                  : "text-brand-gray hover:bg-brand-neutral"
+                              }
+                            `}
+                          >
+                            {subDept.name}
+                          </button>
+                        ))}
+                      </div>
+                    </>
                   )}
                 </div>
               );
