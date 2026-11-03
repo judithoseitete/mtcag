@@ -1,15 +1,21 @@
 export default function VisitPage() {
   const weeklySchedule = [
-    { day: "Sunday", events: ["9:00 AM - Sunday Service"] },
-    { 
-      day: "Monday", 
+    {
+      day: "Sunday",
+      events: [{ time: "9:00 AM", event: "Sunday Service" }],
+    },
+    {
+      day: "Monday",
       events: [
-        "7:00 PM - 8:00 PM - Youth Ministry Meeting",
-        "7:00 PM - 8:00 PM - Women Ministry Meeting"
-      ] 
+        { time: "7:00 PM - 8:00 PM", event: "Women Ministry Meeting" },
+        { time: "7:00 PM - 8:00 PM", event: "Youth Ministry Meeting" },
+      ],
     },
     { day: "Tuesday", events: [] },
-    { day: "Wednesday", events: ["6:00 PM - Bible Study"] },
+    {
+      day: "Wednesday",
+      events: [{ time: "6:00 PM", event: "Bible Study" }],
+    },
     { day: "Thursday", events: [] },
     { day: "Friday", events: [] },
     { day: "Saturday", events: [] },
@@ -37,28 +43,46 @@ export default function VisitPage() {
               <table className="w-full">
                 <thead>
                   <tr className="bg-brand-gray text-white">
-                    <th className="px-8 py-6 text-left text-xl font-bold">Day</th>
-                    <th className="px-8 py-6 text-left text-xl font-bold">Events</th>
+                    <th className="px-8 py-6 text-left text-xl font-bold">
+                      Day
+                    </th>
+                    <th className="px-8 py-6 text-left text-xl font-bold">
+                      Events
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {weeklySchedule.map((item, index) => (
                     <tr
                       key={item.day}
-className="bg-white hover:bg-brand-neutral/30 transition-colors"
+                      className="bg-white hover:bg-brand-neutral/30 transition-colors"
                     >
                       <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
                         {item.day}
                       </td>
                       <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                         {item.events.length > 0 ? (
-                          <ul className="space-y-2">
-                            {item.events.map((event, idx) => (
-                              <li key={idx}>{event}</li>
-                            ))}
-                          </ul>
+                          <table className="w-full">
+                            <tbody>
+                              {item.events.map((eventItem, idx) => (
+                                <tr
+                                  key={idx}
+                                  className="border-b last:border-b-0 border-brand-gray/5"
+                                >
+                                  <td className="py-2 pr-4 text-brand-gray font-medium">
+                                    {eventItem.time}
+                                  </td>
+                                  <td className="py-2 text-brand-gray/80">
+                                    {eventItem.event}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
                         ) : (
-                          <span className="text-brand-gray/40 italic">No events</span>
+                          <span className="text-brand-gray/40 italic">
+                            No events
+                          </span>
                         )}
                       </td>
                     </tr>
