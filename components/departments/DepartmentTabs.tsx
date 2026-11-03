@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
@@ -75,7 +75,7 @@ export default function DepartmentTabs({
                 return (
                   <button
                     key={dept.id}
-                    ref={(el) => (buttonRefs.current[dept.id] = el)}
+                    ref={(el) => { buttonRefs.current[dept.id] = el; }}
                     onClick={() => handleTabClick(dept.id, hasSubDepts)}
                     className={`
                       dropdown-container px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors flex items-center gap-1

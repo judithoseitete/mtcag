@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { songs } from "@/constants/songs";
-import { Search, ChevronLeft } from "lucide-react";
+import { Search, ChevronLeft, Copy, Check } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 
 export default function SongDetailPage() {
@@ -17,6 +17,7 @@ export default function SongDetailPage() {
     "All" | "English" | "Twi"
   >("All");
   const [categoryFilter, setCategoryFilter] = useState<string>("All");
+  const [copiedSection, setCopiedSection] = useState<number | null>(null);
 
   const categories = ["All", "Hymn", "Worship", "Praises", "Contemporary"];
 
@@ -47,6 +48,23 @@ export default function SongDetailPage() {
     if (type === "intro") return "Intro";
     if (type === "outro") return "Outro";
     return "";
+  };
+
+  const copySectionToClipboard = (sectionIndex: number) => {
+    const section = song!.sections[sectionIndex];
+    const sectionText = section.lines
+      .map((line) => {
+        if (line.translation) {
+          return `${line.primary} (${line.translation})`;
+        }
+        return line.primary;
+      })
+      .join("\n");
+
+    navigator.clipboard.writeText(sectionText).then(() => {
+      setCopiedSection(sectionIndex);
+      setTimeout(() => setCopiedSection(null), 2000);
+    });
   };
 
   return (
@@ -151,11 +169,30 @@ export default function SongDetailPage() {
             {song.sections.map((section, sectionIndex) => (
               <div
                 key={sectionIndex}
-                className="bg-brand-neutral rounded-lg p-6 md:p-8"
+                className="bg-brand-neutral rounded-lg p-6 md:p-8 relative group"
               >
-                <h2 className="text-xl md:text-2xl font-bold text-brand-gray mb-4">
-                  {getSectionTitle(section.type, section.number)}
-                </h2>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl md:text-2xl font-bold text-brand-gray">
+                    {getSectionTitle(section.type, section.number)}
+                  </h2>
+                  <button
+                    onClick={() => copySectionToClipboard(sectionIndex)}
+                    className="flex items-center gap-2 px-3 py-2 text-brand-gray/60 hover:text-brand-gray hover:bg-white rounded-lg transition-all"
+                    title="Copy section"
+                  >
+                    {copiedSection === sectionIndex ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        <span className="text-sm">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-4 h-4" />
+                        <span className="text-sm hidden md:inline">Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
                 <div className="space-y-2">
                   {section.lines.map((line, lineIndex) => (
                     <p

@@ -4,7 +4,11 @@ import { departments } from "@/constants/departments";
 export default function DepartmentsSection() {
   const mainDepartments = departments.map((dept) => ({
     name: dept.name.replace(" Department", "").replace(" & Music", ""),
+    id: dept.id,
   }));
+
+  // Assign colors to departments
+  const colors = ["bg-brand-red", "bg-brand-blue", "bg-brand-yellow", "bg-brand-red", "bg-brand-blue", "bg-brand-yellow"];
 
   return (
     <section className="bg-white min-h-[80vh] flex items-center py-8 md:py-20 px-4 sm:px-6 lg:px-8">
@@ -17,11 +21,11 @@ export default function DepartmentsSection() {
           <div className="space-y-6">
             {/* First row: 2 items side by side on desktop, stacked on mobile */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {mainDepartments.slice(0, 2).map((department) => (
+              {mainDepartments.slice(0, 2).map((department, index) => (
                 <Link
                   key={department.name}
                   href="/departments"
-                  className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
+                  className={`${colors[index]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
                 >
                   <h3 className="text-2xl md:text-3xl font-bold text-white">
                     {department.name}
@@ -32,11 +36,11 @@ export default function DepartmentsSection() {
 
             {/* Second row: 3 items side by side on desktop, stacked on mobile */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {mainDepartments.slice(2, 5).map((department) => (
+              {mainDepartments.slice(2, 5).map((department, index) => (
                 <Link
                   key={department.name}
                   href="/departments"
-                  className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
+                  className={`${colors[index + 2]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
                 >
                   <h3 className="text-2xl md:text-3xl font-bold text-white">
                     {department.name}
@@ -47,11 +51,11 @@ export default function DepartmentsSection() {
 
             {/* Third row: 1 item (full width) */}
             <div className="grid grid-cols-1 gap-6">
-              {mainDepartments.slice(5, 6).map((department) => (
+              {mainDepartments.slice(5, 6).map((department, index) => (
                 <Link
                   key={department.name}
                   href="/departments"
-                  className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
+                  className={`${colors[index + 5]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
                 >
                   <h3 className="text-2xl md:text-3xl font-bold text-white">
                     {department.name}
