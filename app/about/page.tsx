@@ -159,25 +159,25 @@ export default function AboutPage() {
               name="Mr. Isaac Kobbie"
               size="small"
               layout="vertical"
-            />
+             textColor="light"/>
             <PersonCard
               title="Women Ministry President"
               name="Mrs. Enid Osei-Tete"
               size="small"
               layout="vertical"
-            />
+             textColor="light"/>
             <PersonCard
               title="Youth President"
               name="Burke Eduah"
               size="small"
               layout="vertical"
-            />
+             textColor="light"/>
             <PersonCard
               title="Sunday School Superintendent"
               name="Pastor Benjamin Larbie Asamoah"
               size="small"
               layout="vertical"
-            />
+             textColor="light"/>
           </div>
         </div>
       </section>
