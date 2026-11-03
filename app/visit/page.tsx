@@ -108,10 +108,10 @@
       </section>
 
       {/* Location & Map */}
-      <section className="bg-brand-neutral py-16 md:py-20">
+      <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray mb-12">
-            Location
+            Where to find us
           </h2>
           <div className="max-w-5xl mx-auto">
             <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden h-[400px] md:h-[500px] lg:h-[600px] mb-6">
