@@ -21,19 +21,21 @@ export default function DepartmentTabs({
 }: DepartmentTabsProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  const handleTabClick = (deptId: string) => {
+  const handleTabClick = (deptId: string, hasSubDepts: boolean) => {
     onTabChange(deptId);
-    setOpenDropdown(null);
+    
+    if (hasSubDepts) {
+      // Toggle dropdown if department has subdepartments
+      setOpenDropdown(openDropdown === deptId ? null : deptId);
+    } else {
+      // Close dropdown if no subdepartments
+      setOpenDropdown(null);
+    }
   };
 
   const handleSubTabClick = (subDeptId: string) => {
     onSubTabChange(subDeptId);
     setOpenDropdown(null);
-  };
-
-  const toggleDropdown = (deptId: string, hasSubDepts: boolean) => {
-    if (!hasSubDepts) return;
-    setOpenDropdown(openDropdown === deptId ? null : deptId);
   };
 
   return (
@@ -49,7 +51,7 @@ export default function DepartmentTabs({
               return (
                 <div key={dept.id} className="relative">
                   <button
-                    onClick={() => handleTabClick(dept.id)}
+                    onClick={() => handleTabClick(dept.id, hasSubDepts)}
                     className={`
                       px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors flex items-center gap-1
                       ${
@@ -65,10 +67,6 @@ export default function DepartmentTabs({
                         className={`w-4 h-4 transition-transform ${
                           isDropdownOpen ? "rotate-180" : ""
                         }`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleDropdown(dept.id, hasSubDepts);
-                        }}
                       />
                     )}
                   </button>
