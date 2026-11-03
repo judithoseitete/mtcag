@@ -12,10 +12,10 @@ export default function DepartmentTabs({
   onTabChange,
 }: DepartmentTabsProps) {
   return (
-    <div className="py-8 md:py-12 bg-brand-neutral/50">
+    <div className="py-8 lg:py-12 bg-brand-neutral/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Mobile Dropdown */}
-        <div className="md:hidden">
+        {/* Mobile & Tablet Dropdown */}
+        <div className="lg:hidden">
           <select
             value={activeTab}
             onChange={(e) => onTabChange(e.target.value)}
@@ -29,8 +29,8 @@ export default function DepartmentTabs({
           </select>
         </div>
 
-        {/* Desktop Pills */}
-        <div className="hidden md:flex flex-wrap gap-3 justify-center">
+        {/* Desktop Pills (large screens only) */}
+        <div className="hidden lg:flex flex-wrap gap-3 justify-center">
           {departments.map((dept) => (
             <button
               key={dept.id}
