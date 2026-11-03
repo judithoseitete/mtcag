@@ -61,7 +61,7 @@ export default function SongsPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-gray/40 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search songs..."
+                placeholder="Search songs"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20"
@@ -74,7 +74,13 @@ export default function SongsPage() {
               onChange={(e) =>
                 setLanguageFilter(e.target.value as "All" | "English" | "Twi")
               }
-              className="px-4 py-3 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20"
+              className="px-4 py-3 pr-10 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20 appearance-none bg-white text-sm md:text-base"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.75rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "1.5em 1.5em",
+              }}
             >
               <option value="All">All Languages</option>
               <option value="English">English</option>
@@ -85,7 +91,13 @@ export default function SongsPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-4 py-3 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20"
+              className="px-4 py-3 pr-10 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20 appearance-none bg-white text-sm md:text-base"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.75rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "1.5em 1.5em",
+              }}
             >
               {categories.map((category) => (
                 <option key={category} value={category}>
@@ -98,7 +110,13 @@ export default function SongsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-3 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20"
+              className="px-4 py-3 pr-10 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20 appearance-none bg-white text-sm md:text-base"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.75rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "1.5em 1.5em",
+              }}
             >
               <option value="Default">Sort: Default</option>
               <option value="A-Z">Sort: A-Z</option>
@@ -111,42 +129,39 @@ export default function SongsPage() {
       </section>
 
       {/* Songs List */}
-      <section className="py-6 md:py-8">
+      <section className="py-6 md:py-8 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {sortedSongs.length === 0 ? (
             <p className="text-center text-brand-gray/60 text-lg">
               No songs found. Try adjusting your filters.
             </p>
           ) : (
-            <div className="space-y-2">
+            <div className="space-y-0">
               {sortedSongs.map((song, index) => (
                 <Link
                   key={song.id}
                   href={`/songs/${song.id}`}
-                  className="group flex items-center justify-between border-b border-brand-gray/10 py-4 hover:bg-brand-neutral/30 px-4 transition-all"
+                  className="group flex items-center border-b border-brand-gray/10 hover:bg-brand-neutral/30 transition-all"
                 >
-                  <div className="flex items-start gap-4 flex-1">
-                    <span className="text-brand-gray/40 font-medium min-w-[2rem]">
+                  <div className="flex-shrink-0 px-4 py-4 border-r border-brand-gray/20">
+                    <span className="text-lg font-bold text-brand-gray/40">
                       {index + 1}
                     </span>
+                  </div>
+                  <div className="flex-1 flex items-center justify-between px-4 py-4">
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-brand-gray group-hover:text-brand-gray/80">
+                      <h3 className="text-base md:text-lg font-semibold text-brand-gray group-hover:text-brand-gray/80">
                         {song.title}
-                        {song.titleTranslation && (
-                          <span className="text-brand-gray/60 font-normal ml-2">
-                            ({song.titleTranslation})
-                          </span>
-                        )}
                       </h3>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-brand-gray/60">
-                    <span className="bg-brand-neutral px-3 py-1 rounded-full">
-                      {song.primaryLanguage}
-                    </span>
-                    <span className="bg-brand-neutral px-3 py-1 rounded-full">
-                      {song.category}
-                    </span>
+                    <div className="flex items-center gap-3 text-xs md:text-sm text-brand-gray/60 ml-4">
+                      <span className="bg-brand-neutral px-3 py-1 rounded-lg">
+                        {song.primaryLanguage}
+                      </span>
+                      <span className="bg-brand-neutral px-3 py-1 rounded-lg">
+                        {song.category}
+                      </span>
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -155,7 +170,7 @@ export default function SongsPage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer bgColor="white" cardVariant="dark" />
     </main>
   );
 }

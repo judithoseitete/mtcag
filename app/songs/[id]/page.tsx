@@ -60,7 +60,7 @@ export default function SongDetailPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-gray/40 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search songs..."
+                placeholder="Search songs"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20"
@@ -73,7 +73,13 @@ export default function SongDetailPage() {
               onChange={(e) =>
                 setLanguageFilter(e.target.value as "All" | "English" | "Twi")
               }
-              className="px-4 py-3 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20"
+              className="px-4 py-3 pr-10 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20 appearance-none bg-white text-sm md:text-base"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.75rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "1.5em 1.5em",
+              }}
             >
               <option value="All">All Languages</option>
               <option value="English">English</option>
@@ -84,7 +90,13 @@ export default function SongDetailPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-4 py-3 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20"
+              className="px-4 py-3 pr-10 border border-brand-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gray/20 appearance-none bg-white text-sm md:text-base"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.75rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "1.5em 1.5em",
+              }}
             >
               {categories.map((category) => (
                 <option key={category} value={category}>
@@ -119,10 +131,10 @@ export default function SongDetailPage() {
               </p>
             )}
             <div className="flex flex-wrap items-center gap-3 mt-4">
-              <span className="bg-brand-neutral text-brand-gray px-4 py-2 rounded-full">
+              <span className="bg-brand-neutral text-brand-gray px-4 py-2 rounded-lg text-sm md:text-base">
                 {song.primaryLanguage}
               </span>
-              <span className="bg-brand-neutral text-brand-gray px-4 py-2 rounded-full">
+              <span className="bg-brand-neutral text-brand-gray px-4 py-2 rounded-lg text-sm md:text-base">
                 {song.category}
               </span>
               {song.author && (
