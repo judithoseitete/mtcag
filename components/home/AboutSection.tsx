@@ -1,4 +1,6 @@
-﻿export default function AboutSection() {
+﻿import Button from "../ui/Button";
+
+export default function AboutSection() {
   return (
     <section className="bg-white min-h-[80vh] flex items-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto w-full">
@@ -11,9 +13,7 @@
               We are an Assemblies of God church committed to worshiping God,
               serving others, and growing together in faith.
             </p>
-            <button className="px-8 py-3 md:px-12 md:py-5 bg-brand-gray text-white text-lg md:text-xl font-bold rounded-lg hover:bg-brand-gray/90 transition-colors">
-              Learn More
-            </button>
+            <Button variant="primary">Learn More</Button>
           </div>
         </div>
       </div>
