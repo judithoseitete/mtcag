@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-brand-gray text-white">
+    <footer className="bg-brand-gray text-white border-t-2 border-brand-red">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           <div>
