@@ -49,7 +49,7 @@
           </h2>
           <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[800px]">
+              <table className="w-full min-w-[700px]">
                 <thead>
                   <tr className="bg-brand-gray text-white">
                     <th className="px-8 py-6 text-left text-xl font-bold">
