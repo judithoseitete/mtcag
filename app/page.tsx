@@ -17,7 +17,7 @@ export default function Home() {
         <DepartmentsSection />
         <GivingSection />
       </main>
-      <Footer bgColor="gray" />
+      <Footer bgColor="neutral" cardVariant="dark" />
     </>
   );
 }
