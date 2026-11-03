@@ -6,9 +6,9 @@ export default function GivingSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Give
           </h2>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Your generosity fuels the mission and ministry of More Than
-            Conquerors AG
+          <p className="text-3xl md:text-4xl lg:text-5xl text-white/80 max-w-2xl mx-auto mb-8">
+            Your tithes, offerings, and generous gifts fuel the mission and
+            ministry of More Than Conquerors AG
           </p>
           <button className="bg-brand-red text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-red/90 transition-colors duration-300">
             Give Now
