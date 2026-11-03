@@ -76,7 +76,7 @@
                                   key={idx}
                                   className="border-b last:border-b-0 border-brand-gray/5"
                                 >
-                                  <td className="py-2 pr-4 text-brand-gray font-medium">
+                                  <td className="py-2 pr-4 text-brand-gray font-medium whitespace-nowrap">
                                     {eventItem.time}
                                   </td>
                                   <td className="py-2 text-brand-gray/80 whitespace-nowrap">
