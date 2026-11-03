@@ -1,4 +1,4 @@
-interface EventCardProps {
+﻿interface EventCardProps {
   title: string;
   date: string;
   time: string;
@@ -28,7 +28,7 @@ export default function EventCard({
           ></div>
         )}
         {category && (
-          <div className="absolute top-4 left-4 bg-brand-gray text-white px-3 py-1 rounded-full text-sm font-semibold">
+          <div className="absolute top-4 left-4 bg-brand-gray text-white px-3 py-1 rounded-lg text-sm font-semibold">
             {category}
           </div>
         )}
