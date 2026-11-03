@@ -99,7 +99,7 @@ export default function Home() {
                 Welcome to More Than Conquerors
               </h1>
               <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto">
-                In all these things, we are more than conquerors
+                In all these things, we are more than conquerors through Him who loved us
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -114,7 +114,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Slide 2 - Announcement */}
+        {/* Slide 2 - Events */}
         <div
           className={`absolute inset-0 transition-transform duration-700 ease-in-out ${
             currentSlide === 1 ? "translate-x-0" : "translate-x-full"
@@ -127,10 +127,10 @@ export default function Home() {
           <div className="relative z-10 h-full flex items-center justify-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
-                Special Service This Sunday
+                Upcoming events will go here
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-                Join us for a powerful time of worship and the Word. All are welcome!
+                Description of whatever event is next
               </p>
             </div>
           </div>
