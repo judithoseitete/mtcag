@@ -52,7 +52,7 @@ export default function DepartmentTabs({
   };
 
   return (
-    <div className="border-b border-brand-gray/20 mb-8 md:mb-12 relative">
+    <div className="border-b border-brand-gray/20 mb-8 md:mb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex overflow-x-auto -mb-px custom-scrollbar">
           <div className="flex space-x-2 md:space-x-4" ref={dropdownRef}>
@@ -87,15 +87,14 @@ export default function DepartmentTabs({
                   {/* Dropdown Menu */}
                   {hasSubDepts && isDropdownOpen && (
                     <div 
-                      className="absolute top-full left-0 mt-2 bg-white shadow-xl rounded-lg border-2 border-brand-gray/20 py-2 min-w-[220px] z-50"
-                      style={{ marginTop: '4px' }}
+                      className="absolute top-full left-0 mt-2 bg-white shadow-xl rounded-lg border-2 border-brand-gray/20 py-2 min-w-[220px] max-w-[300px] z-50"
                     >
                       {dept.subDepartments.map((subDept) => (
                         <button
                           key={subDept.id}
                           onClick={() => handleSubTabClick(subDept.id)}
                           className={`
-                            w-full text-left px-4 py-3 text-sm font-medium transition-colors
+                            w-full text-left px-4 py-3 text-sm font-medium transition-colors whitespace-normal
                             ${
                               activeSubTab === subDept.id
                                 ? "bg-brand-gray text-white"
