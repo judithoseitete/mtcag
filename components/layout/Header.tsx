@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
@@ -18,32 +19,11 @@ export default function Header() {
   return (
     <header className="bg-white border-b border-brand-gray/10 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo / Church Name */}
-          <Link 
-            href="/" 
-            className="flex-shrink-0 font-bold text-lg md:text-xl lg:text-2xl text-brand-gray hover:text-brand-red transition-colors"
-          >
-            MTC AG
-          </Link>
-
-          {/* Desktop Navigation - Hidden on mobile, visible on tablet+ */}
-          <div className="hidden md:flex md:space-x-6 lg:space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-brand-gray hover:text-brand-red font-medium transition-colors text-sm lg:text-base"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button - Visible only on mobile */}
+        <div className="flex items-center h-16 md:h-20">
+          {/* Mobile Menu Button - LEFT SIDE on mobile only */}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-brand-gray hover:text-brand-red hover:bg-brand-neutral transition-colors"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-brand-gray hover:text-brand-red hover:bg-brand-neutral transition-colors mr-4"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -56,39 +36,95 @@ export default function Header() {
               stroke="currentColor"
               aria-hidden="true"
             >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
-        </div>
 
-        {/* Mobile Menu - Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-1 border-t border-brand-gray/10">
+          {/* Logo */}
+          <Link 
+            href="/" 
+            className="flex-shrink-0 hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src="/logo.png"
+              alt="More Than Conquerors AG"
+              width={120}
+              height={48}
+              className="h-10 md:h-12 w-auto"
+              priority
+            />
+          </Link>
+
+          {/* Desktop Navigation - Hidden on mobile, visible on tablet+ */}
+          <div className="hidden md:flex md:space-x-6 lg:space-x-8 md:ml-auto">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-3 py-2 rounded-md text-brand-gray hover:text-brand-red hover:bg-brand-neutral font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                className="text-brand-gray hover:text-brand-red font-medium transition-colors text-sm lg:text-base"
               >
                 {link.label}
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-40"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu - Slide in from LEFT */}
+      <div
+        className={`md:hidden fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
+          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-4">
+          {/* Close button */}
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="mb-8 p-2 rounded-md text-brand-gray hover:text-brand-red hover:bg-brand-neutral transition-colors"
+            aria-label="Close menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          {/* Navigation Links */}
+          <nav className="space-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block px-4 py-3 rounded-md text-brand-gray hover:text-brand-red hover:bg-brand-neutral font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
     </header>
   );
 }

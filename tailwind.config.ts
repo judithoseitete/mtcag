@@ -14,6 +14,7 @@ const config: Config = {
           neutral: "#f5f4f2",
           gray: "#353533",
           yellow: "#efe10f",
+          blue: "#303181",
         },
       },
     },
