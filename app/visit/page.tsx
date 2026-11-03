@@ -79,7 +79,7 @@
                                   <td className="py-2 pr-4 text-brand-gray font-medium">
                                     {eventItem.time}
                                   </td>
-                                  <td className="py-2 text-brand-gray/80">
+                                  <td className="py-2 text-brand-gray/80 whitespace-nowrap">
                                     {eventItem.event}
                                   </td>
                                 </tr>
