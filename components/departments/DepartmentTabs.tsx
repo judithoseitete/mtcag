@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { Department } from "@/constants/departments";
 
@@ -20,6 +20,19 @@ export default function DepartmentTabs({
   onSubTabChange,
 }: DepartmentTabsProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleTabClick = (deptId: string, hasSubDepts: boolean) => {
     onTabChange(deptId);
@@ -39,10 +52,10 @@ export default function DepartmentTabs({
   };
 
   return (
-    <div className="border-b border-brand-gray/20 mb-8 md:mb-12">
+    <div className="border-b border-brand-gray/20 mb-8 md:mb-12 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex overflow-x-auto -mb-px custom-scrollbar">
-          <div className="flex space-x-2 md:space-x-4">
+          <div className="flex space-x-2 md:space-x-4" ref={dropdownRef}>
             {departments.map((dept) => {
               const hasSubDepts = dept.subDepartments.length > 0;
               const isActive = activeTab === dept.id;
@@ -73,13 +86,16 @@ export default function DepartmentTabs({
 
                   {/* Dropdown Menu */}
                   {hasSubDepts && isDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-lg border border-brand-gray/20 py-2 min-w-[200px] z-10">
+                    <div 
+                      className="absolute top-full left-0 mt-2 bg-white shadow-xl rounded-lg border-2 border-brand-gray/20 py-2 min-w-[220px] z-50"
+                      style={{ marginTop: '4px' }}
+                    >
                       {dept.subDepartments.map((subDept) => (
                         <button
                           key={subDept.id}
                           onClick={() => handleSubTabClick(subDept.id)}
                           className={`
-                            w-full text-left px-4 py-2 text-sm transition-colors
+                            w-full text-left px-4 py-3 text-sm font-medium transition-colors
                             ${
                               activeSubTab === subDept.id
                                 ? "bg-brand-gray text-white"
