@@ -46,10 +46,10 @@
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="bg-brand-gray text-white">
-                    <th className="px-4 md:px-8 py-4 md:py-6 text-left text-base md:text-xl font-bold">
+                    <th className="px-8 py-6 text-left text-xl font-bold">
                       Day
                     </th>
-                    <th className="px-4 md:px-8 py-4 md:py-6 text-left text-base md:text-xl font-bold">
+                    <th className="px-8 py-6 text-left text-xl font-bold">
                       Events
                     </th>
                   </tr>
@@ -60,14 +60,14 @@
                       key={item.day}
                       className="bg-white hover:bg-brand-neutral/30 transition-colors"
                     >
-                      <td className="px-4 md:px-8 py-4 md:py-6 font-bold text-brand-gray text-base md:text-lg border-b border-brand-gray/20 whitespace-nowrap">
+                      <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
                         {item.day}
                       </td>
-                      <td className="px-4 md:px-8 py-4 md:py-6 text-brand-gray/80 text-sm md:text-lg border-b border-brand-gray/20">
+                      <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                         {item.events.length > 0 ? (
                           <table className="w-full table-fixed">
                             <colgroup>
-                              <col className="w-32 md:w-48" />
+                              <col style={{ width: "200px" }} />
                               <col />
                             </colgroup>
                             <tbody>
@@ -76,10 +76,10 @@
                                   key={idx}
                                   className="border-b last:border-b-0 border-brand-gray/5"
                                 >
-                                  <td className="py-2 pr-2 md:pr-4 text-brand-gray font-medium text-xs md:text-base whitespace-nowrap">
+                                  <td className="py-2 pr-4 text-brand-gray font-medium">
                                     {eventItem.time}
                                   </td>
-                                  <td className="py-2 text-brand-gray/80 text-sm md:text-base">
+                                  <td className="py-2 text-brand-gray/80">
                                     {eventItem.event}
                                   </td>
                                 </tr>
@@ -87,7 +87,7 @@
                             </tbody>
                           </table>
                         ) : (
-                          <span className="text-brand-gray/40 italic text-sm md:text-base">
+                          <span className="text-brand-gray/40 italic">
                             No events
                           </span>
                         )}
