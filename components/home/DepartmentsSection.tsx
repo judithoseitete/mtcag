@@ -2,10 +2,10 @@ export default function DepartmentsSection() {
   const departments = [
     { name: "Men", description: "Building strong men of faith" },
     { name: "Women", description: "Empowering women who worship the Lord" },
-    { name: "Youth", description: "The youth alive, the work is done" },
-    { name: "Pathfinders", description: "Young men of destiny" },
-    { name: "Young Singles", description: "Growing together in faith" },
+    { name: "Youth", description: "We are Christ's Ambassadors" },
+    { name: "Sunday School", description: "Young men of destiny" },
     { name: "Children", description: "Nurturing young hearts" },
+    { name: "Missions", description: "Growing together in faith" },
   ];
 
   return (
@@ -26,7 +26,9 @@ export default function DepartmentsSection() {
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {department.name}
                 </h3>
-                <p className="text-lg text-white/80">{department.description}</p>
+                <p className="text-lg text-white/80">
+                  {department.description}
+                </p>
               </div>
             ))}
           </div>
@@ -41,7 +43,9 @@ export default function DepartmentsSection() {
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {department.name}
                 </h3>
-                <p className="text-lg text-white/80">{department.description}</p>
+                <p className="text-lg text-white/80">
+                  {department.description}
+                </p>
               </div>
             ))}
           </div>
@@ -56,7 +60,9 @@ export default function DepartmentsSection() {
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {department.name}
                 </h3>
-                <p className="text-lg text-white/80">{department.description}</p>
+                <p className="text-lg text-white/80">
+                  {department.description}
+                </p>
               </div>
             ))}
           </div>
