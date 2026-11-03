@@ -114,7 +114,7 @@
             Location
           </h2>
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white rounded-lg p-2 h-[400px] md:h-[500px] lg:h-[600px] mb-6">
+            <div className="bg-white rounded-lg border-2 border-brand-gray p-2 h-[400px] md:h-[500px] lg:h-[600px] mb-6">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58898.80328919093!2d-0.3512620925903552!3d5.6103908666160995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf98f6e7bfbb55%3A0x44c6631651d9dcc6!2sMore%20Than%20Conquerors%20Assemblies%20Of%20God!5e1!3m2!1sen!2sgh!4v1793708163315!5m2!1sen!2sgh"
                 width="100%"
