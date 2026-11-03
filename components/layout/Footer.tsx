@@ -12,13 +12,13 @@ export default function Footer() {
     <footer className="bg-brand-gray text-white border-t-2 border-brand-red">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          <div>
+          <div className="md:order-1">
             <h3 className="text-2xl font-bold mb-4">More Than Conquerors AG</h3>
             <p className="text-white/70 mb-6">
               In all these things, we are more than conquerors through Him who
               loved us.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-6">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -27,7 +27,7 @@ export default function Footer() {
                 aria-label="Facebook"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-8 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -42,7 +42,7 @@ export default function Footer() {
                 aria-label="Instagram"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-8 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -57,7 +57,7 @@ export default function Footer() {
                 aria-label="YouTube"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-8 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -67,7 +67,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="md:order-2">
             <h4 className="text-xl font-bold mb-4">Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-start">
