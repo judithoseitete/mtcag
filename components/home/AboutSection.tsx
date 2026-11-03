@@ -1,4 +1,4 @@
-﻿import Button from "../ui/Button";
+﻿import Link from "next/link";
 
 export default function AboutSection() {
   return (
@@ -13,9 +13,12 @@ export default function AboutSection() {
               We are an Assemblies of God church committed to worshiping God,
               serving others, and growing together in faith.
             </p>
-            <button className="px-8 py-4 bg-brand-red text-white font-bold text-lg rounded-lg hover:bg-brand-red/90 transition-colors shadow-lg">
+            <Link
+              href="/about"
+              className="inline-block px-8 py-4 bg-brand-red text-white font-bold text-lg rounded-lg hover:bg-brand-red/90 transition-colors shadow-lg"
+            >
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
       </div>
