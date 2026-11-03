@@ -1,0 +1,27 @@
+{
+  "id": 9,
+  "title": "Yesu me haw nua",
+  "titleTranslation": "Jesus my brother in trials",
+  "primaryLanguage": "Twi",
+  "category": "Worship",
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Yesu me haw nua", "translation": "Jesus my brother in trials" },
+        { "primary": "Awerɛhow mu adamfo", "translation": "Friend in times of sorrow" },
+        { "primary": "Me su wo nkyɛn a", "translation": "When I cry to You" },
+        { "primary": "Wotie me", "translation": "You hear me" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Me gyae wo to ntwɛn", "translation": "I lean on You and wait" },
+        { "primary": "Wone me wɔ ha", "translation": "You are with me here" },
+        { "primary": "Wo bra ma me ahotɔ", "translation": "Your presence gives me peace" }
+      ]
+    }
+  ]
+}

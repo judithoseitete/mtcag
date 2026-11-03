@@ -1,0 +1,30 @@
+{
+  "id": 12,
+  "title": "It Is Well With My Soul",
+  "primaryLanguage": "English",
+  "category": "Hymn",
+  "author": "Horatio Spafford",
+  "year": 1873,
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "When peace like a river" },
+        { "primary": "Attendeth my way" },
+        { "primary": "When sorrows like sea billows roll" },
+        { "primary": "Whatever my lot" },
+        { "primary": "Thou hast taught me to say" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "It is well" },
+        { "primary": "It is well with my soul" },
+        { "primary": "It is well" },
+        { "primary": "It is well with my soul" }
+      ]
+    }
+  ]
+}

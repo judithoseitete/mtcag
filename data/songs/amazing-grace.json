@@ -1,0 +1,28 @@
+{
+  "id": 1,
+  "title": "Amazing Grace",
+  "primaryLanguage": "English",
+  "category": "Hymn",
+  "author": "John Newton",
+  "year": 1779,
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Amazing grace" },
+        { "primary": "How sweet the sound" },
+        { "primary": "That saved a wretch like me" }
+      ]
+    },
+    {
+      "type": "verse",
+      "number": 2,
+      "lines": [
+        { "primary": "Through many dangers" },
+        { "primary": "Toils and snares" },
+        { "primary": "I have already come" }
+      ]
+    }
+  ]
+}

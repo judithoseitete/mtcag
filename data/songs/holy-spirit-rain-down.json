@@ -1,0 +1,28 @@
+{
+  "id": 10,
+  "title": "Holy Spirit Rain Down",
+  "titleTranslation": "Honhom Kronkron sian ba",
+  "primaryLanguage": "English",
+  "category": "Contemporary",
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Holy Spirit rain down", "translation": "Honhom Kronkron sian ba" },
+        { "primary": "Rain down", "translation": "Sian ba" },
+        { "primary": "O Comforter and Friend", "translation": "Awerɛkyekyefo ne adamfo" },
+        { "primary": "How we need Your touch again", "translation": "Yɛhia wo nsa bio" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Let it rain", "translation": "Ma ɛnto" },
+        { "primary": "Let it rain", "translation": "Ma ɛnto" },
+        { "primary": "Open the flood gates of heaven", "translation": "Bue ɔsoro apono" },
+        { "primary": "Let it rain", "translation": "Ma ɛnto" }
+      ]
+    }
+  ]
+}

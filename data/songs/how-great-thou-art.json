@@ -1,0 +1,39 @@
+{
+  "id": 4,
+  "title": "How Great Thou Art",
+  "primaryLanguage": "English",
+  "category": "Hymn",
+  "author": "Carl Boberg",
+  "year": 1885,
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "O Lord my God" },
+        { "primary": "When I in awesome wonder" },
+        { "primary": "Consider all the worlds" },
+        { "primary": "Thy hands have made" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Then sings my soul" },
+        { "primary": "My Savior God to Thee" },
+        { "primary": "How great Thou art" },
+        { "primary": "How great Thou art" }
+      ]
+    },
+    {
+      "type": "verse",
+      "number": 2,
+      "lines": [
+        { "primary": "When through the woods" },
+        { "primary": "And forest glades I wander" },
+        { "primary": "And hear the birds" },
+        { "primary": "Sing sweetly in the trees" }
+      ]
+    }
+  ]
+}

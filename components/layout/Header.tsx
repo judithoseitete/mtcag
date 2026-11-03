@@ -10,9 +10,8 @@ const navLinks = [
   { href: "/about", label: "About Us" },
   { href: "/events", label: "Events" },
   { href: "/departments", label: "Departments" },
-  { href: "/give", label: "Give" },
   { href: "/songs", label: "Songs" },
-  { href: "/contact", label: "Contact" },
+  { href: "/give", label: "Give" },
 ];
 
 export default function Header() {

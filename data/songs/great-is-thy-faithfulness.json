@@ -1,0 +1,29 @@
+{
+  "id": 8,
+  "title": "Great Is Thy Faithfulness",
+  "primaryLanguage": "English",
+  "category": "Hymn",
+  "author": "Thomas Chisholm",
+  "year": 1923,
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Great is Thy faithfulness" },
+        { "primary": "O God my Father" },
+        { "primary": "There is no shadow" },
+        { "primary": "Of turning with Thee" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Great is Thy faithfulness" },
+        { "primary": "Great is Thy faithfulness" },
+        { "primary": "Morning by morning" },
+        { "primary": "New mercies I see" }
+      ]
+    }
+  ]
+}

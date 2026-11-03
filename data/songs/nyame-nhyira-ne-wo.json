@@ -1,0 +1,27 @@
+{
+  "id": 11,
+  "title": "Nyame nhyira ne wo",
+  "titleTranslation": "God bless you",
+  "primaryLanguage": "Twi",
+  "category": "Praises",
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Nyame nhyira ne wo", "translation": "God bless you" },
+        { "primary": "Nyame nkye ne wo", "translation": "God be with you" },
+        { "primary": "Kosii sɛ yɛbɛhyia bio", "translation": "Until we meet again" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Da yie", "translation": "Goodbye" },
+        { "primary": "Da yie", "translation": "Goodbye" },
+        { "primary": "Kosii sɛ yɛbɛhyia", "translation": "Until we meet" },
+        { "primary": "Onyankopɔn nkyɛn", "translation": "At God's feet" }
+      ]
+    }
+  ]
+}

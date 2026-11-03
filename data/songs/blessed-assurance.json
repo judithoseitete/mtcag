@@ -1,0 +1,29 @@
+{
+  "id": 3,
+  "title": "Blessed Assurance",
+  "primaryLanguage": "English",
+  "category": "Hymn",
+  "author": "Fanny Crosby",
+  "year": 1873,
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Blessed assurance" },
+        { "primary": "Jesus is mine" },
+        { "primary": "O what a foretaste" },
+        { "primary": "Of glory divine" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "This is my story" },
+        { "primary": "This is my song" },
+        { "primary": "Praising my Savior" },
+        { "primary": "All the day long" }
+      ]
+    }
+  ]
+}

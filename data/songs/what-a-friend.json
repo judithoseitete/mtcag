@@ -1,0 +1,39 @@
+{
+  "id": 6,
+  "title": "What a Friend We Have in Jesus",
+  "primaryLanguage": "English",
+  "category": "Hymn",
+  "author": "Joseph M. Scriven",
+  "year": 1855,
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "What a friend we have in Jesus" },
+        { "primary": "All our sins and griefs to bear" },
+        { "primary": "What a privilege to carry" },
+        { "primary": "Everything to God in prayer" }
+      ]
+    },
+    {
+      "type": "verse",
+      "number": 2,
+      "lines": [
+        { "primary": "Have we trials and temptations" },
+        { "primary": "Is there trouble anywhere" },
+        { "primary": "We should never be discouraged" },
+        { "primary": "Take it to the Lord in prayer" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "O what peace we often forfeit" },
+        { "primary": "O what needless pain we bear" },
+        { "primary": "All because we do not carry" },
+        { "primary": "Everything to God in prayer" }
+      ]
+    }
+  ]
+}

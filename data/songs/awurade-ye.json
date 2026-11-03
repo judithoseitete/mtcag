@@ -1,0 +1,25 @@
+{
+  "id": 2,
+  "title": "Awurade Ye",
+  "titleTranslation": "The Lord is Good",
+  "primaryLanguage": "Twi",
+  "category": "Worship",
+  "sections": [
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Awurade ye", "translation": "The Lord is good" },
+        { "primary": "Ɔyɛ papa", "translation": "He is gracious" },
+        { "primary": "N'adɔe wɔ hɔ daa", "translation": "His love endures forever" }
+      ]
+    },
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Me kra kamfo Awurade", "translation": "My soul magnifies the Lord" },
+        { "primary": "Me de m'ani to ne so", "translation": "I fix my eyes on Him" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": 5,
+  "title": "Me kra kamfo Awurade",
+  "titleTranslation": "Bless the Lord O my soul",
+  "primaryLanguage": "Twi",
+  "category": "Praises",
+  "sections": [
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Me kra kamfo Awurade", "translation": "Bless the Lord O my soul" },
+        { "primary": "Ne nhyira nyinaa", "translation": "All that is within me" },
+        { "primary": "Kamfo ne din kronkron", "translation": "Bless His holy name" }
+      ]
+    },
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Ɔyɛ papa", "translation": "He is good" },
+        { "primary": "Ɔyɛ nokware", "translation": "He is faithful" },
+        { "primary": "N'adɔe wɔ hɔ daa", "translation": "His love endures forever" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": 7,
+  "title": "Meda w'ase",
+  "titleTranslation": "I thank You",
+  "primaryLanguage": "Twi",
+  "category": "Contemporary",
+  "sections": [
+    {
+      "type": "chorus",
+      "lines": [
+        { "primary": "Meda w'ase", "translation": "I thank You" },
+        { "primary": "Meda w'ase", "translation": "I thank You" },
+        { "primary": "Nea woayɛ ama me yi", "translation": "For all that You've done for me" },
+        { "primary": "Meda w'ase", "translation": "I thank You" }
+      ]
+    },
+    {
+      "type": "verse",
+      "number": 1,
+      "lines": [
+        { "primary": "Woagyee me nkwa", "translation": "You saved my life" },
+        { "primary": "Woayɛ pii ma me", "translation": "You've done so much for me" },
+        { "primary": "Mede m'aseda brɛ wo", "translation": "I bring my thanksgiving to You" }
+      ]
+    },
+    {
+      "type": "verse",
+      "number": 2,
+      "lines": [
+        { "primary": "W'ayɛ me papa", "translation": "You've been good to me" },
+        { "primary": "W'adom atra me so", "translation": "Your grace has covered me" },
+        { "primary": "Me kra kamfo wo", "translation": "My soul magnifies You" }
+      ]
+    }
+  ]
+}
