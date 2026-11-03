@@ -1,4 +1,4 @@
-export default function DepartmentsSection() {
+﻿export default function DepartmentsSection() {
   const departments = [
     { name: "Men", description: "Building strong men of faith" },
     { name: "Women", description: "Empowering women who worship the Lord" },
@@ -12,7 +12,7 @@ export default function DepartmentsSection() {
     <section className="bg-brand-neutral min-h-screen flex items-center py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32 w-full">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12">
-          Our Departments
+          Get involved
         </h2>
 
         <div className="space-y-6">
