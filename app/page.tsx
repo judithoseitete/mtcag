@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 
@@ -104,7 +104,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button className="w-full sm:w-auto px-8 py-4 bg-brand-red text-white font-bold text-lg rounded-lg hover:bg-brand-red/90 transition-colors shadow-lg">
-                  Learn More
+                  Plan Your Visit
                 </button>
                 <button className="w-full sm:w-auto px-8 py-4 bg-white text-brand-gray font-bold text-lg rounded-lg hover:bg-brand-neutral transition-colors shadow-lg">
                   Watch Online
@@ -179,15 +179,15 @@ export default function Home() {
       </section>
 
       {/* Service Section */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-white h-screen flex items-center">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12">
             Join us this Sunday
           </h2>
           <div className="flex flex-col md:flex-row md:divide-x-2 divide-brand-gray/30">
             {/* Time */}
-            <div className="flex-1 py-8 md:py-10 md:px-12 text-center relative">
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-brand-gray/30 md:hidden"></div>
+            <div className="flex-1 py-8 pb-12 md:py-10 md:px-12 text-center relative">
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-32 h-0.5 bg-brand-gray/30 md:hidden"></div>
               <h3 className="text-lg md:text-xl font-semibold text-brand-gray/70 mb-3 uppercase tracking-wide">
                 Time
               </h3>
@@ -200,12 +200,12 @@ export default function Home() {
             </div>
 
             {/* Location */}
-            <div className="flex-1 py-8 md:py-10 md:px-12 text-center">
+            <div className="flex-1 pt-16 pb-8 md:py-10 md:px-12 text-center">
               <h3 className="text-lg md:text-xl font-semibold text-brand-gray/70 mb-3 uppercase tracking-wide">
                 Location
               </h3>
               <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-red mb-6">
-                Sowutuom, Accra, Ghana
+                Sowutuom, Accra<br className="md:hidden" /><span className="hidden md:inline">, </span>Ghana
               </p>
               <button className="px-6 py-3 border-2 border-brand-gray text-brand-gray font-semibold rounded-lg hover:bg-brand-gray hover:text-white transition-colors">
                 Get directions
@@ -216,16 +216,14 @@ export default function Home() {
       </section>
 
       {/* About Preview Section */}
-      <section className="bg-brand-neutral py-12 md:py-16">
+      <section className="bg-brand-neutral h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray mb-6">
-              About Our Church
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-8 md:mb-12">About Our Church
             </h2>
-            <p className="text-lg md:text-xl text-brand-gray/80 mb-8">
-              More Than Conquerors Assemblies of God is a vibrant community of believers 
-              committed to worshiping God, serving others, and growing together in faith. 
-              We welcome you to join us on this journey.
+            <p className="text-3xl md:text-4xl lg:text-5xl text-brand-gray/80 mb-8">
+              We are an Assemblies of God church committed to worshiping God, serving others, 
+              and growing together in faith.
             </p>
             <button className="px-8 py-3 bg-brand-gray text-white font-bold rounded-lg hover:bg-brand-gray/90 transition-colors">
               Learn More About Us
@@ -236,3 +234,17 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
