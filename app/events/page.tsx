@@ -1,50 +1,60 @@
-﻿import FeaturedEventHero from "@/components/events/FeaturedEventHero";
-import EventCard from "@/components/events/EventCard";
-import Footer from "@/components/layout/Footer";
-import { events } from "@/constants/events";
+﻿import Footer from "@/components/layout/Footer";
+import { getUpcomingEvents } from "@/constants/weeklySchedule";
 
 export default function EventsPage() {
-  const featuredEvent = events.find((event) => event.featured);
-  const upcomingEvents = events.filter((event) => !event.featured);
+  const upcomingEvents = getUpcomingEvents();
 
   return (
-    <main className="bg-white">
-      {/* Featured Event Hero */}
-      {featuredEvent && (
-        <FeaturedEventHero
-          title={featuredEvent.title}
-          date={featuredEvent.date}
-          time={featuredEvent.time}
-          location={featuredEvent.location}
-          description={featuredEvent.description}
-          imageUrl={featuredEvent.imageUrl}
-        />
-      )}
-
-      {/* Upcoming Events */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-8 md:mb-12">
-            Upcoming Events
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {upcomingEvents.map((event) => (
-              <EventCard
-                key={event.id}
-                title={event.title}
-                date={event.date}
-                time={event.time}
-                location={event.location}
-                description={event.description}
-                category={event.category}
-                imageUrl={event.imageUrl}
-              />
-            ))}
+    <>
+      <main className="min-h-screen bg-white">
+        {/* Page Title */}
+        <section className="bg-brand-neutral py-12 md:py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center">
+              Upcoming Events
+            </h1>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
-    </main>
+        {/* Events List */}
+        <section className="py-16 md:py-20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="space-y-6">
+              {upcomingEvents.map((event) => (
+                <div
+                  key={event.id}
+                  className="bg-brand-neutral rounded-lg p-6 md:p-8 border-2 border-brand-gray/10 hover:border-brand-red/30 transition-colors"
+                >
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                    <div className="flex-1">
+                      <h2 className="text-2xl md:text-3xl font-bold text-brand-gray mb-2">
+                        {event.title}
+                      </h2>
+                      <p className="text-lg text-brand-gray/70 mb-4">
+                        {event.description}
+                      </p>
+                    </div>
+                    <div className="md:text-right">
+                      <p className="text-lg font-semibold text-brand-red">
+                        {event.datetime}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {upcomingEvents.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-xl text-brand-gray/60">
+                  No upcoming events at this time. Check back soon!
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
+      <Footer bgColor="white" />
+    </>
   );
 }
