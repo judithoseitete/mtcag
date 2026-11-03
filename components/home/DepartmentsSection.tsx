@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { departments } from "@/constants/departments";
 
 export default function DepartmentsSection() {
@@ -10,7 +10,7 @@ export default function DepartmentsSection() {
   return (
     <section className="bg-brand-neutral min-h-[80vh] flex items-center py-8 md:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="bg-white rounded-3xl px-8 py-16 md:px-16 md:py-20 lg:px-24 lg:py-24 shadow-xl">
+        <div className="bg-brand-neutral rounded-3xl px-8 py-16 md:px-16 md:py-20 lg:px-24 lg:py-24 shadow-xl">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12">
             Get involved
           </h2>
