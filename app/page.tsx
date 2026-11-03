@@ -1,8 +1,9 @@
-﻿import HeroSection from "@/components/home/HeroSection";
+import HeroSection from "@/components/home/HeroSection";
 import ServiceSection from "@/components/home/ServiceSection";
 import AboutSection from "@/components/home/AboutSection";
 import EventsSection from "@/components/home/EventsSection";
 import MinistriesSection from "@/components/home/MinistriesSection";
+import GivingSection from "@/components/home/GivingSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <AboutSection />
       <EventsSection />
       <MinistriesSection />
+      <GivingSection />
     </main>
   );
 }
