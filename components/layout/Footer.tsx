@@ -3,13 +3,23 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
 
-export default function Footer() {
+interface FooterProps {
+  bgColor?: "white" | "gray" | "neutral";
+}
+
+export default function Footer({ bgColor = "gray" }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const bgColorMap = {
+    white: "bg-white",
+    gray: "bg-brand-gray",
+    neutral: "bg-brand-neutral",
+  };
+
   return (
-    <footer className="bg-brand-gray px-4 sm:px-6 lg:px-8">
+    <footer className={`${bgColorMap[bgColor]} px-4 sm:px-6 lg:px-8`}>
       <div className="bg-white text-brand-gray border-2 border-brand-neutral rounded-t-3xl pt-12 md:pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
