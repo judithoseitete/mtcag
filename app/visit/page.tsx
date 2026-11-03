@@ -65,7 +65,7 @@
                       </td>
                       <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                         {item.events.length > 0 ? (
-                          <table className="w-full table-fixed">
+                          <table className="w-full">
                             <colgroup>
                               <col style={{ width: "200px" }} />
                               <col />
