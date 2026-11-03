@@ -18,7 +18,7 @@ export const events: Event[] = [
     time: "10:00 AM",
     location: "MTC Main Auditorium",
     description:
-      "Join us as we celebrate 25 years of God's faithfulness and ministry in Sowutuom. Special guests, worship, and thanksgiving service.",
+      "Join us as we celebrate 25 years of God's faithfulness and work in Sowutuom. Special guests, worship, and thanksgiving service.",
     category: "Special Event",
     featured: true,
   },
