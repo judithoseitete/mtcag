@@ -148,77 +148,69 @@
         </div>
       </section>
 
-      {/* What to Expect */}
+      {/* Order of Service */}
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-gray text-center mb-12">
-            What to Expect
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-gray mb-12">
+            Order of Service
           </h2>
-          <div className="max-w-3xl mx-auto space-y-8">
-            <div className="bg-brand-neutral rounded-lg p-8">
-              <h3 className="text-xl font-bold text-brand-gray mb-3">
-                Service Duration
-              </h3>
-              <p className="text-brand-gray/80">
-                Our services typically last about 2 hours, including worship,
-                teaching, and prayer time.
-              </p>
-            </div>
-            <div className="bg-brand-neutral rounded-lg p-8">
-              <h3 className="text-xl font-bold text-brand-gray mb-3">
-                Dress Code
-              </h3>
-              <p className="text-brand-gray/80">
-                Come as you are! We welcome everyone regardless of what you
-                wear. Some dress casually, others more formally - you will fit
-                right in.
-              </p>
-            </div>
-            <div className="bg-brand-neutral rounded-lg p-8">
-              <h3 className="text-xl font-bold text-brand-gray mb-3">
-                Family Friendly
-              </h3>
-              <p className="text-brand-gray/80">
-                Children are welcome in our main service, and we have dedicated
-                programs for kids and youth to learn and grow in faith.
-              </p>
-            </div>
-            <div className="bg-brand-neutral rounded-lg p-8">
-              <h3 className="text-xl font-bold text-brand-gray mb-3">
-                Language
-              </h3>
-              <p className="text-brand-gray/80">
-                Services are conducted in English with occasional translations
-                available.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-brand-gray py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Have Questions?
-          </h2>
-          <p className="text-lg text-white/80 mb-8">
-            We are here to help! Contact us or check out our weekly calendar for
-            more information.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="bg-brand-red text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-red/90 transition-colors duration-300"
-            >
-              Contact Us
-            </a>
-            <a
-              href="/events"
-              className="bg-white text-brand-gray px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-neutral transition-colors duration-300"
-            >
-              View Calendar
-            </a>
+          <div className="max-w-3xl mx-auto">
+            <ol className="space-y-4">
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  1
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Opening Prayer</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  2
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Praise and Worship</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  3
+                </span>
+                <span className="text-lg text-brand-gray pt-1">First Offering</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  4
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Tithes</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  5
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Announcements</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  6
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Music Ministration</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  7
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Sermon</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  8
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Project Offering</span>
+              </li>
+              <li className="flex items-start">
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-brand-red text-white rounded-full font-bold mr-4">
+                  9
+                </span>
+                <span className="text-lg text-brand-gray pt-1">Sunday School Session</span>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
