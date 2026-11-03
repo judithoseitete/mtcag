@@ -104,7 +104,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button className="w-full sm:w-auto px-8 py-4 bg-brand-red text-white font-bold text-lg rounded-lg hover:bg-brand-red/90 transition-colors shadow-lg">
-                  Plan Your Visit
+                  Learn More
                 </button>
                 <button className="w-full sm:w-auto px-8 py-4 bg-white text-brand-gray font-bold text-lg rounded-lg hover:bg-brand-neutral transition-colors shadow-lg">
                   Watch Online
@@ -178,50 +178,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Service Times Section */}
-      <section className="bg-white py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-gray text-center mb-8 md:mb-12">
-            Join Us This Sunday
+      {/* Service Section */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-12 md:mb-16">
+            Join us this Sunday
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {/* Service Time Card 1 */}
-            <div className="bg-brand-neutral p-6 md:p-8 rounded-lg text-center">
-              <h3 className="text-xl md:text-2xl font-bold text-brand-gray mb-2">
-                Sunday Morning
+          <div className="flex flex-col md:flex-row md:divide-x-2 divide-brand-gray/30">
+            {/* Time */}
+            <div className="flex-1 py-8 md:py-10 md:px-12 text-center relative">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-brand-gray/30 md:hidden"></div>
+              <h3 className="text-lg md:text-xl font-semibold text-brand-gray/70 mb-3 uppercase tracking-wide">
+                Time
               </h3>
-              <p className="text-3xl md:text-4xl font-bold text-brand-red mb-2">
-                9:00 AM
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-red mb-6">
+                8:00 AM to<br />10:30 AM
               </p>
-              <p className="text-brand-gray/70">
-                Traditional Worship Service
-              </p>
+              <button className="px-6 py-3 border-2 border-brand-gray text-brand-gray font-semibold rounded-lg hover:bg-brand-gray hover:text-white transition-colors">
+                See other weekly times
+              </button>
             </div>
 
-            {/* Service Time Card 2 */}
-            <div className="bg-brand-neutral p-6 md:p-8 rounded-lg text-center">
-              <h3 className="text-xl md:text-2xl font-bold text-brand-gray mb-2">
-                Sunday Evening
+            {/* Location */}
+            <div className="flex-1 py-8 md:py-10 md:px-12 text-center">
+              <h3 className="text-lg md:text-xl font-semibold text-brand-gray/70 mb-3 uppercase tracking-wide">
+                Location
               </h3>
-              <p className="text-3xl md:text-4xl font-bold text-brand-red mb-2">
-                11:00 AM
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-red mb-6">
+                Sowutuom, Accra, Ghana
               </p>
-              <p className="text-brand-gray/70">
-                Contemporary Worship Service
-              </p>
-            </div>
-
-            {/* Service Time Card 3 */}
-            <div className="bg-brand-neutral p-6 md:p-8 rounded-lg text-center">
-              <h3 className="text-xl md:text-2xl font-bold text-brand-gray mb-2">
-                Wednesday Night
-              </h3>
-              <p className="text-3xl md:text-4xl font-bold text-brand-red mb-2">
-                7:00 PM
-              </p>
-              <p className="text-brand-gray/70">
-                Bible Study & Prayer
-              </p>
+              <button className="px-6 py-3 border-2 border-brand-gray text-brand-gray font-semibold rounded-lg hover:bg-brand-gray hover:text-white transition-colors">
+                Get directions
+              </button>
             </div>
           </div>
         </div>
