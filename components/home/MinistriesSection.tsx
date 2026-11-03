@@ -1,24 +1,16 @@
-﻿/**
- * Ministries Section Component
- * 
- * Displays the 6 ministry categories with responsive grid layout:
- * - Desktop: 2 columns, then 3 columns, then 1 column (2-3-1 pattern)
- * - Mobile: Single column (all stacked vertically)
- */
-
 export default function MinistriesSection() {
   const ministries = [
     { name: "Men", description: "Building strong men of faith" },
     { name: "Women", description: "Empowering women in Christ" },
     { name: "Youth", description: "Guiding the next generation" },
-    { name: "Pathfinders", description: "Discovering God's purpose" },
+    { name: "Pathfinders", description: "Young men of destiny" },
     { name: "Young Singles", description: "Growing together in faith" },
     { name: "Children", description: "Nurturing young hearts" },
   ];
 
   return (
-    <section className="bg-brand-neutral h-screen flex items-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section className="bg-brand-neutral min-h-screen flex items-center py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32 w-full">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12">
           Our Ministries
         </h2>
@@ -29,12 +21,12 @@ export default function MinistriesSection() {
             {ministries.slice(0, 2).map((ministry) => (
               <div
                 key={ministry.name}
-                className="bg-white rounded-lg p-8 md:p-10 text-center hover:shadow-lg transition-shadow"
+                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-3">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {ministry.name}
                 </h3>
-                <p className="text-lg text-brand-gray/70">{ministry.description}</p>
+                <p className="text-lg text-white/80">{ministry.description}</p>
               </div>
             ))}
           </div>
@@ -44,12 +36,12 @@ export default function MinistriesSection() {
             {ministries.slice(2, 5).map((ministry) => (
               <div
                 key={ministry.name}
-                className="bg-white rounded-lg p-8 md:p-10 text-center hover:shadow-lg transition-shadow"
+                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-3">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {ministry.name}
                 </h3>
-                <p className="text-lg text-brand-gray/70">{ministry.description}</p>
+                <p className="text-lg text-white/80">{ministry.description}</p>
               </div>
             ))}
           </div>
@@ -59,12 +51,12 @@ export default function MinistriesSection() {
             {ministries.slice(5, 6).map((ministry) => (
               <div
                 key={ministry.name}
-                className="bg-white rounded-lg p-8 md:p-10 text-center hover:shadow-lg transition-shadow"
+                className="bg-brand-gray rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-3">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   {ministry.name}
                 </h3>
-                <p className="text-lg text-brand-gray/70">{ministry.description}</p>
+                <p className="text-lg text-white/80">{ministry.description}</p>
               </div>
             ))}
           </div>
@@ -73,3 +65,6 @@ export default function MinistriesSection() {
     </section>
   );
 }
+
+
+
