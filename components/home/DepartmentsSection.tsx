@@ -7,8 +7,15 @@ export default function DepartmentsSection() {
     id: dept.id,
   }));
 
-  // Assign colors to departments
-  const colors = ["bg-brand-red", "bg-brand-blue", "bg-brand-yellow", "bg-brand-red", "bg-brand-blue", "bg-brand-yellow"];
+  // Assign accent colors to departments
+  const accentColors = [
+    "border-l-brand-red",
+    "border-l-brand-blue", 
+    "border-l-brand-yellow",
+    "border-l-brand-red",
+    "border-l-brand-blue",
+    "border-l-brand-yellow"
+  ];
 
   return (
     <section className="bg-white min-h-[80vh] flex items-center py-8 md:py-20 px-4 sm:px-6 lg:px-8">
@@ -25,9 +32,9 @@ export default function DepartmentsSection() {
                 <Link
                   key={department.name}
                   href="/departments"
-                  className={`${colors[index]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
+                  className={`bg-white border-l-8 ${accentColors[index]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
                 >
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  <h3 className="text-2xl md:text-3xl font-bold text-brand-gray">
                     {department.name}
                   </h3>
                 </Link>
@@ -40,9 +47,9 @@ export default function DepartmentsSection() {
                 <Link
                   key={department.name}
                   href="/departments"
-                  className={`${colors[index + 2]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
+                  className={`bg-white border-l-8 ${accentColors[index + 2]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
                 >
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  <h3 className="text-2xl md:text-3xl font-bold text-brand-gray">
                     {department.name}
                   </h3>
                 </Link>
@@ -55,9 +62,9 @@ export default function DepartmentsSection() {
                 <Link
                   key={department.name}
                   href="/departments"
-                  className={`${colors[index + 5]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] text-center hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
+                  className={`bg-white border-l-8 ${accentColors[index + 5]} rounded-lg p-10 md:p-12 min-h-[200px] md:min-h-[240px] hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center`}
                 >
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  <h3 className="text-2xl md:text-3xl font-bold text-brand-gray">
                     {department.name}
                   </h3>
                 </Link>
