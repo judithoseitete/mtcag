@@ -17,6 +17,7 @@
             <div className="w-16 h-16 md:w-20 md:h-20 bg-white border-2 border-brand-gray rounded-lg shadow-lg"></div>
             <div className="w-16 h-16 md:w-20 md:h-20 bg-brand-gray rounded-lg shadow-lg"></div>
             <div className="w-16 h-16 md:w-20 md:h-20 bg-brand-yellow rounded-lg shadow-lg"></div>
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-brand-blue rounded-lg shadow-lg"></div>
           </div>
           
           <p className="text-sm md:text-base text-brand-gray/60">

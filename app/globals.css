@@ -2,15 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --brand-red: #f73c4a;
-  --brand-neutral: #f5f4f2;
-  --brand-gray: #353533;
-  --brand-yellow: #efe10f;
-}
+@layer base {
+  :root {
+    --brand-red: #f73c4a;
+    --brand-neutral: #f5f4f2;
+    --brand-gray: #353533;
+    --brand-yellow: #efe10f;
+    --brand-blue: #303181;
+  }
 
-body {
-  font-family: var(--font-geist-sans);
-  background-color: var(--brand-neutral);
-  color: var(--brand-gray);
+  body {
+    background-color: var(--brand-neutral);
+    color: var(--brand-gray);
+  }
 }
