@@ -1,24 +1,24 @@
 export default function VisitPage() {
   const weeklySchedule = [
     {
-      day: "Sunday",
+      day: "Sundays",
       events: [{ time: "8:00 AM - 10:30 AM", event: "Sunday Service" }],
     },
     {
-      day: "Monday",
+      day: "Mondays",
       events: [
         { time: "6:45 PM - 8:00 PM", event: "Women Ministry Meeting" },
-        { time: "7:00 PM - 8:00 PM", event: "Youth Ministry Meeting" },
+        { time: "6:45 PM - 8:00 PM", event: "Youth Ministry Meeting" },
       ],
     },
-    { day: "Tuesday", events: [] },
+    { day: "Tuesdays", events: [] },
     {
-      day: "Wednesday",
-      events: [{ time: "6:00 PM", event: "Bible Study" }],
+      day: "Wednesdays",
+      events: [{ time: "7:00 PM - 8:00 PM", event: "Bible Study" }],
     },
-    { day: "Thursday", events: [] },
-    { day: "Friday", events: [] },
-    { day: "Saturday", events: [] },
+    { day: "Thursdays", events: [] },
+    { day: "Fridays", events: [] },
+    { day: "Saturdays", events: [] },
   ];
 
   return (
@@ -40,13 +40,13 @@ export default function VisitPage() {
           </h2>
           <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="bg-brand-gray text-white">
-                    <th className="px-8 py-6 text-left text-xl font-bold">
+                    <th className="px-4 md:px-8 py-4 md:py-6 text-left text-base md:text-xl font-bold">
                       Day
                     </th>
-                    <th className="px-8 py-6 text-left text-xl font-bold">
+                    <th className="px-4 md:px-8 py-4 md:py-6 text-left text-base md:text-xl font-bold">
                       Events
                     </th>
                   </tr>
@@ -57,14 +57,14 @@ export default function VisitPage() {
                       key={item.day}
                       className="bg-white hover:bg-brand-neutral/30 transition-colors"
                     >
-                      <td className="px-8 py-6 font-bold text-brand-gray text-lg border-b border-brand-gray/20">
+                      <td className="px-4 md:px-8 py-4 md:py-6 font-bold text-brand-gray text-base md:text-lg border-b border-brand-gray/20 whitespace-nowrap">
                         {item.day}
                       </td>
-                      <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
+                      <td className="px-4 md:px-8 py-4 md:py-6 text-brand-gray/80 text-sm md:text-lg border-b border-brand-gray/20">
                         {item.events.length > 0 ? (
                           <table className="w-full table-fixed">
                             <colgroup>
-                              <col style={{ width: "200px" }} />
+                              <col className="w-32 md:w-48" />
                               <col />
                             </colgroup>
                             <tbody>
@@ -73,10 +73,10 @@ export default function VisitPage() {
                                   key={idx}
                                   className="border-b last:border-b-0 border-brand-gray/5"
                                 >
-                                  <td className="py-2 pr-4 text-brand-gray font-medium">
+                                  <td className="py-2 pr-2 md:pr-4 text-brand-gray font-medium text-xs md:text-base whitespace-nowrap">
                                     {eventItem.time}
                                   </td>
-                                  <td className="py-2 text-brand-gray/80">
+                                  <td className="py-2 text-brand-gray/80 text-sm md:text-base">
                                     {eventItem.event}
                                   </td>
                                 </tr>
@@ -84,7 +84,7 @@ export default function VisitPage() {
                             </tbody>
                           </table>
                         ) : (
-                          <span className="text-brand-gray/40 italic">
+                          <span className="text-brand-gray/40 italic text-sm md:text-base">
                             No events
                           </span>
                         )}
