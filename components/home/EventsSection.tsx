@@ -1,8 +1,10 @@
 ﻿"use client";
 
+import { useMemo } from "react";
 import { useInfiniteCarousel } from "@/hooks/useInfiniteCarousel";
 import { Event } from "@/types";
 import EventCard from "./EventCard";
+import { CAROUSEL_CONFIG } from "@/constants/carousel";
 
 export default function EventsSection() {
   const events: Event[] = [
@@ -12,7 +14,8 @@ export default function EventsSection() {
     { id: 4, title: "Event Title 4", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
   ];
 
-  const infiniteEvents = [...events, ...events, ...events];
+  // Memoize the infinite events array to prevent recreation on every render
+  const infiniteEvents = useMemo(() => [...events, ...events, ...events], []);
 
   const {
     currentSlide,
@@ -23,9 +26,9 @@ export default function EventsSection() {
     handleTouchMove,
     handleTouchEnd,
   } = useInfiniteCarousel({
-    totalSlides: 4,
-    autoRotate: true,
-    autoRotateInterval: 15000,
+    totalSlides: CAROUSEL_CONFIG.EVENTS.totalSlides,
+    autoRotate: CAROUSEL_CONFIG.EVENTS.autoRotate,
+    autoRotateInterval: CAROUSEL_CONFIG.EVENTS.interval,
   });
 
   return (

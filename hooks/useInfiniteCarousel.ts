@@ -1,4 +1,5 @@
 ﻿import { useState, useEffect, useCallback } from "react";
+import { CAROUSEL_INTERVAL, SWIPE_THRESHOLD, INFINITE_CAROUSEL_RESET_DELAY } from "@/constants/carousel";
 
 interface UseInfiniteCarouselOptions {
   totalSlides: number;
@@ -11,7 +12,7 @@ interface UseInfiniteCarouselOptions {
 export function useInfiniteCarousel({
   totalSlides,
   autoRotate = true,
-  autoRotateInterval = 15000,
+  autoRotateInterval = CAROUSEL_INTERVAL,
   startSlide,
   onSlideChange,
 }: UseInfiniteCarouselOptions) {
@@ -59,24 +60,22 @@ export function useInfiniteCarousel({
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    const isLeftSwipe = distance > SWIPE_THRESHOLD;
+    const isRightSwipe = distance < -SWIPE_THRESHOLD;
 
     if (isLeftSwipe) {
       const newSlide = currentSlide + 1;
       setCurrentSlide(newSlide);
       setResetTimer((prev) => prev + 1);
-      // Reset to middle set when reaching end
       if (newSlide >= totalSlides * 2)
-        setTimeout(() => setCurrentSlide(totalSlides), 700);
+        setTimeout(() => setCurrentSlide(totalSlides), INFINITE_CAROUSEL_RESET_DELAY);
     }
     if (isRightSwipe) {
       const newSlide = currentSlide - 1;
       setCurrentSlide(newSlide);
       setResetTimer((prev) => prev + 1);
-      // Reset to middle set when reaching start
       if (newSlide < totalSlides)
-        setTimeout(() => setCurrentSlide(totalSlides * 2 - 1), 700);
+        setTimeout(() => setCurrentSlide(totalSlides * 2 - 1), INFINITE_CAROUSEL_RESET_DELAY);
     }
 
     setTouchStart(0);
@@ -88,7 +87,7 @@ export function useInfiniteCarousel({
     setCurrentSlide(newSlide);
     setResetTimer((prev) => prev + 1);
     if (newSlide < totalSlides)
-      setTimeout(() => setCurrentSlide(totalSlides * 2 - 1), 700);
+      setTimeout(() => setCurrentSlide(totalSlides * 2 - 1), INFINITE_CAROUSEL_RESET_DELAY);
   }, [currentSlide, totalSlides]);
 
   const goToNextSlide = useCallback(() => {
@@ -96,7 +95,7 @@ export function useInfiniteCarousel({
     setCurrentSlide(newSlide);
     setResetTimer((prev) => prev + 1);
     if (newSlide >= totalSlides * 2)
-      setTimeout(() => setCurrentSlide(totalSlides), 700);
+      setTimeout(() => setCurrentSlide(totalSlides), INFINITE_CAROUSEL_RESET_DELAY);
   }, [currentSlide, totalSlides]);
 
   return {

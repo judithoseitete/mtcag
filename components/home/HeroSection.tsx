@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useCallback } from "react";
 import { useCarousel } from "@/hooks/useCarousel";
+import { CAROUSEL_CONFIG } from "@/constants/carousel";
 
 export default function HeroSection() {
   const {
@@ -13,9 +14,9 @@ export default function HeroSection() {
     handleTouchMove,
     handleTouchEnd,
   } = useCarousel({
-    totalSlides: 2,
-    autoRotate: true,
-    autoRotateInterval: 15000,
+    totalSlides: CAROUSEL_CONFIG.HERO.totalSlides,
+    autoRotate: CAROUSEL_CONFIG.HERO.autoRotate,
+    autoRotateInterval: CAROUSEL_CONFIG.HERO.interval,
   });
 
   // Keyboard navigation handler
@@ -24,7 +25,7 @@ export default function HeroSection() {
       if (e.key === "ArrowLeft" && currentSlide > 0) {
         changeSlide(currentSlide - 1);
       }
-      if (e.key === "ArrowRight" && currentSlide < 2 - 1) {
+      if (e.key === "ArrowRight" && currentSlide < CAROUSEL_CONFIG.HERO.totalSlides - 1) {
         changeSlide(currentSlide + 1);
       }
     },
@@ -121,7 +122,7 @@ export default function HeroSection() {
         </button>
       )}
 
-      {currentSlide < 2 - 1 && (
+      {currentSlide < CAROUSEL_CONFIG.HERO.totalSlides - 1 && (
         <button
           onClick={goToNextSlide}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
@@ -161,3 +162,4 @@ export default function HeroSection() {
     </section>
   );
 }
+

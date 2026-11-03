@@ -1,4 +1,5 @@
 ﻿import { useState, useEffect, useCallback } from "react";
+import { CAROUSEL_INTERVAL, SWIPE_THRESHOLD } from "@/constants/carousel";
 
 interface UseCarouselOptions {
   totalSlides: number;
@@ -11,7 +12,7 @@ interface UseCarouselOptions {
 export function useCarousel({
   totalSlides,
   autoRotate = true,
-  autoRotateInterval = 15000,
+  autoRotateInterval = CAROUSEL_INTERVAL,
   initialSlide = 0,
   onSlideChange,
 }: UseCarouselOptions) {
@@ -54,8 +55,8 @@ export function useCarousel({
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    const isLeftSwipe = distance > SWIPE_THRESHOLD;
+    const isRightSwipe = distance < -SWIPE_THRESHOLD;
 
     if (isLeftSwipe && currentSlide < totalSlides - 1) {
       changeSlide(currentSlide + 1);
