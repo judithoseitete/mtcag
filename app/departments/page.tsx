@@ -7,10 +7,60 @@ import Footer from "@/components/layout/Footer";
 import { departments } from "@/constants/departments";
 import { Clock, MapPin } from "lucide-react";
 
-export default function DepartmentsPage() {
-  const [activeTab, setActiveTab] = useState(departments[0].id);
+// Flatten departments and subdepartments into a single array for tabs
+interface FlatDepartment {
+  id: string;
+  name: string;
+  description: string;
+  motto?: string;
+  slogan?: string;
+  meetingTime?: string;
+  location?: string;
+  executives?: {
+    president: string;
+    vicePresident: string;
+    treasurer: string;
+    organizer: string;
+    secretary: string;
+  };
+}
 
-  const activeDepartment = departments.find((dept) => dept.id === activeTab);
+const flattenDepartments = (): FlatDepartment[] => {
+  const flattened: FlatDepartment[] = [];
+
+  departments.forEach((dept) => {
+    // Add main department
+    flattened.push({
+      id: dept.id,
+      name: dept.name,
+      description: dept.description,
+      motto: dept.motto,
+      executives: dept.executives,
+    });
+
+    // Add subdepartments
+    dept.subDepartments.forEach((subDept) => {
+      flattened.push({
+        id: subDept.id,
+        name: subDept.name,
+        description: subDept.description || "",
+        motto: subDept.motto,
+        slogan: subDept.slogan,
+        meetingTime: subDept.meetingTime,
+        location: subDept.location,
+        executives: subDept.executives,
+      });
+    });
+  });
+
+  return flattened;
+};
+
+export default function DepartmentsPage() {
+  const allDepartments = flattenDepartments();
+  const [activeTab, setActiveTab] = useState(allDepartments[0].id);
+
+  const activeDepartment = allDepartments.find((dept) => dept.id === activeTab);
 
   return (
     <main className="bg-white">
@@ -25,7 +75,7 @@ export default function DepartmentsPage() {
 
       {/* Department Tabs */}
       <DepartmentTabs
-        departments={departments.map((dept) => ({
+        departments={allDepartments.map((dept) => ({
           id: dept.id,
           name: dept.name,
         }))}
@@ -37,84 +87,50 @@ export default function DepartmentsPage() {
       {activeDepartment && (
         <section className="py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Main Department Section */}
-            <div className="mb-16">
-              {/* Department Header */}
-              <div className="mb-8">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-4">
-                  {activeDepartment.name}
-                </h2>
-                <p className="text-xl text-brand-gray/80 mb-3">
-                  {activeDepartment.description}
-                </p>
+            {/* Department Header */}
+            <div className="mb-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-4">
+                {activeDepartment.name}
+              </h2>
+              <p className="text-xl text-brand-gray/80 mb-3">
+                {activeDepartment.description}
+              </p>
+              <div className="flex flex-col md:flex-row gap-3 text-brand-gray/70">
                 {activeDepartment.motto && (
-                  <p className="text-lg italic text-brand-gray/70">
+                  <p className="text-lg italic">
                     &quot;{activeDepartment.motto}&quot;
                   </p>
                 )}
+                {activeDepartment.slogan && activeDepartment.motto && (
+                  <span className="hidden md:inline">•</span>
+                )}
+                {activeDepartment.slogan && (
+                  <p className="text-lg italic">
+                    &quot;{activeDepartment.slogan}&quot;
+                  </p>
+                )}
               </div>
-
-              {/* Main Department Executives */}
-              <ExecutivesGrid executives={activeDepartment.executives} />
+              {(activeDepartment.meetingTime || activeDepartment.location) && (
+                <div className="flex flex-col md:flex-row gap-4 mt-4">
+                  {activeDepartment.meetingTime && (
+                    <div className="flex items-center gap-2 text-brand-gray/70">
+                      <Clock className="w-5 h-5" />
+                      <span>{activeDepartment.meetingTime}</span>
+                    </div>
+                  )}
+                  {activeDepartment.location && (
+                    <div className="flex items-center gap-2 text-brand-gray/70">
+                      <MapPin className="w-5 h-5" />
+                      <span>{activeDepartment.location}</span>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
-            {/* Sub-Departments */}
-            {activeDepartment.subDepartments.length > 0 && (
-              <div className="space-y-16">
-                {activeDepartment.subDepartments.map((subDept) => (
-                  <div
-                    key={subDept.id}
-                    className="border-t-2 border-brand-neutral pt-12"
-                  >
-                    {/* Sub-Department Header */}
-                    <div className="mb-8">
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-gray mb-3">
-                        {subDept.name}
-                      </h3>
-                      {subDept.description && (
-                        <p className="text-lg text-brand-gray/80 mb-3">
-                          {subDept.description}
-                        </p>
-                      )}
-                      <div className="flex flex-col md:flex-row gap-3 text-brand-gray/70">
-                        {subDept.motto && (
-                          <p className="italic">&quot;{subDept.motto}&quot;</p>
-                        )}
-                        {subDept.slogan && subDept.motto && (
-                          <span className="hidden md:inline">•</span>
-                        )}
-                        {subDept.slogan && (
-                          <p className="italic">&quot;{subDept.slogan}&quot;</p>
-                        )}
-                      </div>
-                      {(subDept.meetingTime || subDept.location) && (
-                        <div className="flex flex-col md:flex-row gap-4 mt-4">
-                          {subDept.meetingTime && (
-                            <div className="flex items-center gap-2 text-brand-gray/70">
-                              <Clock className="w-5 h-5" />
-                              <span>{subDept.meetingTime}</span>
-                            </div>
-                          )}
-                          {subDept.location && (
-                            <div className="flex items-center gap-2 text-brand-gray/70">
-                              <MapPin className="w-5 h-5" />
-                              <span>{subDept.location}</span>
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Sub-Department Executives */}
-                    {subDept.executives && (
-                      <ExecutivesGrid
-                        executives={subDept.executives}
-                        size="small"
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
+            {/* Department Executives */}
+            {activeDepartment.executives && (
+              <ExecutivesGrid executives={activeDepartment.executives} />
             )}
           </div>
         </section>
