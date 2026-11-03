@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
 
 interface FooterProps {
   bgColor?: "white" | "gray" | "neutral" | "blue";
-  cardVariant?: "light" | "dark";
+  cardVariant?: "light" | "dark" | "blue";
 }
 
 export default function Footer({ bgColor = "gray", cardVariant = "light" }: FooterProps) {
@@ -33,9 +33,17 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
       textSecondary: "text-white/70",
       border: "border-brand-gray",
     },
+    blue: {
+      bg: "bg-brand-blue",
+      textPrimary: "text-white",
+      textSecondary: "text-white/70",
+      border: "border-brand-blue",
+    },
   };
 
   const card = cardStyles[cardVariant];
+  const borderColor = cardVariant === "light" ? "border-brand-gray/20" : "border-white/20";
+  const copyrightColor = cardVariant === "light" ? "text-brand-gray/60" : "text-white/60";
 
   return (
     <footer className={`${bgColorMap[bgColor]} px-4 sm:px-6 lg:px-8`}>
@@ -126,8 +134,8 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
             </button>
           </div>
 
-          <div className={`border-t ${cardVariant === "light" ? "border-brand-gray/20" : "border-white/20"} mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4`}>
-            <p className={`${cardVariant === "light" ? "text-brand-gray/60" : "text-white/60"} text-sm text-center md:text-left`}>
+          <div className={`border-t ${borderColor} mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4`}>
+            <p className={`${copyrightColor} text-sm text-center md:text-left`}>
               Copyright {new Date().getFullYear()} More Than Conquerors Assemblies
               of God. All rights reserved.
             </p>
