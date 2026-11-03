@@ -2,7 +2,10 @@
   const weeklySchedule = [
     {
       day: "Sundays",
-      events: [{ time: "8:00 AM - 10:30 AM", event: "Sunday Service" }],
+      events: [
+        { time: "8:00 AM - 10:30 AM", event: "Sunday Service" },
+        { time: "11:00 AM - 12:00 PM", event: "Men Ministry Meeting" },
+      ],
     },
     {
       day: "Mondays",
@@ -16,7 +19,10 @@
       day: "Wednesdays",
       events: [{ time: "7:00 PM - 8:00 PM", event: "Bible Study" }],
     },
-    { day: "Thursdays", events: [] },
+    {
+      day: "Thursdays",
+      events: [{ time: "10:30 PM - 12:00 PM", event: "Miracle Hour" }],
+    },
     {
       day: "Fridays",
       events: [{ time: "7:00 PM - 8:00 PM", event: "Congregational Prayer" }],
@@ -43,7 +49,7 @@
           </h2>
           <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[600px]">
+              <table className="w-full min-w-[800px]">
                 <thead>
                   <tr className="bg-brand-gray text-white">
                     <th className="px-8 py-6 text-left text-xl font-bold">
