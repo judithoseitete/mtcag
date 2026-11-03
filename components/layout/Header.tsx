@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -8,9 +8,11 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/visit", label: "Visit Us" },
   { href: "/about", label: "About Us" },
-  { href: "/events", label: "Events & News" },
+  { href: "/events", label: "Events" },
   { href: "/ministries", label: "Ministries" },
+  { href: "/songs", label: "Songs" },
   { href: "/contact", label: "Contact" },
+  { href: "/give", label: "Give" },
 ];
 
 export default function Header() {
@@ -128,3 +130,5 @@ export default function Header() {
     </header>
   );
 }
+
+

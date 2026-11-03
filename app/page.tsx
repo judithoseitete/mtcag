@@ -8,19 +8,44 @@ export default function Home() {
   const [touchEnd, setTouchEnd] = useState(0);
   const [resetTimer, setResetTimer] = useState(0);
   const totalSlides = 2;
+  const [currentEventSlide, setCurrentEventSlide] = useState(0);
+  const totalEventSlides = 4;
 
   // Auto-rotate slides every 15 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
     }, 15000);
+    // Event carousel touch handlers
+    const handleEventTouchStart = (e: React.TouchEvent) => {
+      setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const handleEventTouchMove = (e: React.TouchEvent) => {
+      setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleEventTouchEnd = () => {
+      if (!touchStart || !touchEnd) return;
+
+      const distance = touchStart - touchEnd;
+      const isLeftSwipe = distance > 50;
+      const isRightSwipe = distance < -50;
+
+      if (isLeftSwipe && currentEventSlide < totalEventSlides - 1) {
+        setCurrentEventSlide(currentEventSlide + 1);
+      }
+      if (isRightSwipe && currentEventSlide > 0) {
+        setCurrentEventSlide(currentEventSlide - 1);
+      }
+    };
 
     return () => clearInterval(interval);
   }, [resetTimer]);
 
   const changeSlide = (newSlide: number) => {
     setCurrentSlide(newSlide);
-    setResetTimer(prev => prev + 1); // Reset timer by changing dependency
+    setResetTimer((prev) => prev + 1); // Reset timer by changing dependency
   };
 
   // Keyboard navigation
@@ -35,6 +60,29 @@ export default function Home() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
+    // Event carousel touch handlers
+    const handleEventTouchStart = (e: React.TouchEvent) => {
+      setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const handleEventTouchMove = (e: React.TouchEvent) => {
+      setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleEventTouchEnd = () => {
+      if (!touchStart || !touchEnd) return;
+
+      const distance = touchStart - touchEnd;
+      const isLeftSwipe = distance > 50;
+      const isRightSwipe = distance < -50;
+
+      if (isLeftSwipe && currentEventSlide < totalEventSlides - 1) {
+        setCurrentEventSlide(currentEventSlide + 1);
+      }
+      if (isRightSwipe && currentEventSlide > 0) {
+        setCurrentEventSlide(currentEventSlide - 1);
+      }
+    };
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSlide]);
 
@@ -49,7 +97,7 @@ export default function Home() {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -73,11 +121,34 @@ export default function Home() {
       changeSlide(currentSlide + 1);
     }
   };
+  // Event carousel touch handlers
+  const handleEventTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleEventTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleEventTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentEventSlide < totalEventSlides - 1) {
+      setCurrentEventSlide(currentEventSlide + 1);
+    }
+    if (isRightSwipe && currentEventSlide > 0) {
+      setCurrentEventSlide(currentEventSlide - 1);
+    }
+  };
 
   return (
     <main>
       {/* Hero Slider Section */}
-      <section 
+      <section
         className="relative h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] overflow-hidden group"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -99,7 +170,8 @@ export default function Home() {
                 Welcome to More Than Conquerors
               </h1>
               <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto">
-                In all these things, we are more than conquerors through Him who loved us
+                In all these things, we are more than conquerors through Him who
+                loved us
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -143,8 +215,18 @@ export default function Home() {
             className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
             aria-label="Previous slide"
           >
-            <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-6 h-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
         )}
@@ -155,8 +237,18 @@ export default function Home() {
             className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
             aria-label="Next slide"
           >
-            <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg
+              className="w-6 h-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
         )}
@@ -192,7 +284,9 @@ export default function Home() {
                 Time
               </h3>
               <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-red mb-6">
-                8:00 AM to<br />10:30 AM
+                8:00 AM to
+                <br />
+                10:30 AM
               </p>
               <button className="px-6 py-3 border-2 border-brand-gray text-brand-gray font-semibold rounded-lg hover:bg-brand-gray hover:text-white transition-colors">
                 See other weekly times
@@ -205,7 +299,9 @@ export default function Home() {
                 Location
               </h3>
               <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-red mb-6">
-                Sowutuom, Accra<br className="md:hidden" /><span className="hidden md:inline">, </span>Ghana
+                Sowutuom, Accra
+                <br className="md:hidden" />
+                <span className="hidden md:inline">, </span>Ghana
               </p>
               <button className="px-6 py-3 border-2 border-brand-gray text-brand-gray font-semibold rounded-lg hover:bg-brand-gray hover:text-white transition-colors">
                 Get directions
@@ -219,11 +315,12 @@ export default function Home() {
       <section className="bg-brand-neutral h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-8 md:mb-12">About Our Church
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-8 md:mb-12">
+              Learn about our church
             </h2>
             <p className="text-3xl md:text-4xl lg:text-5xl text-brand-gray/80 mb-8">
-              We are an Assemblies of God church committed to worshiping God, serving others, 
-              and growing together in faith.
+              We are an Assemblies of God church committed to worshiping God,
+              serving others, and growing together in faith.
             </p>
             <button className="px-8 py-3 bg-brand-gray text-white font-bold rounded-lg hover:bg-brand-gray/90 transition-colors">
               Learn More About Us
@@ -231,20 +328,135 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Events Section */}
+      <section className="bg-white h-screen flex items-center">
+        <div className="w-full">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12 px-4">
+            Upcoming events
+          </h2>
+
+          {/* Events Carousel */}
+          <div
+            className="relative overflow-hidden group"
+            onTouchStart={handleEventTouchStart}
+            onTouchMove={handleEventTouchMove}
+            onTouchEnd={handleEventTouchEnd}
+          >
+            <div
+              className="flex gap-6 transition-transform duration-700 ease-in-out px-4"
+              style={{
+                transform: `translateX(calc(-${currentEventSlide * 66.666}% - ${currentEventSlide * 1.5}rem))`,
+              }}
+            >
+              {/* Event Card 1 */}
+              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
+                  Event Title 1
+                </h3>
+                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
+                  Event description goes here. Details about the event.
+                </p>
+                <p className="text-brand-red font-semibold">Date & Time</p>
+              </div>
+
+              {/* Event Card 2 */}
+              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
+                  Event Title 2
+                </h3>
+                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
+                  Event description goes here. Details about the event.
+                </p>
+                <p className="text-brand-red font-semibold">Date & Time</p>
+              </div>
+
+              {/* Event Card 3 */}
+              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
+                  Event Title 3
+                </h3>
+                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
+                  Event description goes here. Details about the event.
+                </p>
+                <p className="text-brand-red font-semibold">Date & Time</p>
+              </div>
+
+              {/* Event Card 4 */}
+              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
+                  Event Title 4
+                </h3>
+                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
+                  Event description goes here. Details about the event.
+                </p>
+                <p className="text-brand-red font-semibold">Date & Time</p>
+              </div>
+            </div>
+
+            {/* Navigation Arrows - Hidden on mobile, visible on hover for desktop */}
+            {currentEventSlide > 0 && (
+              <button
+                onClick={() => setCurrentEventSlide(currentEventSlide - 1)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
+                aria-label="Previous event"
+              >
+                <svg
+                  className="w-6 h-6 text-brand-gray"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+            )}
+
+            {currentEventSlide < totalEventSlides - 1 && (
+              <button
+                onClick={() => setCurrentEventSlide(currentEventSlide + 1)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
+                aria-label="Next event"
+              >
+                <svg
+                  className="w-6 h-6 text-brand-gray"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Slider Dots Navigation */}
+          <div className="flex gap-3 justify-center mt-8">
+            {[0, 1, 2, 3].map((index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentEventSlide(index)}
+                className={`transition-all duration-300 ${
+                  currentEventSlide === index
+                    ? "w-8 h-2 bg-brand-red rounded-full"
+                    : "w-2 h-2 bg-brand-gray/30 rounded-full hover:bg-brand-gray/50"
+                }`}
+                aria-label={`Go to event ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
