@@ -11,13 +11,11 @@ export default function DepartmentTabs({
   activeTab,
   onTabChange,
 }: DepartmentTabsProps) {
-  const activeDepartment = departments.find((dept) => dept.id === activeTab);
-
   return (
-    <div className="border-b border-brand-gray/20 mb-8 md:mb-12">
+    <div className="py-8 md:py-12 bg-brand-neutral/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mobile Dropdown */}
-        <div className="md:hidden py-4">
+        <div className="md:hidden">
           <select
             value={activeTab}
             onChange={(e) => onTabChange(e.target.value)}
@@ -31,18 +29,18 @@ export default function DepartmentTabs({
           </select>
         </div>
 
-        {/* Desktop Tabs */}
-        <div className="hidden md:flex flex-wrap -mb-px">
+        {/* Desktop Pills */}
+        <div className="hidden md:flex flex-wrap gap-3 justify-center">
           {departments.map((dept) => (
             <button
               key={dept.id}
               onClick={() => onTabChange(dept.id)}
               className={`
-                px-6 py-4 font-semibold text-base whitespace-nowrap border-b-2 transition-colors
+                px-6 py-3 font-semibold text-base rounded-lg transition-all duration-200
                 ${
                   activeTab === dept.id
-                    ? "border-brand-gray text-brand-gray"
-                    : "border-transparent text-brand-gray/60 hover:text-brand-gray hover:border-brand-gray/30"
+                    ? "bg-brand-gray text-white shadow-md"
+                    : "bg-white text-brand-gray hover:bg-brand-gray/10 hover:shadow-sm"
                 }
               `}
             >
