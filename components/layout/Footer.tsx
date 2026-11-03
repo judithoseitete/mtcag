@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
 
 interface FooterProps {
-  bgColor?: "white" | "gray" | "neutral";
+  bgColor?: "white" | "gray" | "neutral" | "blue";
   cardVariant?: "light" | "dark";
 }
 
@@ -17,6 +17,7 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
     white: "bg-white",
     gray: "bg-brand-gray",
     neutral: "bg-brand-neutral",
+    blue: "bg-brand-blue",
   };
 
   const cardStyles = {
