@@ -37,6 +37,7 @@ export default function DepartmentTabs({
       </div>
 
       <style jsx>{`
+        /* Mobile and tablet: styled scrollbar */
         .custom-scrollbar::-webkit-scrollbar {
           height: 6px;
         }
@@ -58,6 +59,18 @@ export default function DepartmentTabs({
         .custom-scrollbar {
           scrollbar-width: thin;
           scrollbar-color: #353533 #f5f4f2;
+        }
+
+        /* Desktop: hide scrollbar */
+        @media (min-width: 1024px) {
+          .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+
+          .custom-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
         }
       `}</style>
     </div>
