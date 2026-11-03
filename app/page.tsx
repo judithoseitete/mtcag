@@ -8,8 +8,18 @@ export default function Home() {
   const [touchEnd, setTouchEnd] = useState(0);
   const [resetTimer, setResetTimer] = useState(0);
   const totalSlides = 2;
-  const [currentEventSlide, setCurrentEventSlide] = useState(0);
+  const [currentEventSlide, setCurrentEventSlide] = useState(4); // Start at middle set
+  const [resetEventTimer, setResetEventTimer] = useState(0);
   const totalEventSlides = 4;
+  const events = [
+    { id: 1, title: "Event Title 1", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
+    { id: 2, title: "Event Title 2", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
+    { id: 3, title: "Event Title 3", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
+    { id: 4, title: "Event Title 4", description: "Event description goes here. Details about the event.", datetime: "Date & Time" },
+  ];
+
+  // Create infinite scroll effect by tripling the events array
+  const infiniteEvents = [...events, ...events, ...events];
 
   // Auto-rotate slides every 15 seconds
   useEffect(() => {
@@ -32,12 +42,20 @@ export default function Home() {
       const isLeftSwipe = distance > 50;
       const isRightSwipe = distance < -50;
 
-      if (isLeftSwipe && currentEventSlide < totalEventSlides - 1) {
-        setCurrentEventSlide(currentEventSlide + 1);
-      }
-      if (isRightSwipe && currentEventSlide > 0) {
-        setCurrentEventSlide(currentEventSlide - 1);
-      }
+      if (isLeftSwipe) {
+      const newSlide = currentEventSlide + 1;
+      setCurrentEventSlide(newSlide);
+      setResetEventTimer(prev => prev + 1);
+      // Reset to middle set when reaching end
+      if (newSlide >= 8) setTimeout(() => setCurrentEventSlide(4), 700);
+    }
+      if (isRightSwipe) {
+      const newSlide = currentEventSlide - 1;
+      setCurrentEventSlide(newSlide);
+      setResetEventTimer(prev => prev + 1);
+      // Reset to middle set when reaching start
+      if (newSlide < 4) setTimeout(() => setCurrentEventSlide(7), 700);
+    }
     };
 
     return () => clearInterval(interval);
@@ -76,12 +94,20 @@ export default function Home() {
       const isLeftSwipe = distance > 50;
       const isRightSwipe = distance < -50;
 
-      if (isLeftSwipe && currentEventSlide < totalEventSlides - 1) {
-        setCurrentEventSlide(currentEventSlide + 1);
-      }
-      if (isRightSwipe && currentEventSlide > 0) {
-        setCurrentEventSlide(currentEventSlide - 1);
-      }
+      if (isLeftSwipe) {
+      const newSlide = currentEventSlide + 1;
+      setCurrentEventSlide(newSlide);
+      setResetEventTimer(prev => prev + 1);
+      // Reset to middle set when reaching end
+      if (newSlide >= 8) setTimeout(() => setCurrentEventSlide(4), 700);
+    }
+      if (isRightSwipe) {
+      const newSlide = currentEventSlide - 1;
+      setCurrentEventSlide(newSlide);
+      setResetEventTimer(prev => prev + 1);
+      // Reset to middle set when reaching start
+      if (newSlide < 4) setTimeout(() => setCurrentEventSlide(7), 700);
+    }
     };
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSlide]);
@@ -137,11 +163,19 @@ export default function Home() {
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe && currentEventSlide < totalEventSlides - 1) {
-      setCurrentEventSlide(currentEventSlide + 1);
+    if (isLeftSwipe) {
+      const newSlide = currentEventSlide + 1;
+      setCurrentEventSlide(newSlide);
+      setResetEventTimer(prev => prev + 1);
+      // Reset to middle set when reaching end
+      if (newSlide >= 8) setTimeout(() => setCurrentEventSlide(4), 700);
     }
-    if (isRightSwipe && currentEventSlide > 0) {
-      setCurrentEventSlide(currentEventSlide - 1);
+    if (isRightSwipe) {
+      const newSlide = currentEventSlide - 1;
+      setCurrentEventSlide(newSlide);
+      setResetEventTimer(prev => prev + 1);
+      // Reset to middle set when reaching start
+      if (newSlide < 4) setTimeout(() => setCurrentEventSlide(7), 700);
     }
   };
 
@@ -229,9 +263,8 @@ export default function Home() {
               />
             </svg>
           </button>
-        )}
 
-        {currentSlide < totalSlides - 1 && (
+        )}`n`n        {currentSlide < totalSlides - 1 && (
           <button
             onClick={goToNextSlide}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
@@ -251,9 +284,8 @@ export default function Home() {
               />
             </svg>
           </button>
-        )}
 
-        {/* Slider Dots Navigation */}
+        )}`n`n        {/* Slider Dots Navigation */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
           {[0, 1].map((index) => (
             <button
@@ -330,7 +362,7 @@ export default function Home() {
       </section>
 
       {/* Events Section */}
-      <section className="bg-white h-screen flex items-center">
+      <section className="bg-white h-[120vh] flex items-center">
         <div className="w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12 px-4">
             Upcoming events
@@ -344,60 +376,33 @@ export default function Home() {
             onTouchEnd={handleEventTouchEnd}
           >
             <div
-              className="flex gap-6 transition-transform duration-700 ease-in-out px-4"
+              className="flex gap-8 transition-transform duration-700 ease-in-out"
               style={{
-                transform: `translateX(calc(-${currentEventSlide * 66.666}% - ${currentEventSlide * 1.5}rem))`,
+                transform: `translateX(calc(-${currentEventSlide * 70}% - ${currentEventSlide * 2}rem + 15%))`,
               }}
             >
-              {/* Event Card 1 */}
-              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
-                  Event Title 1
-                </h3>
-                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
-                  Event description goes here. Details about the event.
-                </p>
-                <p className="text-brand-red font-semibold">Date & Time</p>
-              </div>
-
-              {/* Event Card 2 */}
-              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
-                  Event Title 2
-                </h3>
-                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
-                  Event description goes here. Details about the event.
-                </p>
-                <p className="text-brand-red font-semibold">Date & Time</p>
-              </div>
-
-              {/* Event Card 3 */}
-              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
-                  Event Title 3
-                </h3>
-                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
-                  Event description goes here. Details about the event.
-                </p>
-                <p className="text-brand-red font-semibold">Date & Time</p>
-              </div>
-
-              {/* Event Card 4 */}
-              <div className="min-w-[66.666%] bg-brand-neutral rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-4">
-                  Event Title 4
-                </h3>
-                <p className="text-lg md:text-xl text-brand-gray/80 mb-4">
-                  Event description goes here. Details about the event.
-                </p>
-                <p className="text-brand-red font-semibold">Date & Time</p>
-              </div>
+              {infiniteEvents.map((event, index) => (
+                <div key={`${event.id}-${index}`} className="min-w-[70%] bg-brand-gray rounded-lg p-8 md:p-12 h-[400px] md:h-[500px] flex flex-col justify-center">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                    {event.title}
+                  </h3>
+                  <p className="text-lg md:text-xl text-white/90 mb-4">
+                    {event.description}
+                  </p>
+                  <p className="text-brand-red font-semibold">{event.datetime}</p>
+                </div>
+              ))}
             </div>
 
             {/* Navigation Arrows - Hidden on mobile, visible on hover for desktop */}
-            {currentEventSlide > 0 && (
+            (
               <button
-                onClick={() => setCurrentEventSlide(currentEventSlide - 1)}
+                onClick={() => {
+                  const newSlide = currentEventSlide - 1;
+                  setCurrentEventSlide(newSlide);
+                  setResetEventTimer(prev => prev + 1);
+                  if (newSlide < 4) setTimeout(() => setCurrentEventSlide(7), 700);
+                }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
                 aria-label="Previous event"
               >
@@ -415,11 +420,14 @@ export default function Home() {
                   />
                 </svg>
               </button>
-            )}
 
-            {currentEventSlide < totalEventSlides - 1 && (
-              <button
-                onClick={() => setCurrentEventSlide(currentEventSlide + 1)}
+            <button
+                onClick={() => {
+                  const newSlide = currentEventSlide + 1;
+                  setCurrentEventSlide(newSlide);
+                  setResetEventTimer(prev => prev + 1);
+                  if (newSlide >= 8) setTimeout(() => setCurrentEventSlide(4), 700);
+                }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/30 p-3 rounded-full"
                 aria-label="Next event"
               >
@@ -437,7 +445,6 @@ export default function Home() {
                   />
                 </svg>
               </button>
-            )}
           </div>
 
           {/* Slider Dots Navigation */}
@@ -445,9 +452,9 @@ export default function Home() {
             {[0, 1, 2, 3].map((index) => (
               <button
                 key={index}
-                onClick={() => setCurrentEventSlide(index)}
+                onClick={() => { setCurrentEventSlide(index + 4); setResetEventTimer(prev => prev + 1); }}
                 className={`transition-all duration-300 ${
-                  currentEventSlide === index
+                  (currentEventSlide % 4) === index
                     ? "w-8 h-2 bg-brand-red rounded-full"
                     : "w-2 h-2 bg-brand-gray/30 rounded-full hover:bg-brand-gray/50"
                 }`}
@@ -460,3 +467,29 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
