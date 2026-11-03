@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
@@ -11,8 +11,8 @@ export default function Footer() {
   return (
     <footer className="bg-brand-gray text-white border-t-2 border-brand-red">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          <div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div className="col-span-2 md:col-span-1">
             <h3 className="text-2xl font-bold mb-4">
               More Than Conquerors AG
             </h3>
@@ -57,39 +57,20 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-4">Contact Us</h4>
-            <div className="space-y-3">
-              <div className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 flex-shrink-0 mt-1" />
-                <p className="text-white/70">
-                  123 Church Street<br />
-                  City, State 12345
-                </p>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
-                <a
-                  href="tel:+1234567890"
-                  className="text-white/70 hover:text-brand-red transition-colors"
-                >
-                  (123) 456-7890
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
-                <a
-                  href="mailto:info@mtcag.org"
-                  className="text-white/70 hover:text-brand-red transition-colors"
-                >
-                  info@mtcag.org
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div>
             <h4 className="text-xl font-bold mb-4">Quick Links</h4>
             <nav className="space-y-2">
+              <Link
+                href="/"
+                className="block text-white/70 hover:text-brand-red transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/visit"
+                className="block text-white/70 hover:text-brand-red transition-colors"
+              >
+                Visit Us
+              </Link>
               <Link
                 href="/about"
                 className="block text-white/70 hover:text-brand-red transition-colors"
@@ -106,13 +87,19 @@ export default function Footer() {
                 href="/ministries"
                 className="block text-white/70 hover:text-brand-red transition-colors"
               >
-                Ministries
+                Departments
               </Link>
               <Link
                 href="/give"
                 className="block text-white/70 hover:text-brand-red transition-colors"
               >
                 Give
+              </Link>
+              <Link
+                href="/songs"
+                className="block text-white/70 hover:text-brand-red transition-colors"
+              >
+                Songs
               </Link>
               <Link
                 href="/contact"
@@ -122,10 +109,41 @@ export default function Footer() {
               </Link>
             </nav>
           </div>
+
+          <div className="col-span-2 md:col-span-2">
+            <h4 className="text-xl font-bold mb-4">Contact Us</h4>
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <MapPin className="w-5 h-5 mr-3 flex-shrink-0 mt-1" />
+                <p className="text-white/70">
+                  123 Church Street<br />
+                  City, State 12345
+                </p>
+              </div>
+              <div className="flex items-center">
+                <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
+                <a
+                  href="tel:+233244251800"
+                  className="text-white/70 hover:text-brand-red transition-colors"
+                >
+                  +233 (0) 24 425 1800
+                </a>
+              </div>
+              <div className="flex items-center">
+                <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
+                <a
+                  href="mailto:mtcymauntieaku@gmail.com"
+                  className="text-white/70 hover:text-brand-red transition-colors"
+                >
+                  mtcymauntieaku@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/60 text-sm mb-4 md:mb-0">
+        <div className="border-t border-white/20 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-white/60 text-sm text-center sm:text-left">
             Copyright {new Date().getFullYear()} More Than Conquerors AG. All rights reserved.
           </p>
           <button
