@@ -1,4 +1,5 @@
-﻿export default function VisitPage() {
+﻿import Footer from "@/components/layout/Footer";
+export default function VisitPage() {
   const weeklySchedule = [
     {
       day: "Sundays",
@@ -31,6 +32,7 @@
   ];
 
   return (
+    <>
     <main>
       {/* Page Title */}
       <section className="bg-brand-neutral py-12 md:py-16">
@@ -217,5 +219,7 @@
         </div>
       </section>
     </main>
+    <Footer bgColor="white" />
+    </>
   );
 }

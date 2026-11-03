@@ -1,9 +1,11 @@
-﻿import BeliefItem from "@/components/about/BeliefItem";
+﻿import Footer from "@/components/layout/Footer";
+import BeliefItem from "@/components/about/BeliefItem";
 import PersonCard from "@/components/about/PersonCard";
 import { beliefs } from "@/constants/beliefs";
 
 export default function AboutPage() {
   return (
+    <>
     <main className="bg-white">
       {/* Page Title */}
       <section className="bg-brand-neutral py-12 md:py-16">
@@ -180,5 +182,8 @@ export default function AboutPage() {
         </div>
       </section>
     </main>
+    <Footer bgColor="gray" />
+    </>
   );
+      <Footer bgColor="gray" />
 }
