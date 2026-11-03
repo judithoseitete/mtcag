@@ -10,9 +10,9 @@ const navLinks = [
   { href: "/about", label: "About Us" },
   { href: "/events", label: "Events" },
   { href: "/ministries", label: "Ministries" },
+  { href: "/give", label: "Give" },
   { href: "/songs", label: "Songs" },
   { href: "/contact", label: "Contact" },
-  { href: "/give", label: "Give" },
 ];
 
 export default function Header() {
@@ -47,8 +47,8 @@ export default function Header() {
           </button>
 
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="flex-shrink-0 hover:opacity-80 transition-opacity"
           >
             <Image
@@ -130,5 +130,3 @@ export default function Header() {
     </header>
   );
 }
-
-
