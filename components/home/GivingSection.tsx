@@ -1,19 +1,26 @@
+import { Heart, Building2, Globe } from "lucide-react";
+
 export default function GivingSection() {
   const givingOptions = [
     {
-      title: "Tithes & Offerings",
-      description: "Support the work of the ministry",
-      icon: "??",
+      title: "Tithes",
+      description: "Honor God with the first tenth of your income",
+      icon: Heart,
+    },
+    {
+      title: "Offerings",
+      description: "Give cheerfully to bless others",
+      icon: Heart,
     },
     {
       title: "Building Fund",
-      description: "Help us expand God's kingdom",
-      icon: "???",
+      description: "Help us expand our facility to reach more souls",
+      icon: Building2,
     },
     {
       title: "Missions",
-      description: "Reach the world with the Gospel",
-      icon: "??",
+      description: "Support global outreach and evangelism efforts",
+      icon: Globe,
     },
   ];
 
@@ -25,23 +32,29 @@ export default function GivingSection() {
             Give
           </h2>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-            Your generosity fuels the mission and ministry of More Than Conquerors AG
+            Your generosity fuels the mission and ministry of More Than
+            Conquerors AG
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {givingOptions.map((option) => (
-            <div
-              key={option.title}
-              className="bg-white rounded-lg p-10 md:p-12 min-h-[200px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
-            >
-              <div className="text-5xl mb-4">{option.icon}</div>
-              <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-3">
-                {option.title}
-              </h3>
-              <p className="text-lg text-brand-gray/70">{option.description}</p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {givingOptions.map((option) => {
+            const IconComponent = option.icon;
+            return (
+              <div
+                key={option.title}
+                className="bg-white rounded-lg p-10 md:p-12 min-h-[200px] text-center hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center"
+              >
+                <IconComponent className="w-12 h-12 text-brand-red mb-4" />
+                <h3 className="text-2xl md:text-3xl font-bold text-brand-gray mb-3">
+                  {option.title}
+                </h3>
+                <p className="text-lg text-brand-gray/70">
+                  {option.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         <div className="text-center">
