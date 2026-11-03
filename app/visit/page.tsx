@@ -33,7 +33,7 @@
   return (
     <main>
       {/* Page Title */}
-      <section className="bg-white py-12 md:py-16">
+      <section className="bg-brand-neutral py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center">
             We would love to see you at church!
@@ -45,7 +45,7 @@
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray mb-12">
-            Weekly Calendar
+            General weekly calendar
           </h2>
           <div className="bg-white rounded-lg border-2 border-brand-gray overflow-hidden">
             <div className="overflow-x-auto">
