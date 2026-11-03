@@ -2,12 +2,12 @@ export default function VisitPage() {
   const weeklySchedule = [
     {
       day: "Sunday",
-      events: [{ time: "9:00 AM", event: "Sunday Service" }],
+      events: [{ time: "8:00 AM - 10:30 AM", event: "Sunday Service" }],
     },
     {
       day: "Monday",
       events: [
-        { time: "7:00 PM - 8:00 PM", event: "Women Ministry Meeting" },
+        { time: "6:45 PM - 8:00 PM", event: "Women Ministry Meeting" },
         { time: "7:00 PM - 8:00 PM", event: "Youth Ministry Meeting" },
       ],
     },
@@ -62,7 +62,11 @@ export default function VisitPage() {
                       </td>
                       <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                         {item.events.length > 0 ? (
-                          <table className="w-full">
+                          <table className="w-full table-fixed">
+                            <colgroup>
+                              <col style={{ width: "200px" }} />
+                              <col />
+                            </colgroup>
                             <tbody>
                               {item.events.map((eventItem, idx) => (
                                 <tr
