@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
@@ -100,11 +100,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-white/60 text-sm text-center sm:text-left">
-            Copyright {new Date().getFullYear()} More Than Conquerors AG. All
-            rights reserved.
-          </p>
+        <div className="mt-12 flex justify-center sm:justify-end">
           <button
             onClick={scrollToTop}
             className="flex items-center space-x-2 text-white/70 hover:text-brand-red transition-colors"
@@ -113,6 +109,13 @@ export default function Footer() {
             <span>Back to Top</span>
             <ArrowUp className="w-5 h-5" />
           </button>
+        </div>
+
+        <div className="border-t border-white/20 mt-6 pt-8">
+          <p className="text-white/60 text-sm text-center sm:text-left">
+            Copyright {new Date().getFullYear()} More Than Conquerors Assemblies
+            of God. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
