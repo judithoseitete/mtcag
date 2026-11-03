@@ -65,7 +65,7 @@
                       </td>
                       <td className="px-8 py-6 text-brand-gray/80 text-lg border-b border-brand-gray/20">
                         {item.events.length > 0 ? (
-                          <table className="w-full">
+                          <table className="w-full table-fixed">
                             <colgroup>
                               <col style={{ width: "200px" }} />
                               <col />
@@ -76,7 +76,7 @@
                                   key={idx}
                                   className="border-b last:border-b-0 border-brand-gray/5"
                                 >
-                                  <td className="py-2 pr-4 text-brand-gray font-medium whitespace-nowrap w-48">
+                                  <td className="py-2 pr-4 text-brand-gray font-medium whitespace-nowrap">
                                     {eventItem.time}
                                   </td>
                                   <td className="py-2 text-brand-gray/80 whitespace-nowrap">
