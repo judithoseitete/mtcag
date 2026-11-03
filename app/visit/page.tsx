@@ -113,51 +113,36 @@
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray text-center mb-12">
             Location
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div>
-              <div className="bg-white rounded-lg p-8">
-                <h3 className="text-2xl font-bold text-brand-gray mb-6">
-                  Find Us Here
-                </h3>
-                <div className="space-y-4 text-brand-gray/80">
-                  <p className="text-lg">
-                    <strong className="text-brand-gray">Address:</strong>
-                    <br />
-                    JP6C+37G, Sowutoum
-                    <br />
-                    Accra, Ghana
-                  </p>
-                  <p className="text-lg">
-                    <strong className="text-brand-gray">Phone:</strong>
-                    <br />
-                    <a
-                      href="tel:+233244251800"
-                      className="text-brand-red hover:underline"
-                    >
-                      +233 (0) 24 425 1800
-                    </a>
-                  </p>
-                  <div className="pt-4">
-                    <p className="text-sm text-brand-gray/60 mb-2">
-                      <strong>Parking:</strong> Available on-site
-                    </p>
-                    <p className="text-sm text-brand-gray/60">
-                      <strong>Accessibility:</strong> Wheelchair accessible
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-2 h-[400px] lg:h-[500px]">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white rounded-lg p-2 h-[400px] md:h-[500px] lg:h-[600px] mb-6">
               <iframe
-                src="https://www.google.com/maps?q=JP6C+37G,+Sowutoum,+Accra,+Ghana&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58898.80328919093!2d-0.3512620925903552!3d5.6103908666160995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf98f6e7bfbb55%3A0x44c6631651d9dcc6!2sMore%20Than%20Conquerors%20Assemblies%20Of%20God!5e1!3m2!1sen!2sgh!4v1793708163315!5m2!1sen!2sgh"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
                 className="rounded"
               ></iframe>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://www.google.com/maps/place/More+Than+Conquerors+Assemblies+Of+God/@5.6103909,-0.3512621,15z/data=!4m6!3m5!1s0xfdf98f6e7bfbb55:0x44c6631651d9dcc6!8m2!3d5.6103909!4d-0.3512621!16s%2Fg%2F11vt5w1h9s"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-brand-red text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-red/90 transition-colors duration-300 text-center"
+              >
+                Open in Google Maps
+              </a>
+              <a
+                href="http://maps.apple.com/?q=More+Than+Conquerors+AG&ll=5.6103909,-0.3512621"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-brand-gray text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-gray/90 transition-colors duration-300 text-center"
+              >
+                Open in Apple Maps
+              </a>
             </div>
           </div>
         </div>
