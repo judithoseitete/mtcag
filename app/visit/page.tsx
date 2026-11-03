@@ -1,40 +1,66 @@
 ﻿export default function VisitPage() {
+  const weeklySchedule = [
+    { day: "Sunday", events: ["9:00 AM - Sunday Service"] },
+    { day: "Monday", events: [] },
+    { day: "Tuesday", events: [] },
+    { day: "Wednesday", events: ["6:00 PM - Bible Study"] },
+    { day: "Thursday", events: [] },
+    { day: "Friday", events: [] },
+    { day: "Saturday", events: [] },
+  ];
+
   return (
     <main>
       {/* Page Title */}
-      <section className="bg-brand-neutral py-12 md:py-16">
+      <section className="bg-white py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-gray text-center">
-            Plan Your Visit
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center">
+            We would love to see you at church!
           </h1>
-          <p className="text-lg md:text-xl text-brand-gray/70 text-center mt-4">
-            We would love to see you this Sunday
-          </p>
         </div>
       </section>
 
-      {/* Service Times */}
+      {/* Weekly Calendar */}
       <section className="bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray text-center mb-12">
-            Service Times
+            Weekly Calendar
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-brand-neutral rounded-lg p-8 text-center hover:shadow-lg transition-shadow duration-300">
-              <h3 className="text-2xl font-bold text-brand-gray mb-2">
-                Sunday Service
-              </h3>
-              <p className="text-4xl font-bold text-brand-red mb-2">9:00 AM</p>
-              <p className="text-brand-gray/70">
-                Worship, Word, and Fellowship
-              </p>
-            </div>
-            <div className="bg-brand-neutral rounded-lg p-8 text-center hover:shadow-lg transition-shadow duration-300">
-              <h3 className="text-2xl font-bold text-brand-gray mb-2">
-                Midweek Service
-              </h3>
-              <p className="text-4xl font-bold text-brand-red mb-2">6:00 PM</p>
-              <p className="text-brand-gray/70">Wednesday Bible Study</p>
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-brand-gray text-white">
+                    <th className="px-6 py-4 text-left text-lg font-bold">Day</th>
+                    <th className="px-6 py-4 text-left text-lg font-bold">Events</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {weeklySchedule.map((item, index) => (
+                    <tr
+                      key={item.day}
+                      className={`${
+                        index % 2 === 0 ? "bg-brand-neutral" : "bg-white"
+                      } hover:bg-brand-neutral/70 transition-colors`}
+                    >
+                      <td className="px-6 py-4 font-bold text-brand-gray border-b border-brand-neutral">
+                        {item.day}
+                      </td>
+                      <td className="px-6 py-4 text-brand-gray/80 border-b border-brand-neutral">
+                        {item.events.length > 0 ? (
+                          <ul className="space-y-2">
+                            {item.events.map((event, idx) => (
+                              <li key={idx}>{event}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <span className="text-brand-gray/40 italic">No events</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -117,8 +143,9 @@
                 Dress Code
               </h3>
               <p className="text-brand-gray/80">
-                Come as you are! We welcome everyone regardless of what you wear.
-                Some dress casually, others more formally - you will fit right in.
+                Come as you are! We welcome everyone regardless of what you
+                wear. Some dress casually, others more formally - you will fit
+                right in.
               </p>
             </div>
             <div className="bg-brand-neutral rounded-lg p-8">
@@ -131,7 +158,9 @@
               </p>
             </div>
             <div className="bg-brand-neutral rounded-lg p-8">
-              <h3 className="text-xl font-bold text-brand-gray mb-3">Language</h3>
+              <h3 className="text-xl font-bold text-brand-gray mb-3">
+                Language
+              </h3>
               <p className="text-brand-gray/80">
                 Services are conducted in English with occasional translations
                 available.
