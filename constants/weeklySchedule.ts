@@ -57,8 +57,10 @@ export function getUpcomingEvents() {
   
   let eventId = 1;
   
-  // If today is Sunday (0), show all Sunday events
-  // Otherwise, show events from today through Sunday
+  // If today is Sunday (0), start from Sunday through Saturday
+  // Otherwise, show events from today through Saturday, then Sunday
+  
+  // First, add events from today through Saturday
   for (let i = currentDayIndex; i <= 6; i++) {
     const daySchedule = weeklySchedule.find(d => d.dayIndex === i);
     if (daySchedule && daySchedule.events.length > 0) {
@@ -73,15 +75,27 @@ export function getUpcomingEvents() {
     }
   }
   
-  // If we're on Sunday and have events, show them
-  // Otherwise if no events found, show next week's Sunday
-  if (upcomingEvents.length === 0) {
+  // If today is not Sunday, also add Sunday's events (upcoming Sunday)
+  if (currentDayIndex !== 0) {
     const sundaySchedule = weeklySchedule[0];
     sundaySchedule.events.forEach(evt => {
       upcomingEvents.push({
         id: eventId++,
         title: evt.event,
         description: `Join us for ${evt.event.toLowerCase()} this week`,
+        datetime: `${sundaySchedule.day}, ${evt.time}`,
+      });
+    });
+  }
+  
+  // If no events found at all, show next week's Sunday
+  if (upcomingEvents.length === 0) {
+    const sundaySchedule = weeklySchedule[0];
+    sundaySchedule.events.forEach(evt => {
+      upcomingEvents.push({
+        id: eventId++,
+        title: evt.event,
+        description: `Join us for ${evt.event.toLowerCase()} next week`,
         datetime: `Next ${sundaySchedule.day}, ${evt.time}`,
       });
     });
