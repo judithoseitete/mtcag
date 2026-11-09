@@ -19,7 +19,7 @@ export default function AboutPage() {
         {/* Our Story */}
         <section className="py-8 md:py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-neutral mb-8 md:mb-12 text-center">
               Our story
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 lg:divide-x-2 lg:divide-brand-blue-primary/20">
@@ -55,11 +55,11 @@ export default function AboutPage() {
         {/* Beliefs */}
         <section className="py-16 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-brand-neutral rounded-3xl px-4 py-8 md:px-16 md:py-20 lg:px-24 lg:py-24">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary mb-8 md:mb-12">
-                What we believe
+            <div className="bg-brand-blue rounded-3xl px-4 py-8 md:px-16 md:py-20 lg:px-24 lg:py-24">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-neutral mb-8 md:mb-12 text-center">
+                We believe in sixteen fundamental truths
               </h2>
-              <div className="space-y-8">
+              <div>
                 {beliefs.map((belief) => (
                   <BeliefItem key={belief.number} {...belief} />
                 ))}
@@ -71,7 +71,7 @@ export default function AboutPage() {
         {/* Meet Our Pastors */}
         <section className="py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-neutral mb-8 md:mb-12 text-center">
               Meet our pastors
             </h2>
 
@@ -108,7 +108,7 @@ export default function AboutPage() {
         {/* Board Chairs */}
         <section className="py-16 md:py-20 bg-brand-neutral">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-neutral mb-8 md:mb-12 text-center">
               Board chairs
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -189,4 +189,3 @@ export default function AboutPage() {
     </>
   );
 }
-

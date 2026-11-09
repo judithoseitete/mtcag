@@ -1,4 +1,4 @@
-export const beliefs = [
+﻿export const beliefs = [
   {
     number: 1,
     title: "The scriptures inspired",
@@ -9,13 +9,13 @@ export const beliefs = [
     number: 2,
     title: "The one true God",
     description:
-      "The one true God has revealed Himself as the eternally self-existent 'I AM,' the Creator of heaven and earth and the Redeemer of mankind. He has further revealed Himself as embodying the principles of relationship and association as Father, Son, and Holy Spirit. (Deuteronomy 6:4; Isaiah 43:10-11; Matthew 28:19; Luke 3:22)",
+      "The one true God has revealed Himself as the eternally self-existent \"I AM,\" the Creator of heaven and earth and the Redeemer of mankind. He has further revealed Himself as embodying the principles of relationship and association as Father, Son, and Holy Spirit. (Deuteronomy 6:4; Isaiah 43:10-11; Matthew 28:19; Luke 3:22)",
   },
   {
     number: 3,
     title: "The deity of the Lord Jesus Christ",
     description:
-      "The Lord Jesus Christ is the eternal Son of God. The Scriptures declare His virgin birth, His sinless life, His miracles, His substitutionary work on the cross, His bodily resurrection from the dead, and His exaltation to the right hand of God. (Matthew 1:23; Luke 1:31,35; Romans 8:34; Acts 1:9,11; 2:22-24; Philippians 2:5-11; Hebrews 1:1-3)",
+      "The Lord Jesus Christ is the eternal Son of God. The Scriptures declare His virgin birth,|• His sinless life,|• His miracles,|• His substitutionary work on the cross,|• His bodily resurrection from the dead,|• His exaltation to the right hand of God. (Matthew 1:23; Luke 1:31,35; Romans 8:34; Acts 1:9,11; 2:22-24; Philippians 2:5-11; Hebrews 1:1-3)",
   },
   {
     number: 4,
@@ -96,3 +96,4 @@ export const beliefs = [
       "'We, according to His promise, look for new heavens and a new earth, wherein dwelleth righteousness.' (2 Peter 3:13; Revelation 21:22)",
   },
 ];
+
