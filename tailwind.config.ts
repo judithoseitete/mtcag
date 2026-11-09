@@ -16,6 +16,8 @@ const config: Config = {
           neutral: "#F5F8FC",
           "neutral-dark": "#E8EDF5",
           "neutral-darker": "#DDE5F0",
+          "neutral-darkest": "#8A9AB8",
+          navy: "#1A1F3A",
         },
       },
     },

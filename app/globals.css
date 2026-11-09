@@ -5,11 +5,11 @@
 @layer base {
   :root {
     --brand-blue: #303181;
-    --brand-yellow: #EFE10F;
-    --brand-red: #F73C4A;
-    --brand-neutral: #F5F8FC;
-    --brand-neutral-dark: #E8EDF5;
-    --brand-neutral-darker: #DDE5F0;
+    --brand-yellow: #efe10f;
+    --brand-red: #f73c4a;
+    --brand-neutral: #f5f8fc;
+    --brand-neutral-dark: #8a9ab8;
+    --brand-navy: #1a1f3a;
   }
 
   body {

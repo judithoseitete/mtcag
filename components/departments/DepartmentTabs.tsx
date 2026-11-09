@@ -61,17 +61,9 @@ export default function DepartmentTabs({
   }, []);
 
   const handleTabClick = (deptId: string, hasSubDepts: boolean) => {
-    onTabChange(deptId);
-
     if (hasSubDepts) {
-      // For Missions & Music, automatically select first subdepartment
-      if (deptId === "missions") {
-        const missionsDept = departments.find((d) => d.id === "missions");
-        if (missionsDept && missionsDept.subDepartments.length > 0) {
-          onSubTabChange(missionsDept.subDepartments[0].id);
-        }
-      }
-
+      // For departments with subdepartments, just open the dropdown
+      // Don't change the active tab unless it's already selected
       const button = buttonRefs.current[deptId];
       if (button) {
         const rect = button.getBoundingClientRect();
@@ -82,6 +74,8 @@ export default function DepartmentTabs({
       }
       setOpenDropdown(openDropdown === deptId ? null : deptId);
     } else {
+      // For departments without subdepartments, change the tab immediately
+      onTabChange(deptId);
       setOpenDropdown(null);
     }
   };
@@ -97,7 +91,7 @@ export default function DepartmentTabs({
     <>
       <div
         ref={tabsRef}
-        className="sticky top-0 z-40 bg-white border-b border-brand-blue-primary/20 mb-8 md:mb-12"
+        className="sticky top-0 z-40 bg-white border-b border-brand-blue-primary/20 mb-4 md:mb-6"
         style={{ top: "80px" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -143,9 +137,9 @@ export default function DepartmentTabs({
       {/* Fixed Position Dropdown - Rendered at document level */}
       {openDropdown && activeDropdownDept && (
         <div
-          className="dropdown-container fixed bg-white shadow-2xl rounded-lg border-2 border-brand-blue-primary/30 py-2 min-w-[240px] z-50"
+          className="dropdown-container fixed bg-white shadow-2xl rounded-lg border-2 border-brand-blue-primary/30 py-2 min-w-[240px] z-[45]"
           style={{
-            top: `${dropdownPosition.top + 8}px`,
+            top: `${dropdownPosition.top + 2}px`,
             left: `${dropdownPosition.left}px`,
           }}
         >
@@ -153,15 +147,16 @@ export default function DepartmentTabs({
           {activeDropdownDept.id !== "missions" && (
             <button
               onClick={() => {
+                onTabChange(activeDropdownDept.id);
                 onSubTabChange(null);
                 setOpenDropdown(null);
               }}
               className={`
-                w-full text-left px-5 py-3 text-sm font-medium transition-colors block
+                w-full text-left px-5 py-3 text-sm font-semibold transition-colors block
                 ${
-                  activeSubTab === null
-                    ? "bg-brand-blue-primary text-white"
-                    : "text-brand-gray hover:bg-brand-blue-primary/10"
+                  activeTab === activeDropdownDept.id && activeSubTab === null
+                    ? "bg-brand-blue text-white"
+                    : "text-brand-gray hover:bg-brand-neutral"
                 }
               `}
             >
@@ -173,13 +168,17 @@ export default function DepartmentTabs({
           {activeDropdownDept.subDepartments.map((subDept) => (
             <button
               key={subDept.id}
-              onClick={() => handleSubTabClick(subDept.id)}
+              onClick={() => {
+                onTabChange(activeDropdownDept.id);
+                handleSubTabClick(subDept.id);
+              }}
               className={`
-                w-full text-left px-5 py-3 text-sm font-medium transition-colors block
+                w-full text-left px-5 py-3 text-sm font-semibold transition-colors block
                 ${
+                  activeTab === activeDropdownDept.id &&
                   activeSubTab === subDept.id
-                    ? "bg-brand-blue-primary text-white"
-                    : "text-brand-gray hover:bg-brand-blue-primary/10"
+                    ? "bg-brand-blue text-white"
+                    : "text-brand-gray hover:bg-brand-neutral"
                 }
               `}
             >

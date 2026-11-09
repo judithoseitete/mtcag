@@ -12,7 +12,7 @@ export default function DepartmentsPage() {
   const [activeSubTab, setActiveSubTab] = useState<string | null>(null);
 
   const activeDepartment = departments.find((dept) => dept.id === activeTab);
-  
+
   // If a subtab is active, show the subdepartment, otherwise show main department
   const activeContent = activeSubTab
     ? activeDepartment?.subDepartments.find((sub) => sub.id === activeSubTab)
@@ -26,7 +26,7 @@ export default function DepartmentsPage() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="bg-brand-blue-primary py-12 md:py-16">
+      <section className="bg-brand-blue py-4 md:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             Our Departments
@@ -61,23 +61,27 @@ export default function DepartmentsPage() {
                     &quot;{activeContent.motto}&quot;
                   </p>
                 )}
-                {"slogan" in activeContent && activeContent.slogan && activeContent.motto && (
-                  <span className="hidden md:inline">•</span>
-                )}
+                {"slogan" in activeContent &&
+                  activeContent.slogan &&
+                  activeContent.motto && (
+                    <span className="hidden md:inline">•</span>
+                  )}
                 {"slogan" in activeContent && activeContent.slogan && (
                   <p className="text-lg italic">
                     &quot;{activeContent.slogan}&quot;
                   </p>
                 )}
               </div>
-              {("meetingTime" in activeContent || "location" in activeContent) && (
+              {("meetingTime" in activeContent ||
+                "location" in activeContent) && (
                 <div className="flex flex-col md:flex-row gap-4 mt-4">
-                  {"meetingTime" in activeContent && activeContent.meetingTime && (
-                    <div className="flex items-center gap-2 text-brand-blue-primary/70">
-                      <Clock className="w-5 h-5" />
-                      <span>{activeContent.meetingTime}</span>
-                    </div>
-                  )}
+                  {"meetingTime" in activeContent &&
+                    activeContent.meetingTime && (
+                      <div className="flex items-center gap-2 text-brand-blue-primary/70">
+                        <Clock className="w-5 h-5" />
+                        <span>{activeContent.meetingTime}</span>
+                      </div>
+                    )}
                   {"location" in activeContent && activeContent.location && (
                     <div className="flex items-center gap-2 text-brand-blue-primary/70">
                       <MapPin className="w-5 h-5" />
@@ -90,7 +94,11 @@ export default function DepartmentsPage() {
 
             {/* Department Executives */}
             {activeContent.executives && (
-              <ExecutivesGrid executives={activeContent.executives} />
+              <div className="min-h-screen flex items-center">
+                <div className="w-full">
+                  <ExecutivesGrid executives={activeContent.executives} />
+                </div>
+              </div>
             )}
           </div>
         </section>
@@ -100,4 +108,3 @@ export default function DepartmentsPage() {
     </main>
   );
 }
-

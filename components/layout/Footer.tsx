@@ -9,8 +9,8 @@ interface FooterProps {
 }
 
 export default function Footer({
-  bgColor = "gray",
-  cardVariant = "light",
+  bgColor = "neutral",
+  cardVariant = "dark",
 }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -18,7 +18,7 @@ export default function Footer({
 
   const bgColorMap = {
     white: "bg-white",
-    gray: "bg-brand-blue",
+    gray: "bg-brand-gray",
     neutral: "bg-brand-neutral",
     blue: "bg-brand-blue",
   };
@@ -26,8 +26,8 @@ export default function Footer({
   const cardStyles = {
     light: {
       bg: "bg-white",
-      textPrimary: "text-brand-blue",
-      textSecondary: "text-brand-blue/70",
+      textPrimary: "text-brand-gray",
+      textSecondary: "text-brand-gray/70",
       border: "border-brand-neutral",
     },
     dark: {
@@ -46,9 +46,9 @@ export default function Footer({
 
   const card = cardStyles[cardVariant];
   const borderColor =
-    cardVariant === "light" ? "border-brand-blue/20" : "border-white/20";
+    cardVariant === "light" ? "border-brand-gray/20" : "border-white/20";
   const copyrightColor =
-    cardVariant === "light" ? "text-brand-blue/60" : "text-white/60";
+    cardVariant === "light" ? "text-brand-gray/60" : "text-white/60";
 
   return (
     <footer className={`${bgColorMap[bgColor]}`}>
@@ -58,9 +58,7 @@ export default function Footer({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4">
-                More Than Conquerors AG
-              </h3>
+              <h3 className="text-2xl font-bold mb-4">more than conquerors.</h3>
               <p className={`${card.textSecondary} mb-6`}>
                 In all these things, we are more than conquerors through Him who
                 loved us.
@@ -70,7 +68,7 @@ export default function Footer({
                   href="https://www.facebook.com/p/More-Than-Conquerors-AG-Auntie-Aku-100095113467544/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-brand-yellow transition-colors"
+                  className="hover:text-brand-red transition-colors"
                   aria-label="Facebook"
                 >
                   <svg
@@ -85,7 +83,7 @@ export default function Footer({
                   href="https://www.instagram.com/mtc__youth/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-brand-yellow transition-colors"
+                  className="hover:text-brand-red transition-colors"
                   aria-label="Instagram"
                 >
                   <svg
@@ -114,7 +112,7 @@ export default function Footer({
                   <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
                   <a
                     href="tel:+233244251800"
-                    className={`${card.textSecondary} hover:text-brand-yellow transition-colors`}
+                    className={`${card.textSecondary} hover:text-brand-red transition-colors`}
                   >
                     +233 (0) 24 425 1800
                   </a>
@@ -123,7 +121,7 @@ export default function Footer({
                   <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
                   <a
                     href="mailto:mtcymauntieaku@gmail.com"
-                    className={`${card.textSecondary} hover:text-brand-yellow transition-colors`}
+                    className={`${card.textSecondary} hover:text-brand-red transition-colors`}
                   >
                     mtcymauntieaku@gmail.com
                   </a>
@@ -135,7 +133,7 @@ export default function Footer({
           <div className="mt-12 flex justify-center md:hidden">
             <button
               onClick={scrollToTop}
-              className={`flex items-center space-x-2 ${card.textSecondary} hover:text-brand-yellow transition-colors`}
+              className="flex items-center space-x-2 hover:text-brand-yellow transition-colors"
               aria-label="Back to top"
             >
               <span>Back to Top</span>
@@ -147,17 +145,24 @@ export default function Footer({
             className={`border-t ${borderColor} mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4`}
           >
             <p className={`${copyrightColor} text-sm text-center md:text-left`}>
-              Copyright {new Date().getFullYear()} More Than Conquerors
+              Copyright © {new Date().getFullYear()} More Than Conquerors
               Assemblies of God. All rights reserved.
             </p>
             <button
               onClick={scrollToTop}
-              className={`hidden md:flex items-center space-x-2 ${card.textSecondary} hover:text-brand-yellow transition-colors`}
+              className="hidden md:flex items-center space-x-2 hover:text-brand-yellow transition-colors"
               aria-label="Back to top"
             >
               <span>Back to Top</span>
               <ArrowUp className="w-5 h-5" />
             </button>
+          </div>
+
+          {/* Large more than conquerors. text */}
+          <div className="mt-12 -mx-4 sm:-mx-6 lg:-mx-8">
+            <p className="text-6xl md:text-8xl lg:text-9xl font-bold text-brand-neutral-dark lowercase tracking-tighter whitespace-nowrap leading-tight overflow-hidden pl-4">
+              more than conquerors.
+            </p>
           </div>
         </div>
       </div>
