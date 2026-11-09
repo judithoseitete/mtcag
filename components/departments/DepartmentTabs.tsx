@@ -91,7 +91,7 @@ export default function DepartmentTabs({
     <>
       <div
         ref={tabsRef}
-        className="sticky top-0 z-40 bg-white border-b border-brand-blue-primary/20 mb-4 md:mb-6"
+        className="sticky top-0 z-40 bg-white border-b-2 border-brand-blue-primary/20"
         style={{ top: "80px" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,8 +113,8 @@ export default function DepartmentTabs({
                       dropdown-container px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors flex items-center gap-1
                       ${
                         isActive
-                          ? "border-brand-blue-primary text-brand-blue-primary"
-                          : "border-transparent text-brand-blue-primary/60 hover:text-brand-blue-primary hover:border-brand-blue-primary/30"
+                          ? "border-brand-blue-primary text-brand-blue"
+                          : "border-transparent text-brand-blue/60 hover:text-brand-blue hover:border-brand-blue/30"
                       }
                     `}
                   >

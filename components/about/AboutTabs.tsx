@@ -19,7 +19,7 @@ export default function AboutTabs({ activeTab, onTabChange }: AboutTabsProps) {
   return (
     <>
       <div
-        className="sticky z-40 bg-white border-b border-brand-blue/20 mb-4 md:mb-6"
+        className="sticky z-40 bg-white border-b border-brand-blue/20"
         style={{ top: "80px" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

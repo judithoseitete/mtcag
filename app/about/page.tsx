@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <main className="bg-white">
         {/* Hero Section */}
-        <section className="bg-brand-blue py-4 md:py-8">
+        <section className="bg-brand-blue min-h-[30vh] py-8 md:py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
               About Us
@@ -29,7 +29,7 @@ export default function AboutPage() {
 
         {/* Our Story */}
         {activeTab === "story" && (
-          <section className="py-16 md:py-20">
+          <section className="pb-16 md:pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-8 md:mb-12">
                 Our story
@@ -49,10 +49,10 @@ export default function AboutPage() {
                 </div>
                 <div className="lg:pl-8">
                   <p className="text-lg text-brand-blue/80 mb-4">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque laudantium, totam rem aperiam, eaque
-                    ipsa quae ab illo inventore veritatis et quasi architecto
-                    beatae vitae dicta sunt explicabo.
+                    Sed ut perspiciatis unde omnis iste natus error sit
+                    voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam, eaque ipsa quae ab illo inventore veritatis et
+                    quasi architecto beatae vitae dicta sunt explicabo.
                   </p>
                   <p className="text-lg text-brand-blue/80 mb-4">
                     Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
