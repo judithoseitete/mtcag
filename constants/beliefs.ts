@@ -9,13 +9,13 @@
     number: 2,
     title: "The one true God",
     description:
-      "The one true God has revealed Himself as the eternally self-existent \"I AM,\" the Creator of heaven and earth and the Redeemer of mankind. He has further revealed Himself as embodying the principles of relationship and association as Father, Son, and Holy Spirit. (Deuteronomy 6:4; Isaiah 43:10-11; Matthew 28:19; Luke 3:22)",
+      'The one true God has revealed Himself as the eternally self-existent "I AM," the Creator of heaven and earth and the Redeemer of mankind. He has further revealed Himself as embodying the principles of relationship and association as Father, Son, and Holy Spirit. (Deuteronomy 6:4; Isaiah 43:10-11; Matthew 28:19; Luke 3:22)',
   },
   {
     number: 3,
     title: "The deity of the Lord Jesus Christ",
     description:
-      "The Lord Jesus Christ is the eternal Son of God. The Scriptures declare His virgin birth,|• His sinless life,|• His miracles,|• His substitutionary work on the cross,|• His bodily resurrection from the dead,|• His exaltation to the right hand of God. (Matthew 1:23; Luke 1:31,35; Romans 8:34; Acts 1:9,11; 2:22-24; Philippians 2:5-11; Hebrews 1:1-3)",
+      "The Lord Jesus Christ is the eternal Son of God. The Scriptures declare: |• His virgin birth||• His sinless life||• His miracles|• His substitutionary work on the cross||• His bodily resurrection from the dead||• His exaltation to the right hand of God (Matthew 1:23; Luke 1:31, 35; Hebrews 7:26; 1 Peter 2:22; Acts 2:22; 10:38; 1 Corinthians 15:3; 2 Corinthians 5:21; Matthew 28:6; Luke 24:39; 1 Corinthians 15:4; Acts 1:9, 11; 2:33; Philippians 2:9-11; Hebrews 1:3)",
   },
   {
     number: 4,

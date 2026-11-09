@@ -54,7 +54,7 @@ export default function Header() {
               alt="More Than Conquerors AG"
               width={120}
               height={48}
-              className="h-12 w-auto"
+              style={{ height: "3rem", width: "auto" }}
               priority
             />
           </Link>
