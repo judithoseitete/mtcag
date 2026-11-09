@@ -27,8 +27,8 @@ export default function ExecutivesGrid({
             }`}
           ></div>
           <div>
-            <h4 className="font-bold text-brand-gray text-lg">{role.title}</h4>
-            <p className="text-brand-gray/70">{role.name}</p>
+            <h4 className="font-bold text-brand-blue-primary text-lg">{role.title}</h4>
+            <p className="text-brand-blue-primary/70">{role.name}</p>
           </div>
         </div>
       ))}

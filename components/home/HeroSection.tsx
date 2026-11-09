@@ -52,7 +52,7 @@ export default function HeroSection() {
           currentSlide === 0 ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="absolute inset-0 bg-brand-gray"></div>
+        <div className="absolute inset-0 bg-brand-blue"></div>
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -67,11 +67,11 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/visit"
-                className="w-full sm:w-auto px-8 py-4 bg-brand-red text-white font-bold text-lg rounded-lg hover:bg-brand-red/90 transition-colors shadow-lg inline-block text-center"
+                className="w-full sm:w-auto px-8 py-4 bg-brand-yellow text-brand-blue font-bold text-lg rounded-lg hover:bg-brand-yellow/90 transition-colors shadow-lg inline-block text-center"
               >
                 Plan Your Visit
               </Link>
-              <button className="w-full sm:w-auto px-8 py-4 bg-white text-brand-gray font-bold text-lg rounded-lg hover:bg-brand-neutral transition-colors shadow-lg">
+              <button className="w-full sm:w-auto px-8 py-4 bg-white text-brand-blue font-bold text-lg rounded-lg hover:bg-brand-neutral transition-colors shadow-lg">
                 Watch Online
               </button>
             </div>
@@ -85,7 +85,7 @@ export default function HeroSection() {
           currentSlide === 1 ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="absolute inset-0 bg-brand-gray"></div>
+        <div className="absolute inset-0 bg-brand-blue"></div>
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

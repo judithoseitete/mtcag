@@ -1,4 +1,4 @@
-interface FeaturedEventHeroProps {
+﻿interface FeaturedEventHeroProps {
   title: string;
   date: string;
   time: string;
@@ -16,7 +16,7 @@ export default function FeaturedEventHero({
   imageUrl,
 }: FeaturedEventHeroProps) {
   return (
-    <section className="relative bg-brand-gray min-h-[60vh] md:min-h-[70vh] flex items-center">
+    <section className="relative bg-brand-blue-primary min-h-[60vh] md:min-h-[70vh] flex items-center">
       {/* Background Image */}
       {imageUrl && (
         <div
@@ -97,7 +97,7 @@ export default function FeaturedEventHero({
           </div>
 
           {/* CTA Button */}
-          <button className="bg-brand-neutral text-brand-gray px-8 py-4 rounded-lg text-lg font-bold hover:bg-brand-neutral/90 transition-colors">
+          <button className="bg-brand-neutral text-brand-blue-primary px-8 py-4 rounded-lg text-lg font-bold hover:bg-brand-neutral/90 transition-colors">
             Learn More
           </button>
         </div>

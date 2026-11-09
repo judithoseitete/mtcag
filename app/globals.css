@@ -4,15 +4,16 @@
 
 @layer base {
   :root {
-    --brand-red: #f73c4a;
-    --brand-neutral: #f5f4f2;
-    --brand-gray: #353533;
-    --brand-yellow: #efe10f;
     --brand-blue: #303181;
+    --brand-yellow: #EFE10F;
+    --brand-red: #F73C4A;
+    --brand-neutral: #F5F8FC;
+    --brand-neutral-dark: #E8EDF5;
+    --brand-neutral-darker: #DDE5F0;
   }
 
   body {
     background-color: var(--brand-neutral);
-    color: var(--brand-gray);
+    color: var(--brand-blue);
   }
 }

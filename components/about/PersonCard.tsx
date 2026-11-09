@@ -23,8 +23,8 @@ export default function PersonCard({
 
   const bgColor = variant === "primary" ? "bg-brand-neutral" : "bg-white";
   
-  const titleColorClass = textColor === "dark" ? "text-brand-gray" : "text-white";
-  const nameColorClass = textColor === "dark" ? "text-brand-gray/70" : "text-white/90";
+  const titleColorClass = textColor === "dark" ? "text-brand-blue-primary" : "text-white";
+  const nameColorClass = textColor === "dark" ? "text-brand-blue-primary/70" : "text-white/90";
 
   return (
     <div>

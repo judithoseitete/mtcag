@@ -28,7 +28,7 @@ export default function EventCard({
           ></div>
         )}
         {category && (
-          <div className="absolute top-4 left-4 bg-brand-gray text-white px-3 py-1 rounded-lg text-sm font-semibold">
+          <div className="absolute top-4 left-4 bg-brand-blue-primary text-white px-3 py-1 rounded-lg text-sm font-semibold">
             {category}
           </div>
         )}
@@ -36,14 +36,14 @@ export default function EventCard({
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl md:text-2xl font-bold text-brand-gray mb-3">
+        <h3 className="text-xl md:text-2xl font-bold text-brand-blue-primary mb-3">
           {title}
         </h3>
-        <p className="text-brand-gray/70 mb-4 line-clamp-2">{description}</p>
+        <p className="text-brand-blue-primary/70 mb-4 line-clamp-2">{description}</p>
 
         {/* Event Details */}
         <div className="space-y-2 mb-4">
-          <div className="flex items-center gap-2 text-brand-gray/80">
+          <div className="flex items-center gap-2 text-brand-blue-primary/80">
             <svg
               className="w-5 h-5 flex-shrink-0"
               fill="none"
@@ -59,7 +59,7 @@ export default function EventCard({
             </svg>
             <span className="text-sm">{date}</span>
           </div>
-          <div className="flex items-center gap-2 text-brand-gray/80">
+          <div className="flex items-center gap-2 text-brand-blue-primary/80">
             <svg
               className="w-5 h-5 flex-shrink-0"
               fill="none"
@@ -75,7 +75,7 @@ export default function EventCard({
             </svg>
             <span className="text-sm">{time}</span>
           </div>
-          <div className="flex items-center gap-2 text-brand-gray/80">
+          <div className="flex items-center gap-2 text-brand-blue-primary/80">
             <svg
               className="w-5 h-5 flex-shrink-0"
               fill="none"
@@ -100,7 +100,7 @@ export default function EventCard({
         </div>
 
         {/* CTA */}
-        <button className="w-full bg-brand-gray text-white py-3 rounded-lg font-semibold hover:bg-brand-gray/90 transition-colors">
+        <button className="w-full bg-brand-blue-primary text-white py-3 rounded-lg font-semibold hover:bg-brand-blue-primary/90 transition-colors">
           View Details
         </button>
       </div>

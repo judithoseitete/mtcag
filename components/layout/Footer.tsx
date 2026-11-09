@@ -8,14 +8,17 @@ interface FooterProps {
   cardVariant?: "light" | "dark" | "blue";
 }
 
-export default function Footer({ bgColor = "gray", cardVariant = "light" }: FooterProps) {
+export default function Footer({
+  bgColor = "gray",
+  cardVariant = "light",
+}: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const bgColorMap = {
     white: "bg-white",
-    gray: "bg-brand-gray",
+    gray: "bg-brand-blue",
     neutral: "bg-brand-neutral",
     blue: "bg-brand-blue",
   };
@@ -23,15 +26,15 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
   const cardStyles = {
     light: {
       bg: "bg-white",
-      textPrimary: "text-brand-gray",
-      textSecondary: "text-brand-gray/70",
+      textPrimary: "text-brand-blue",
+      textSecondary: "text-brand-blue/70",
       border: "border-brand-neutral",
     },
     dark: {
-      bg: "bg-brand-gray",
+      bg: "bg-brand-blue",
       textPrimary: "text-white",
       textSecondary: "text-white/70",
-      border: "border-brand-gray",
+      border: "border-brand-blue",
     },
     blue: {
       bg: "bg-brand-blue",
@@ -42,16 +45,22 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
   };
 
   const card = cardStyles[cardVariant];
-  const borderColor = cardVariant === "light" ? "border-brand-gray/20" : "border-white/20";
-  const copyrightColor = cardVariant === "light" ? "text-brand-gray/60" : "text-white/60";
+  const borderColor =
+    cardVariant === "light" ? "border-brand-blue/20" : "border-white/20";
+  const copyrightColor =
+    cardVariant === "light" ? "text-brand-blue/60" : "text-white/60";
 
   return (
-    <footer className={`${bgColorMap[bgColor]} px-4 sm:px-6 lg:px-8`}>
-      <div className={`${card.bg} ${card.textPrimary} border-2 ${card.border} rounded-t-3xl pt-12 md:pt-16`}>
+    <footer className={`${bgColorMap[bgColor]}`}>
+      <div
+        className={`${card.bg} ${card.textPrimary} border-t-2 ${card.border} pt-12 md:pt-16`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4">More Than Conquerors AG</h3>
+              <h3 className="text-2xl font-bold mb-4">
+                More Than Conquerors AG
+              </h3>
               <p className={`${card.textSecondary} mb-6`}>
                 In all these things, we are more than conquerors through Him who
                 loved us.
@@ -61,7 +70,7 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
                   href="https://www.facebook.com/p/More-Than-Conquerors-AG-Auntie-Aku-100095113467544/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-brand-red transition-colors"
+                  className="hover:text-brand-yellow transition-colors"
                   aria-label="Facebook"
                 >
                   <svg
@@ -76,7 +85,7 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
                   href="https://www.instagram.com/mtc__youth/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-brand-red transition-colors"
+                  className="hover:text-brand-yellow transition-colors"
                   aria-label="Instagram"
                 >
                   <svg
@@ -105,7 +114,7 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
                   <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
                   <a
                     href="tel:+233244251800"
-                    className={`${card.textSecondary} hover:text-brand-red transition-colors`}
+                    className={`${card.textSecondary} hover:text-brand-yellow transition-colors`}
                   >
                     +233 (0) 24 425 1800
                   </a>
@@ -114,7 +123,7 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
                   <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
                   <a
                     href="mailto:mtcymauntieaku@gmail.com"
-                    className={`${card.textSecondary} hover:text-brand-red transition-colors`}
+                    className={`${card.textSecondary} hover:text-brand-yellow transition-colors`}
                   >
                     mtcymauntieaku@gmail.com
                   </a>
@@ -126,7 +135,7 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
           <div className="mt-12 flex justify-center md:hidden">
             <button
               onClick={scrollToTop}
-              className={`flex items-center space-x-2 ${card.textSecondary} hover:text-brand-red transition-colors`}
+              className={`flex items-center space-x-2 ${card.textSecondary} hover:text-brand-yellow transition-colors`}
               aria-label="Back to top"
             >
               <span>Back to Top</span>
@@ -134,14 +143,16 @@ export default function Footer({ bgColor = "gray", cardVariant = "light" }: Foot
             </button>
           </div>
 
-          <div className={`border-t ${borderColor} mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4`}>
+          <div
+            className={`border-t ${borderColor} mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4`}
+          >
             <p className={`${copyrightColor} text-sm text-center md:text-left`}>
-              Copyright {new Date().getFullYear()} More Than Conquerors Assemblies
-              of God. All rights reserved.
+              Copyright {new Date().getFullYear()} More Than Conquerors
+              Assemblies of God. All rights reserved.
             </p>
             <button
               onClick={scrollToTop}
-              className={`hidden md:flex items-center space-x-2 ${card.textSecondary} hover:text-brand-red transition-colors`}
+              className={`hidden md:flex items-center space-x-2 ${card.textSecondary} hover:text-brand-yellow transition-colors`}
               aria-label="Back to top"
             >
               <span>Back to Top</span>

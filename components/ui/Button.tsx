@@ -2,38 +2,41 @@
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary";
   href?: string;
-  onClick?: () => void;
+  variant?: "primary" | "secondary" | "outline";
   className?: string;
+  onClick?: () => void;
 }
 
 export default function Button({
   children,
-  variant = "primary",
   href,
-  onClick,
+  variant = "primary",
   className = "",
+  onClick,
 }: ButtonProps) {
-  const baseStyles = "px-8 py-3 md:px-12 md:py-5 text-lg md:text-xl font-bold rounded-lg transition-colors";
+  const baseStyles =
+    "px-6 py-3 rounded-lg font-semibold transition-colors inline-block text-center";
   
   const variantStyles = {
-    primary: "bg-brand-gray text-white hover:bg-brand-gray/90",
-    secondary: "bg-brand-red text-white hover:bg-brand-red/90",
+    primary: "bg-brand-blue text-white hover:bg-brand-red",
+    secondary: "bg-brand-yellow text-brand-blue hover:bg-brand-red hover:text-white",
+    outline:
+      "border-2 border-brand-blue text-brand-blue hover:bg-brand-red hover:border-brand-red hover:text-white",
   };
 
-  const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
+  const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
   if (href) {
     return (
-      <Link href={href} className={combinedStyles}>
+      <Link href={href} className={combinedClassName}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button onClick={onClick} className={combinedStyles}>
+    <button onClick={onClick} className={combinedClassName}>
       {children}
     </button>
   );

@@ -26,7 +26,7 @@ export default function DepartmentsPage() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="bg-brand-gray py-12 md:py-16">
+      <section className="bg-brand-blue-primary py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             Our Departments
@@ -49,13 +49,13 @@ export default function DepartmentsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Department Header */}
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray mb-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary mb-4">
                 {activeContent.name}
               </h2>
-              <p className="text-xl text-brand-gray/80 mb-3">
+              <p className="text-xl text-brand-blue-primary/80 mb-3">
                 {activeContent.description}
               </p>
-              <div className="flex flex-col md:flex-row gap-3 text-brand-gray/70">
+              <div className="flex flex-col md:flex-row gap-3 text-brand-blue-primary/70">
                 {activeContent.motto && (
                   <p className="text-lg italic">
                     &quot;{activeContent.motto}&quot;
@@ -73,13 +73,13 @@ export default function DepartmentsPage() {
               {("meetingTime" in activeContent || "location" in activeContent) && (
                 <div className="flex flex-col md:flex-row gap-4 mt-4">
                   {"meetingTime" in activeContent && activeContent.meetingTime && (
-                    <div className="flex items-center gap-2 text-brand-gray/70">
+                    <div className="flex items-center gap-2 text-brand-blue-primary/70">
                       <Clock className="w-5 h-5" />
                       <span>{activeContent.meetingTime}</span>
                     </div>
                   )}
                   {"location" in activeContent && activeContent.location && (
-                    <div className="flex items-center gap-2 text-brand-gray/70">
+                    <div className="flex items-center gap-2 text-brand-blue-primary/70">
                       <MapPin className="w-5 h-5" />
                       <span>{activeContent.location}</span>
                     </div>
@@ -100,3 +100,4 @@ export default function DepartmentsPage() {
     </main>
   );
 }
+

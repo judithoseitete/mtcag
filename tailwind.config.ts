@@ -10,11 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          red: "#f73c4a",
-          neutral: "#f5f4f2",
-          gray: "#353533",
-          yellow: "#efe10f",
           blue: "#303181",
+          yellow: "#EFE10F",
+          red: "#F73C4A",
+          neutral: "#F5F8FC",
+          "neutral-dark": "#E8EDF5",
+          "neutral-darker": "#DDE5F0",
         },
       },
     },

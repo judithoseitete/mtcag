@@ -23,7 +23,7 @@ export default function GivePage() {
     <>
       <main className="min-h-screen bg-white">
         {/* Hero Section with Scripture */}
-        <section className="bg-brand-gray py-16 md:py-24">
+        <section className="bg-brand-blue-primary py-16 md:py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-4">
               "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
@@ -37,14 +37,14 @@ export default function GivePage() {
         {/* Ways to Give */}
         <section className="py-16 md:py-20">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary text-center mb-12">
               Ways to give
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Bank Transfer */}
-              <div className="bg-brand-neutral rounded-lg p-8 border-2 border-brand-gray/10">
-                <div className="flex items-center justify-center w-16 h-16 bg-brand-gray rounded-lg mb-6">
+              <div className="bg-brand-neutral rounded-lg p-8 border-2 border-brand-blue-primary/10">
+                <div className="flex items-center justify-center w-16 h-16 bg-brand-blue-primary rounded-lg mb-6">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="none"
@@ -59,25 +59,25 @@ export default function GivePage() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-brand-gray mb-4">
+                <h3 className="text-2xl font-bold text-brand-blue-primary mb-4">
                   Bank Transfer
                 </h3>
-                <div className="space-y-3 text-brand-gray/80">
+                <div className="space-y-3 text-brand-blue-primary/80">
                   <div>
-                    <p className="text-sm font-semibold text-brand-gray">Bank Name</p>
+                    <p className="text-sm font-semibold text-brand-blue-primary">Bank Name</p>
                     <p className="text-lg">[Bank Name]</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brand-gray">Account Name</p>
+                    <p className="text-sm font-semibold text-brand-blue-primary">Account Name</p>
                     <p className="text-lg">More Than Conquerors AG</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brand-gray">Account Number</p>
+                    <p className="text-sm font-semibold text-brand-blue-primary">Account Number</p>
                     <div className="flex items-center gap-2">
                       <p className="text-lg font-mono">{bankAccountNumber}</p>
                       <button
                         onClick={() => copyToClipboard(bankAccountNumber, "bankAccount")}
-                        className="p-2 hover:bg-brand-gray/10 rounded-lg transition-colors"
+                        className="p-2 hover:bg-brand-blue-primary/10 rounded-lg transition-colors"
                         title="Copy to clipboard"
                       >
                         {copiedField === "bankAccount" ? (
@@ -96,7 +96,7 @@ export default function GivePage() {
                           </svg>
                         ) : (
                           <svg
-                            className="w-5 h-5 text-brand-gray"
+                            className="w-5 h-5 text-brand-blue-primary"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -116,8 +116,8 @@ export default function GivePage() {
               </div>
 
               {/* Mobile Money */}
-              <div className="bg-brand-neutral rounded-lg p-8 border-2 border-brand-gray/10">
-                <div className="flex items-center justify-center w-16 h-16 bg-brand-gray rounded-lg mb-6">
+              <div className="bg-brand-neutral rounded-lg p-8 border-2 border-brand-blue-primary/10">
+                <div className="flex items-center justify-center w-16 h-16 bg-brand-blue-primary rounded-lg mb-6">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="none"
@@ -132,25 +132,25 @@ export default function GivePage() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-brand-gray mb-4">
+                <h3 className="text-2xl font-bold text-brand-blue-primary mb-4">
                   Mobile Money
                 </h3>
-                <div className="space-y-3 text-brand-gray/80">
+                <div className="space-y-3 text-brand-blue-primary/80">
                   <div>
-                    <p className="text-sm font-semibold text-brand-gray">Network</p>
+                    <p className="text-sm font-semibold text-brand-blue-primary">Network</p>
                     <p className="text-lg">Telecel (Vodafone)</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brand-gray">Name</p>
+                    <p className="text-sm font-semibold text-brand-blue-primary">Name</p>
                     <p className="text-lg">More Than Conquerors AG</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brand-gray">Number</p>
+                    <p className="text-sm font-semibold text-brand-blue-primary">Number</p>
                     <div className="flex items-center gap-2">
                       <p className="text-lg font-mono">{mobileMoneyNumber}</p>
                       <button
                         onClick={() => copyToClipboard(mobileMoneyNumber, "mobileMoneyNumber")}
-                        className="p-2 hover:bg-brand-gray/10 rounded-lg transition-colors"
+                        className="p-2 hover:bg-brand-blue-primary/10 rounded-lg transition-colors"
                         title="Copy to clipboard"
                       >
                         {copiedField === "mobileMoneyNumber" ? (
@@ -169,7 +169,7 @@ export default function GivePage() {
                           </svg>
                         ) : (
                           <svg
-                            className="w-5 h-5 text-brand-gray"
+                            className="w-5 h-5 text-brand-blue-primary"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -195,3 +195,4 @@ export default function GivePage() {
     </>
   );
 }
+

@@ -20,16 +20,16 @@ export default function ServiceCard({
       } md:py-10 md:px-12 text-center ${showDivider ? "relative" : ""}`}
     >
       {showDivider && dividerPosition === "bottom" && (
-        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-32 h-0.5 bg-brand-gray/30 md:hidden"></div>
+        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-32 h-0.5 bg-brand-blue/30 md:hidden"></div>
       )}
-      <h3 className="text-lg md:text-xl font-semibold text-brand-gray/70 mb-3 uppercase tracking-wide">
+      <h3 className="text-lg md:text-xl font-semibold text-brand-blue/70 mb-3 uppercase tracking-wide">
         {title}
       </h3>
       <p
-        className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-red mb-6"
+        className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-6"
         dangerouslySetInnerHTML={{ __html: mainText }}
       />
-      <button className="px-6 py-3 border-2 border-brand-gray text-brand-gray font-semibold rounded-lg hover:bg-brand-gray hover:text-white transition-colors">
+      <button className="px-6 py-3 border-2 border-brand-blue text-brand-blue font-semibold rounded-lg hover:bg-brand-red hover:border-brand-red hover:text-white transition-colors">
         {buttonText}
       </button>
     </div>

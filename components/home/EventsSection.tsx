@@ -11,7 +11,10 @@ export default function EventsSection() {
   const events = useMemo(() => getUpcomingEvents(), []);
 
   // Memoize the infinite events array to prevent recreation on every render
-  const infiniteEvents = useMemo(() => [...events, ...events, ...events], [events]);
+  const infiniteEvents = useMemo(
+    () => [...events, ...events, ...events],
+    [events],
+  );
 
   const totalSlides = events.length;
 
@@ -39,8 +42,8 @@ export default function EventsSection() {
   return (
     <section className="bg-brand-neutral min-h-[80vh] flex items-center py-8 md:py-20">
       <div className="w-full">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-gray text-center mb-8 md:mb-12 px-4">
-          Upcoming events
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue text-center mb-8 md:mb-12 px-4">
+          View our upcoming events
         </h2>
 
         <div
@@ -50,7 +53,7 @@ export default function EventsSection() {
           onTouchEnd={handleTouchEnd}
         >
           <div
-            className={`flex gap-8 ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
+            className={`flex gap-8 ${isTransitioning ? "transition-transform duration-700 ease-in-out" : ""}`}
             style={{
               transform: `translateX(calc(-${currentSlide * 70}% - ${currentSlide * 2}rem + 15%))`,
             }}
@@ -66,7 +69,7 @@ export default function EventsSection() {
             aria-label="Previous event"
           >
             <svg
-              className="w-6 h-6 text-brand-gray"
+              className="w-6 h-6 text-brand-blue"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -86,7 +89,7 @@ export default function EventsSection() {
             aria-label="Next event"
           >
             <svg
-              className="w-6 h-6 text-brand-gray"
+              className="w-6 h-6 text-brand-blue"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -108,8 +111,8 @@ export default function EventsSection() {
               onClick={() => handleDotClick(index)}
               className={`transition-all duration-300 ${
                 currentSlide % totalSlides === index
-                  ? "w-8 h-2 bg-brand-yellow rounded-full"
-                  : "w-2 h-2 bg-brand-gray/30 rounded-full hover:bg-brand-gray/50"
+                  ? "w-8 h-2 bg-brand-red rounded-full"
+                  : "w-2 h-2 bg-brand-blue/30 rounded-full hover:bg-brand-blue/50"
               }`}
               aria-label={`Go to event ${index + 1}`}
             />
