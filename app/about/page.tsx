@@ -8,6 +8,8 @@ import StoryCard from "@/components/about/StoryCard";
 import OurStoryNav from "@/components/about/OurStoryNav";
 import MtcAgSection from "@/components/about/MtcAgSection";
 import LeadershipSection from "@/components/about/LeadershipSection";
+import LeadershipNav from "@/components/about/LeadershipNav";
+import LeadershipCard from "@/components/about/LeadershipCard";
 import { beliefs } from "@/constants/beliefs";
 import { whoWeAre, ourStory, leadership } from "@/constants/aboutContent";
 import { HERO_TEXT } from "@/constants/aboutHeroText";
@@ -19,6 +21,14 @@ const STORY_NAV_ITEMS = [
   { id: "ag-global", label: "AG Global" },
   { id: "ag-ghana", label: "AG Ghana" },
   { id: "mtc-ag", label: "MTC AG" },
+];
+
+const LEADERSHIP_NAV_ITEMS = [
+  { id: "senior-pastor", label: "Senior Pastor" },
+  { id: "senior-associate", label: "Senior Associate" },
+  { id: "associate-pastors", label: "Associate Pastors" },
+  { id: "board-members", label: "Board Members" },
+  { id: "department-heads", label: "Department Heads" },
 ];
 
 export default function AboutPage() {
@@ -44,6 +54,12 @@ export default function AboutPage() {
   const activeStorySection = useScrollTracking(
     ["ag-global", "ag-ghana", "mtc-ag"],
     activeTab === "our-story",
+  );
+  
+  // Track scroll position for Leadership section
+  const activeLeadershipSection = useScrollTracking(
+    ["senior-pastor", "senior-associate", "associate-pastors", "board-members", "department-heads"],
+    activeTab === "leadership",
   );
 
   // Update URL hash when tab changes
@@ -173,51 +189,50 @@ export default function AboutPage() {
         {/* Leadership */}
         {mounted && activeTab === "leadership" && (
           <section className="pt-4 pb-16 md:pt-16 md:pb-32">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-              <LeadershipSection
-                title={leadership.seniorPastor.title}
-                people={[leadership.seniorPastor]}
-                variant="primary"
-                columns="single"
-              />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex gap-4 lg:gap-6">
+                <LeadershipNav
+                  items={LEADERSHIP_NAV_ITEMS}
+                  activeSection={activeLeadershipSection}
+                />
 
-              <LeadershipSection
-                title={leadership.seniorAssociate.title}
-                people={[leadership.seniorAssociate]}
-                variant="primary"
-                columns="single"
-              />
+                <div className="flex-1 space-y-16">
+                  <LeadershipCard
+                    id="senior-pastor"
+                    title={leadership.seniorPastor.title}
+                    people={[leadership.seniorPastor]}
+                    columns="single"
+                  />
 
-              <LeadershipSection
-                title="Associate Pastors"
-                people={leadership.associates}
-                variant="secondary"
-                columns="double"
-              />
+                  <LeadershipCard
+                    id="senior-associate"
+                    title={leadership.seniorAssociate.title}
+                    people={[leadership.seniorAssociate]}
+                    columns="single"
+                  />
 
-              {/* Board Members */}
-              <div className="bg-brand-neutral rounded-3xl p-8 md:p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
-                  Board Members
-                </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-                  {leadership.board.map((member, index) => (
-                    <div key={index} className="text-center">
-                      <div className="w-full aspect-square bg-white rounded-lg mb-3"></div>
-                      <p className="text-sm md:text-base font-semibold text-brand-blue">
-                        {member.name}
-                      </p>
-                    </div>
-                  ))}
+                  <LeadershipCard
+                    id="associate-pastors"
+                    title="Associate Pastors"
+                    people={leadership.associates}
+                    columns="double"
+                  />
+
+                  <LeadershipCard
+                    id="board-members"
+                    title="Board Members"
+                    people={leadership.board}
+                    columns="grid"
+                  />
+
+                  <LeadershipCard
+                    id="department-heads"
+                    title="Department Heads"
+                    people={leadership.departmentHeads}
+                    columns="double"
+                  />
                 </div>
               </div>
-
-              <LeadershipSection
-                title="Department Heads"
-                people={leadership.departmentHeads}
-                variant="secondary"
-                columns="double"
-              />
             </div>
           </section>
         )}

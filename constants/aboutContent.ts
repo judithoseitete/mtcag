@@ -8,7 +8,7 @@ export const whoWeAre = {
     "As part of the Assemblies of God—both locally in Ghana and globally as the world's largest Pentecostal movement—we are committed to biblical teaching, preaching the Gospel, and serving our community.",
   ],
   scripture: {
-    text: '"In all these things, we are more than conquerors through Him who loved us."',
+    text: "\u201CIn all these things, we are more than conquerors through Him who loved us.",
     reference: "Romans 8:37",
   },
 };
@@ -44,7 +44,7 @@ export const ourStory = {
       {
         heading: "Our Humble Beginnings",
         content: [
-          "The story of More Than Conquerors Assemblies of God, Auntie-Aku, began in September 2001 as a church-planting initiative of Living Word Assemblies of God, Kwashieman, under the leadership of the late Rev. Charles Korankye Atta (Rtd.) and the church's Board.",
+          "The story of our local church began in September 2001 as a church-planting initiative of Living Word Assemblies of God, Kwashieman, under the leadership of the late Rev. Charles Korankye Atta (Rtd.) and the church's Board.",
           "Initially established as Auntie-Aku Assemblies of God, named after the community in which it was founded, the church underwent several name changes as its identity and vision evolved. It became New Way Assemblies of God, later Conquerors Assemblies of God, and eventually More Than Conquerors Assemblies of God, inspired by the declaration in Romans 8:37:",
           '"Nay, in all these things we are more than conquerors through him that loved us." - Romans 8:37 (KJV)',
           "This scripture reflects the church's enduring faith in God's love, grace, and victory through Jesus Christ.",

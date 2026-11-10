@@ -1,5 +1,5 @@
-﻿interface PersonCardProps {
-  title: string;
+interface PersonCardProps {
+  title?: string;
   name?: string;
   size?: "small" | "medium" | "large";
   variant?: "primary" | "secondary";
@@ -8,7 +8,7 @@
 }
 
 export default function PersonCard({
-  title,
+  title = "",
   name = "Name",
   size = "medium",
   variant = "primary",
