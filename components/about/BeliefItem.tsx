@@ -43,7 +43,7 @@ export default function BeliefItem({
           <div className="px-6 pb-6 space-y-3">
             {paragraphs.map((paragraph, index) => {
               // Check if this line is a subheader (ends with colon and has text before it)
-              const isSubheader = paragraph.match(/^([^:]+):\s*(.+)$/);
+              const isSubheader = paragraph.match(/^([A-Z][^:]{10,40}):\s*(.+)$/);
               
               if (isSubheader) {
                 const [, subheaderText, content] = isSubheader;
