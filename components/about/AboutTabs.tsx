@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 type AboutSection = "who-we-are" | "our-story" | "beliefs" | "leadership";
 
@@ -43,40 +43,14 @@ export default function AboutTabs({ activeTab, onTabChange }: AboutTabsProps) {
       </div>
 
       <style jsx>{`
-        /* Mobile and tablet: styled scrollbar */
+        /* Hide scrollbar on all screen sizes */
         .custom-scrollbar::-webkit-scrollbar {
-          height: 6px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: var(--brand-neutral);
-          border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: var(--brand-blue);
-          border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: var(--brand-blue);
+          display: none;
         }
 
         .custom-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: var(--brand-blue) var(--brand-neutral);
-        }
-
-        /* Desktop: hide scrollbar */
-        @media (min-width: 1024px) {
-          .custom-scrollbar::-webkit-scrollbar {
-            display: none;
-          }
-
-          .custom-scrollbar {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-          }
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
       `}</style>
     </>

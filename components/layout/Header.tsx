@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -27,11 +27,16 @@ export default function Header() {
     setMobileMenuOpen(false);
   }, []);
 
-  // Focus trap for mobile menu
+  // Focus trap and body scroll lock for mobile menu
   useEffect(() => {
     if (!mobileMenuOpen) {
+      // Re-enable body scroll when menu closes
+      document.body.style.overflow = 'unset';
       return;
     }
+
+    // Disable body scroll when menu opens
+    document.body.style.overflow = 'hidden';
 
     // Focus first menu item when menu opens
     const firstMenuItem = document.querySelector("[data-mobile-menu-item]");
@@ -63,36 +68,16 @@ export default function Header() {
     };
 
     document.addEventListener("keydown", handleTabKey);
-    return () => document.removeEventListener("keydown", handleTabKey);
+    return () => {
+      document.removeEventListener("keydown", handleTabKey);
+      document.body.style.overflow = 'unset';
+    };
   }, [mobileMenuOpen]);
 
   return (
     <header className="bg-white border-b-2 border-brand-blue/20 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16 md:h-20">
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-brand-blue hover:text-brand-red hover:bg-brand-neutral transition-colors mr-4"
-            onClick={handleMobileMenuToggle}
-            aria-label="Open navigation menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+        <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
           <Link
@@ -121,6 +106,30 @@ export default function Header() {
               </Link>
             ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-brand-blue hover:text-brand-red hover:bg-brand-neutral transition-colors"
+            onClick={handleMobileMenuToggle}
+            aria-label="Open navigation menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
       </nav>
 
@@ -135,8 +144,8 @@ export default function Header() {
       {/* Mobile Menu */}
       <div
         data-mobile-menu
-        className={`md:hidden fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="p-4">

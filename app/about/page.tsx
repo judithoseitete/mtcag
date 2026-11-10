@@ -13,7 +13,9 @@ import { ExternalLink } from "lucide-react";
 type AboutSection = "who-we-are" | "our-story" | "beliefs" | "leadership";
 
 export default function AboutPage() {
+  const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<AboutSection>("who-we-are");
+
   // Load active tab from URL hash on mount
   useEffect(() => {
     const hash = window.location.hash.replace("#", "") as AboutSection;
@@ -26,6 +28,7 @@ export default function AboutPage() {
     if (hash && validTabs.includes(hash)) {
       setActiveTab(hash);
     }
+    setMounted(true);
   }, []);
   const [activeStorySection, setActiveStorySection] =
     useState<string>("ag-global");
@@ -75,20 +78,27 @@ export default function AboutPage() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase"
               suppressHydrationWarning
             >
-              {activeTab === "who-we-are" && "we are more than conquerors."}
-              {activeTab === "our-story" && "this is our story."}
-              {activeTab === "beliefs" &&
+              {mounted &&
+                activeTab === "who-we-are" &&
+                "we are more than conquerors."}
+              {mounted && activeTab === "our-story" && "this is our story."}
+              {mounted &&
+                activeTab === "beliefs" &&
                 "we believe in sixteen fundamental truths."}
-              {activeTab === "leadership" && "meet our pastors & leaders."}
+              {mounted &&
+                activeTab === "leadership" &&
+                "meet our pastors & leaders."}
             </h1>
           </div>
         </section>
 
         {/* Tabs */}
-        <AboutTabs activeTab={activeTab} onTabChange={handleTabChange} />
+        {mounted && (
+          <AboutTabs activeTab={activeTab} onTabChange={handleTabChange} />
+        )}
 
         {/* Who We Are */}
-        {activeTab === "who-we-are" && (
+        {mounted && activeTab === "who-we-are" && (
           <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Left column - Text content */}
@@ -129,7 +139,7 @@ export default function AboutPage() {
         )}
 
         {/* Our Story */}
-        {activeTab === "our-story" && (
+        {mounted && activeTab === "our-story" && (
           <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex gap-4 lg:gap-6">
@@ -316,7 +326,7 @@ export default function AboutPage() {
         )}
 
         {/* Beliefs Section */}
-        {activeTab === "beliefs" && (
+        {mounted && activeTab === "beliefs" && (
           <section className="pt-4 pb-16 md:pt-16 md:pb-32 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="bg-brand-blue rounded-3xl px-4 py-8 md:px-16 md:py-20 lg:px-24 lg:py-24">
@@ -337,7 +347,7 @@ export default function AboutPage() {
         )}
 
         {/* Leadership */}
-        {activeTab === "leadership" && (
+        {mounted && activeTab === "leadership" && (
           <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
               {/* Senior Pastor & Wife */}
