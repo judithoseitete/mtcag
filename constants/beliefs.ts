@@ -1,4 +1,4 @@
-ï»¿export interface Belief {
+export interface Belief {
   number: number;
   title: string;
   description: string;
@@ -24,8 +24,8 @@ export const beliefs: Belief[] = [
     number: 3,
     title: "The Deity of the Lord Jesus Christ",
     description:
-      "We believe that the Lord Jesus Christ is the eternal Son of God. The Scriptures declare:\nâ€¢ His virgin birth (Matthew 1:23; Luke 1:31, 35)\nâ€¢ His sinless life (Hebrews 7:26; 1 Peter 2:22)\nâ€¢ His miracles (Acts 2:22; 10:38)\nâ€¢ His substitutionary work on the cross (1 Corinthians 15:3; 2 Corinthians 5:21)\nâ€¢ His bodily resurrection from the dead (Matthew 28:6; Luke 24:39; 1 Corinthians 15:4)\nâ€¢ His exaltation to the right hand of God (Acts 1:9, 11; 2:33; Philippians 2:9-11; Hebrews 1:3)",
-    scripture: "",
+"We believe that the Lord Jesus Christ is the eternal Son of God. The Scriptures declare:\n• His virgin birth\n• His sinless life\n• His miracles\n• His substitutionary work on the cross\n• His bodily resurrection from the dead\n• His exaltation to the right hand of God",
+    scripture: "Matthew 1:23; Luke 1:31, 35; Hebrews 7:26; 1 Peter 2:22; Acts 2:22; 10:38; 1 Corinthians 15:3; 2 Corinthians 5:21; Matthew 28:6; Luke 24:39; 1 Corinthians 15:4; Acts 1:9, 11; 2:33; Philippians 2:9-11; Hebrews 1:3",
   },
   {
     number: 4,
@@ -68,7 +68,7 @@ export const beliefs: Belief[] = [
     number: 9,
     title: "Sanctification",
     description:
-      'We believe that sanctification is an act of separating from that which is evil, and of dedication unto God (Romans 12:1,2;1 Thessalonians 5:23; Hebrews 13:12). Scriptures teach a life of "holiness without which no man shall see the Lord" (Hebrews 12:14). By the power of the Holy Spirit we are able to obey the command: "Be ye holy, for I am holy" (1 Peter 1:15, 16). Sanctification is realized in the believer by recognizing his identification with Christ in His death and resurrection, and by faith reckoning daily upon the fact of that union, and by offering every faculty continually to the dominion of the Holy Spirit (Romans 6:1-11,13; 8:1,2,13; Galatians 2:20; Philippians 2:12,13, 1 Peter 1:5).',
+      'We believe that sanctification is an act of separating from that which is evil, and of dedication unto God (Romans 12:1,2;1 Thessalonians 5:23; Hebrews 13:12). Scriptures teach a life of "holiness without which no man shall see the Lord" (Hebrews 12:14). By the power of the Holy Spirit we are able to obey the command: "Be ye holy, for I am holy" (1 Peter 1:15, 16). Sanctification is realized in the believer by recognizing his identification with Christ in His death and resurrection, and by faith reckoning daily upon the fact of that union, and by offering every faculty continually to the dominion of the Holy Spirit. (Romans 6:1-11,13; 8:1,2,13; Galatians 2:20; Philippians 2:12,13, 1 Peter 1:5).',
     scripture:
       "Romans 12:1,2; 1 Thessalonians 5:23; Hebrews 13:12; Romans 6:1-11,13; 8:1,2,13; Galatians 2:20; Philippians 2:12,13; 1 Peter 1:5",
   },
@@ -83,7 +83,7 @@ export const beliefs: Belief[] = [
     number: 11,
     title: "The Ministry",
     description:
-      "We believe that a divine call and scripturally ordained ministry has been provided by our Lord for the threefold purpose of leading the Church in:\nâ€¢ Evangelization of the world (Mark 16:15-20)\nâ€¢ Worship of God (John 4:23, 24)\nâ€¢ Building a Body of saints being perfected in the image of His son (Ephesians 4:11, 16)\nâ€¢ Meeting human need with ministries of love and compassion (Psalm 112:9; Galatians 2:10; 6:10, James 1:27)",
+      "We believe that a divine call and scripturally ordained ministry has been provided by our Lord for the threefold purpose of leading the Church in:\n? Evangelization of the world (Mark 16:15-20)\n? Worship of God (John 4:23, 24)\n? Building a Body of saints being perfected in the image of His son (Ephesians 4:11, 16)\n? Meeting human need with ministries of love and compassion. (Psalm 112:9; Galatians 2:10; 6:10, James 1:27)",
     scripture:
       "Mark 16:15-20; John 4:23, 24; Ephesians 4:11, 16; Psalm 112:9; Galatians 2:10; 6:10; James 1:27",
   },

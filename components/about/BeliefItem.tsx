@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 
@@ -23,7 +23,7 @@ export default function BeliefItem({
   return (
     <div className="border-b-2 border-brand-neutral/20 flex group hover:bg-brand-neutral/10">
       <div className="flex-shrink-0 w-20 px-6 py-3 flex items-center justify-center border-r-2 border-brand-neutral/20">
-        <span className="text-xl md:text-2xl font-bold text-brand-neutral">
+        <span className="text-xl md:text-2xl font-bold text-white">
           {number}
         </span>
       </div>
@@ -32,11 +32,11 @@ export default function BeliefItem({
           onClick={() => setIsOpen(!isOpen)}
           className="w-full px-6 py-6 flex items-center justify-between text-left transition-colors"
         >
-          <h3 className="text-xl md:text-2xl font-bold text-brand-neutral capitalize">
+          <h3 className="text-xl md:text-2xl font-bold text-white capitalize">
             {title}
           </h3>
-          <span className="text-2xl md:text-3xl font-bold text-brand-neutral flex-shrink-0 ml-4">
-            {isOpen ? "−" : "+"}
+          <span className="text-2xl md:text-3xl font-bold text-white flex-shrink-0 ml-4">
+            {isOpen ? "-" : "+"}
           </span>
         </button>
         {isOpen && (
@@ -44,13 +44,13 @@ export default function BeliefItem({
             {paragraphs.map((paragraph, index) => (
               <p
                 key={index}
-                className="text-lg md:text-xl text-brand-neutral/80 whitespace-pre-line"
+                className="text-lg md:text-xl text-white/80 whitespace-pre-line"
               >
                 {paragraph}
               </p>
             ))}
             {scripture && (
-              <p className="text-sm md:text-base text-brand-neutral/60 mt-4 italic">
+              <p className="text-sm md:text-base text-white/60 mt-4 italic">
                 {scripture}
               </p>
             )}
