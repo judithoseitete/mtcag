@@ -91,8 +91,7 @@ export default function DepartmentTabs({
     <>
       <div
         ref={tabsRef}
-        className="sticky top-0 z-40 bg-white border-b-2 border-brand-blue/20"
-        style={{ top: "80px" }}
+        className="sticky top-16 md:top-20 z-40 bg-white border-b-2 border-brand-blue/20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex overflow-x-auto -mb-px custom-scrollbar">
@@ -110,11 +109,11 @@ export default function DepartmentTabs({
                     }}
                     onClick={() => handleTabClick(dept.id, hasSubDepts)}
                     className={`
-                      dropdown-container px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors flex items-center gap-1
+                      dropdown-container px-4 md:px-6 py-3 md:py-4 font-semibold text-base md:text-lg whitespace-nowrap transition-all duration-300 flex items-center gap-1
                       ${
                         isActive
-                          ? "border-brand-blue text-brand-blue"
-                          : "border-transparent text-brand-blue/60 hover:text-brand-blue hover:border-brand-blue/30"
+                          ? "text-brand-blue border-b-4 border-brand-blue"
+                          : "text-brand-blue/60 border-b-2 border-transparent hover:text-brand-blue hover:border-brand-blue/30"
                       }
                     `}
                   >

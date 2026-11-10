@@ -6,6 +6,7 @@ import VisitTabs from "@/components/visit/VisitTabs";
 import ScheduleItem from "@/components/visit/ScheduleItem";
 import { weeklySchedule } from "@/constants/weeklySchedule";
 import { VISIT_HERO_TEXT } from "@/constants/visitHeroText";
+import { capitalizeHolyNames } from "@/utils/capitalizeHolyNames";
 
 type VisitSection = "weekly-schedule" | "location" | "what-to-expect";
 
@@ -40,15 +41,19 @@ export default function VisitPage() {
         <section className="bg-brand-blue min-h-[30vh] py-8 md:py-12 flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1
-              className={`font-bold text-white lowercase ${
+              className={`font-bold text-white ${
                 mounted && VISIT_HERO_TEXT[activeTab].split(" ").length >= 7
                   ? "text-3xl md:text-4xl lg:text-5xl"
                   : "text-4xl md:text-5xl lg:text-6xl"
               }`}
               suppressHydrationWarning
-            >
-              {mounted && VISIT_HERO_TEXT[activeTab]}
-            </h1>
+              style={{ textTransform: "lowercase" }}
+              dangerouslySetInnerHTML={{
+                __html: mounted
+                  ? capitalizeHolyNames(VISIT_HERO_TEXT[activeTab])
+                  : "",
+              }}
+            />
           </div>
         </section>
 
