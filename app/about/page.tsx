@@ -14,17 +14,21 @@ type AboutSection = "who-we-are" | "our-story" | "beliefs" | "leadership";
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<AboutSection>("who-we-are");
-  const [activeStorySection, setActiveStorySection] =
-    useState<string>("ag-global");
-
   // Load active tab from URL hash on mount
   useEffect(() => {
     const hash = window.location.hash.replace("#", "") as AboutSection;
-    const validTabs: AboutSection[] = ["who-we-are", "our-story", "beliefs", "leadership"];
+    const validTabs: AboutSection[] = [
+      "who-we-are",
+      "our-story",
+      "beliefs",
+      "leadership",
+    ];
     if (hash && validTabs.includes(hash)) {
       setActiveTab(hash);
     }
   }, []);
+  const [activeStorySection, setActiveStorySection] =
+    useState<string>("ag-global");
 
   // Update URL hash when tab changes
   const handleTabChange = (tab: AboutSection) => {
@@ -67,7 +71,10 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="bg-brand-blue min-h-[30vh] py-8 md:py-12 flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase">
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase"
+              suppressHydrationWarning
+            >
               {activeTab === "who-we-are" && "we are more than conquerors."}
               {activeTab === "our-story" && "this is our story."}
               {activeTab === "beliefs" &&
@@ -131,7 +138,7 @@ export default function AboutPage() {
                   <div className="sticky top-40 space-y-2 border-l-2 border-brand-blue pl-4">
                     <a
                       href="#ag-global"
-                      className={`block py-2 transition-colors text-lg font-medium ${
+                      className={`block py-2 transition-all duration-400 ease-in-out text-lg font-medium ${
                         activeStorySection === "ag-global"
                           ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
                           : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
@@ -141,7 +148,7 @@ export default function AboutPage() {
                     </a>
                     <a
                       href="#ag-ghana"
-                      className={`block py-2 transition-colors text-lg font-medium ${
+                      className={`block py-2 transition-all duration-400 ease-in-out text-lg font-medium ${
                         activeStorySection === "ag-ghana"
                           ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
                           : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
@@ -151,7 +158,7 @@ export default function AboutPage() {
                     </a>
                     <a
                       href="#mtc-ag"
-                      className={`block py-2 transition-colors text-lg font-medium ${
+                      className={`block py-2 transition-all duration-400 ease-in-out text-lg font-medium ${
                         activeStorySection === "mtc-ag"
                           ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
                           : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
@@ -216,22 +223,22 @@ export default function AboutPage() {
 
                   {/* MTC AG */}
                   <div id="mtc-ag" className="scroll-mt-40">
-                    <div>
-                      <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-12 text-center">
+                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
+                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
                         {ourStory.mtcAg.title}
                       </h2>
                       <div className="space-y-12">
                         {ourStory.mtcAg.sections.map(
                           (section, sectionIndex) => (
                             <div key={sectionIndex} className="space-y-4">
-                              <h3 className="text-2xl md:text-3xl font-bold text-brand-blue">
+                              <h3 className="text-2xl md:text-3xl font-bold text-white">
                                 {section.heading}
                               </h3>
                               <div className="space-y-4">
                                 {section.content.map((paragraph, pIndex) => (
                                   <p
                                     key={pIndex}
-                                    className="text-lg text-brand-blue/80"
+                                    className="text-lg text-white/90"
                                   >
                                     {paragraph}
                                   </p>
@@ -241,7 +248,7 @@ export default function AboutPage() {
                                     {section.list.map((item, iIndex) => (
                                       <li
                                         key={iIndex}
-                                        className="text-lg text-brand-blue/80 list-disc"
+                                        className="text-lg text-white/90 list-disc"
                                       >
                                         {item}
                                       </li>
@@ -253,7 +260,7 @@ export default function AboutPage() {
                                     (paragraph, pIndex) => (
                                       <p
                                         key={`after-${pIndex}`}
-                                        className="text-lg text-brand-blue/80"
+                                        className="text-lg text-white/90"
                                       >
                                         {paragraph}
                                       </p>
@@ -264,7 +271,7 @@ export default function AboutPage() {
                                     {Object.entries(section.sublist).map(
                                       ([district, churches], dIndex) => (
                                         <div key={dIndex}>
-                                          <p className="font-semibold text-lg text-brand-blue">
+                                          <p className="font-semibold text-lg text-white">
                                             {district}
                                           </p>
                                           <ul className="ml-6 space-y-1">
@@ -272,7 +279,7 @@ export default function AboutPage() {
                                               (church, cIndex) => (
                                                 <li
                                                   key={cIndex}
-                                                  className="text-lg text-brand-blue/80 list-disc"
+                                                  className="text-lg text-white/90 list-disc"
                                                 >
                                                   {church}
                                                 </li>
@@ -289,7 +296,7 @@ export default function AboutPage() {
                                     (paragraph, pIndex) => (
                                       <p
                                         key={`after2-${pIndex}`}
-                                        className="text-lg text-brand-blue/80"
+                                        className="text-lg text-white/90"
                                       >
                                         {paragraph}
                                       </p>
