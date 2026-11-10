@@ -15,7 +15,7 @@ export const whoWeAre = {
 
 export const ourStory = {
   agGlobal: {
-    title: "AG Global",
+    title: "Assemblies of God, Global",
     content: [
       "The history of the Assemblies of God is rooted in the Pentecostal revival movement of the late 19th and early 20th centuries, a period marked by renewed emphasis on the work of the Holy Spirit, speaking in tongues, divine healing, and spiritual renewal.",
       "One of the influential figures in the early Pentecostal movement was Charles Fox Parham, who established a Bible school in Topeka, Kansas, in 1900. On January 1, 1901, a student named Agnes Ozman reportedly experienced speaking in tongues after prayer. This event became a significant milestone in the development of the Pentecostal teaching that speaking in tongues is the initial physical evidence of baptism in the Holy Spirit.",
@@ -27,7 +27,7 @@ export const ourStory = {
     link: { text: "Learn more about AG Global", url: "https://ag.org" },
   },
   agGhana: {
-    title: "AG Ghana",
+    title: "Assemblies of God, Ghana",
     content: [
       "The history of the Assemblies of God in Ghana dates back to 1931, when missionaries from the Assemblies of God in the United States began spreading the Pentecostal message in the then Gold Coast. Among these pioneering missionaries were Rev. Lloyd and Margaret Shirer, whose missionary work laid the foundation for the establishment and growth of the denomination in Ghana.",
       "The first Assemblies of God congregation was established in Yendi, in northern Ghana. From there, the ministry expanded to other communities, including Tamale, Walewale, and Bawku. Despite challenging living conditions and the difficulties of missionary work, the early missionaries remained steadfast in their commitment to sharing the gospel of Jesus Christ.",
