@@ -1,16 +1,19 @@
 ﻿"use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import BeliefItem from "@/components/about/BeliefItem";
 import PersonCard from "@/components/about/PersonCard";
 import AboutTabs from "@/components/about/AboutTabs";
 import { beliefs } from "@/constants/beliefs";
+import { whoWeAre, ourStory, leadership } from "@/constants/aboutContent";
+import { ExternalLink } from "lucide-react";
 
-type AboutSection = "story" | "beliefs" | "pastors" | "board" | "leaders";
+type AboutSection = "who-we-are" | "our-story" | "beliefs" | "leadership";
 
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState<AboutSection>("story");
+  const [activeTab, setActiveTab] = useState<AboutSection>("who-we-are");
 
   return (
     <>
@@ -27,38 +30,163 @@ export default function AboutPage() {
         {/* Tabs */}
         <AboutTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-        {/* Our Story */}
-        {activeTab === "story" && (
-          <section className="pb-16 md:pb-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-8 md:mb-12">
-                Our story
+        {/* Who We Are */}
+        {activeTab === "who-we-are" && (
+          <section className="py-16 md:py-20">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-8">
+                {whoWeAre.title}
               </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 lg:divide-x-2 lg:divide-brand-blue/20">
-                <div className="lg:pr-8">
-                  <p className="text-lg text-brand-blue/80 mb-4">
-                    More Than Conquerors (MTC) was founded in November 2001 in a
-                    primary school in Sowutuom by a small group of believers who
-                    wanted to begin an Assemblies of God church in the area. In
-                    2004, the church grew out of the school and began putting up
-                    its own buildings and structure.
+              <div className="space-y-6">
+                {whoWeAre.content.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-lg md:text-xl text-brand-blue/80"
+                  >
+                    {paragraph}
                   </p>
-                  <p className="text-lg text-brand-blue/80 mb-4">
-                    In 2026, we are celebrating 25 years.
+                ))}
+                <div className="mt-12 pt-8 border-t-2 border-brand-blue/20">
+                  <p className="text-2xl md:text-3xl text-brand-blue italic mb-3">
+                    {whoWeAre.scripture.text}
+                  </p>
+                  <p className="text-lg md:text-xl text-brand-blue/70">
+                    — {whoWeAre.scripture.reference}
                   </p>
                 </div>
-                <div className="lg:pl-8">
-                  <p className="text-lg text-brand-blue/80 mb-4">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam, eaque ipsa quae ab illo inventore veritatis et
-                    quasi architecto beatae vitae dicta sunt explicabo.
-                  </p>
-                  <p className="text-lg text-brand-blue/80 mb-4">
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                    odit aut fugit, sed quia consequuntur magni dolores eos qui
-                    ratione voluptatem sequi nesciunt.
-                  </p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Our Story */}
+        {activeTab === "our-story" && (
+          <section className="py-16 md:py-20">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+              {/* AG Global */}
+              <div className="bg-brand-neutral rounded-3xl p-8 md:p-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-6">
+                  {ourStory.agGlobal.title}
+                </h2>
+                <div className="space-y-4">
+                  {ourStory.agGlobal.content.map((paragraph, index) => (
+                    <p key={index} className="text-lg text-brand-blue/80">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <Link
+                  href={ourStory.agGlobal.link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-6 text-brand-blue hover:text-brand-red font-semibold transition-colors"
+                >
+                  {ourStory.agGlobal.link.text}
+                  <ExternalLink className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* AG Ghana */}
+              <div className="bg-brand-neutral rounded-3xl p-8 md:p-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-6">
+                  {ourStory.agGhana.title}
+                </h2>
+                <div className="space-y-4">
+                  {ourStory.agGhana.content.map((paragraph, index) => (
+                    <p key={index} className="text-lg text-brand-blue/80">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <Link
+                  href={ourStory.agGhana.link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-6 text-brand-blue hover:text-brand-red font-semibold transition-colors"
+                >
+                  {ourStory.agGhana.link.text}
+                  <ExternalLink className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* MTC AG */}
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-12 text-center">
+                  {ourStory.mtcAg.title}
+                </h2>
+                <div className="space-y-12">
+                  {ourStory.mtcAg.sections.map((section, sectionIndex) => (
+                    <div key={sectionIndex} className="space-y-4">
+                      <h3 className="text-2xl md:text-3xl font-bold text-brand-blue">
+                        {section.heading}
+                      </h3>
+                      <div className="space-y-4">
+                        {section.content.map((paragraph, pIndex) => (
+                          <p
+                            key={pIndex}
+                            className="text-lg text-brand-blue/80"
+                          >
+                            {paragraph}
+                          </p>
+                        ))}
+                        {section.list && (
+                          <ul className="ml-6 space-y-2">
+                            {section.list.map((item, iIndex) => (
+                              <li
+                                key={iIndex}
+                                className="text-lg text-brand-blue/80 list-disc"
+                              >
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {section.contentAfter &&
+                          section.contentAfter.map((paragraph, pIndex) => (
+                            <p
+                              key={`after-${pIndex}`}
+                              className="text-lg text-brand-blue/80"
+                            >
+                              {paragraph}
+                            </p>
+                          ))}
+                        {section.sublist && (
+                          <div className="ml-6 space-y-3">
+                            {Object.entries(section.sublist).map(
+                              ([district, churches], dIndex) => (
+                                <div key={dIndex}>
+                                  <p className="font-semibold text-lg text-brand-blue">
+                                    {district}
+                                  </p>
+                                  <ul className="ml-6 space-y-1">
+                                    {(churches as string[]).map(
+                                      (church, cIndex) => (
+                                        <li
+                                          key={cIndex}
+                                          className="text-lg text-brand-blue/80 list-disc"
+                                        >
+                                          {church}
+                                        </li>
+                                      ),
+                                    )}
+                                  </ul>
+                                </div>
+                              ),
+                            )}
+                          </div>
+                        )}
+                        {section.contentAfter2 &&
+                          section.contentAfter2.map((paragraph, pIndex) => (
+                            <p
+                              key={`after2-${pIndex}`}
+                              className="text-lg text-brand-blue/80"
+                            >
+                              {paragraph}
+                            </p>
+                          ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -80,6 +208,7 @@ export default function AboutPage() {
                       number={belief.number}
                       title={belief.title}
                       description={belief.description}
+                      scripture={belief.scripture}
                     />
                   ))}
                 </div>
@@ -88,112 +217,91 @@ export default function AboutPage() {
           </section>
         )}
 
-        {/* Pastors */}
-        {activeTab === "pastors" && (
+        {/* Leadership */}
+        {activeTab === "leadership" && (
           <section className="py-16 md:py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-8 md:mb-12">
-                Meet our pastors
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                <PersonCard
-                  title="Resident Pastor"
-                  name="Rev. Emmanuel Teye Nyarko"
-                  variant="primary"
-                  textColor="dark"
-                />
-                <PersonCard
-                  title="Resident Pastor"
-                  name="Rev. Mrs. Aku Teye Nyarko"
-                  variant="primary"
-                  textColor="dark"
-                />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+              {/* Senior Pastor & Wife */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
+                  {leadership.seniorPastor.title}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <PersonCard
+                    title={leadership.seniorPastor.title}
+                    name={leadership.seniorPastor.name}
+                    variant="primary"
+                    textColor="dark"
+                  />
+                </div>
               </div>
-            </div>
-          </section>
-        )}
 
-        {/* Board Chairs */}
-        {activeTab === "board" && (
-          <section className="py-16 md:py-20 bg-brand-neutral">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-8 md:mb-12">
-                Board chairs
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <PersonCard
-                  title="Chairman"
-                  name="Seth Twum"
-                  variant="secondary"
-                  textColor="dark"
-                />
-                <PersonCard
-                  title="Secretary"
-                  name="Gladys Nyarko"
-                  variant="secondary"
-                  textColor="dark"
-                />
-                <PersonCard
-                  title="Treasurer"
-                  name="Mary Pee"
-                  variant="secondary"
-                  textColor="dark"
-                />
-                <PersonCard
-                  title="Member"
-                  name="Francis Adzaku"
-                  variant="secondary"
-                  textColor="dark"
-                />
+              {/* Senior Associate Pastor */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
+                  {leadership.seniorAssociate.title}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <PersonCard
+                    title={leadership.seniorAssociate.title}
+                    name={leadership.seniorAssociate.name}
+                    variant="primary"
+                    textColor="dark"
+                  />
+                </div>
               </div>
-            </div>
-          </section>
-        )}
 
-        {/* Department Leaders */}
-        {activeTab === "leaders" && (
-          <section className="py-16 md:py-20 bg-brand-blue">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-12">
-                Department Leaders
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <PersonCard
-                  title="Youth Department"
-                  name="Leader Name"
-                  variant="secondary"
-                  textColor="light"
-                />
-                <PersonCard
-                  title="Women's Ministry"
-                  name="Leader Name"
-                  variant="secondary"
-                  textColor="light"
-                />
-                <PersonCard
-                  title="Men's Ministry"
-                  name="Leader Name"
-                  variant="secondary"
-                  textColor="light"
-                />
-                <PersonCard
-                  title="Children's Ministry"
-                  name="Leader Name"
-                  variant="secondary"
-                  textColor="light"
-                />
-                <PersonCard
-                  title="Missions"
-                  name="Leader Name"
-                  variant="secondary"
-                  textColor="light"
-                />
-                <PersonCard
-                  title="Ushering Department"
-                  name="Leader Name"
-                  variant="secondary"
-                  textColor="light"
-                />
+              {/* Associate Pastors */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
+                  Associate Pastors
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {leadership.associates.map((pastor, index) => (
+                    <PersonCard
+                      key={index}
+                      title={pastor.title}
+                      name={pastor.name}
+                      variant="secondary"
+                      textColor="dark"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Board Members */}
+              <div className="bg-brand-neutral rounded-3xl p-8 md:p-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
+                  Board Members
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                  {leadership.board.map((member, index) => (
+                    <div key={index} className="text-center">
+                      <div className="w-full aspect-square bg-white rounded-lg mb-3"></div>
+                      <p className="text-sm md:text-base font-semibold text-brand-blue">
+                        {member.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Department Heads */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
+                  Department Heads
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {leadership.departmentHeads.map((head, index) => (
+                    <PersonCard
+                      key={index}
+                      title={head.title}
+                      name={head.name}
+                      variant="secondary"
+                      textColor="dark"
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </section>

@@ -25,8 +25,8 @@ export default function Footer({
   const cardStyles = {
     light: {
       bg: "bg-white",
-      textPrimary: "text-brand-neutral-darkest",
-      textSecondary: "text-brand-neutral-darkest/70",
+      textPrimary: "text-brand-neutral-dark",
+      textSecondary: "text-brand-neutral-dark/70",
       border: "border-brand-neutral",
     },
     dark: {
@@ -46,10 +46,10 @@ export default function Footer({
   const card = cardStyles[cardVariant];
   const borderColor =
     cardVariant === "light"
-      ? "border-brand-neutral-darkest/20"
+      ? "border-brand-neutral-dark/20"
       : "border-white/20";
   const copyrightColor =
-    cardVariant === "light" ? "text-brand-neutral-darkest/60" : "text-white/60";
+    cardVariant === "light" ? "text-brand-neutral-dark/60" : "text-white/60";
 
   return (
     <footer className={`${bgColorMap[bgColor]}`}>
@@ -120,10 +120,10 @@ export default function Footer({
                     aria-hidden="true"
                   />
                   <a
-                    href="tel:+233244251800"
+                    href="tel:+233271996677"
                     className={`${card.textSecondary} hover:text-brand-red transition-colors`}
                   >
-                    +233 (0) 24 425 1800
+                    +233 (0) 27 199 6677
                   </a>
                 </div>
                 <div className="flex items-center">

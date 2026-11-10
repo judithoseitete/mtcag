@@ -6,25 +6,19 @@ interface BeliefItemProps {
   number: number;
   title: string;
   description: string;
+  scripture?: string;
 }
 
 export default function BeliefItem({
   number,
   title,
   description,
+  scripture = "",
 }: BeliefItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Extract scripture references from description
-  const scriptureMatch = description.match(/\(([^)]+)\)$/);
-  const scripture = scriptureMatch ? scriptureMatch[1] : "";
-  const mainText = scripture
-    ? description.replace(/\s*\([^)]+\)$/, "")
-    : description;
-
-  // Check if text contains pipe-delimited bullet points
-  const hasBullets = mainText.includes("|");
-  const lines = hasBullets ? mainText.split("|") : [mainText];
+  // Split description by newlines for multi-paragraph content
+  const paragraphs = description.split("\n").filter((p) => p.trim());
 
   return (
     <div className="border-b-2 border-brand-neutral/20 flex group hover:bg-brand-neutral/10">
@@ -46,17 +40,17 @@ export default function BeliefItem({
           </span>
         </button>
         {isOpen && (
-          <div className="px-6 pb-6">
-            {lines.map((line, index) => (
+          <div className="px-6 pb-6 space-y-3">
+            {paragraphs.map((paragraph, index) => (
               <p
                 key={index}
-                className="text-lg md:text-xl text-brand-neutral/80 mb-2"
+                className="text-lg md:text-xl text-brand-neutral/80 whitespace-pre-line"
               >
-                {line.trim()}
+                {paragraph}
               </p>
             ))}
             {scripture && (
-              <p className="text-sm md:text-base text-brand-neutral/60 mt-3">
+              <p className="text-sm md:text-base text-brand-neutral/60 mt-4 italic">
                 {scripture}
               </p>
             )}

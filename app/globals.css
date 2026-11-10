@@ -11,12 +11,7 @@
 
     /* Neutral Colors */
     --brand-neutral: #f5f8fc;
-    --brand-neutral-dark: #e8edf5;
-    --brand-neutral-darker: #dde5f0;
-    --brand-neutral-darkest: #8a9ab8;
-
-    /* Navy */
-    --brand-navy: #1a1f3a;
+    --brand-neutral-dark: #8a9ab8;
   }
 
   body {

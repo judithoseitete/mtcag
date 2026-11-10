@@ -5,10 +5,10 @@ export default function GivingSection() {
     <section className="bg-brand-neutral min-h-screen flex items-center py-8 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 xl:px-32 w-full">
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-neutral-darkest mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-neutral-dark mb-6">
             Support our mission
           </h2>
-          <p className="text-3xl md:text-4xl lg:text-5xl text-brand-neutral-darkest/80 max-w-2xl mx-auto mb-12 md:mb-16">
+          <p className="text-3xl md:text-4xl lg:text-5xl text-brand-neutral-dark/80 max-w-2xl mx-auto mb-12 md:mb-16">
             Your tithes, offerings, and generous gifts fuel the mission and
             ministry of the church
           </p>

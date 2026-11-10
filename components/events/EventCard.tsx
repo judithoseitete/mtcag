@@ -53,7 +53,7 @@ export default function EventCard({
             />
             <div className="h-48 bg-brand-neutral flex items-center justify-center">
               <Calendar
-                className="w-12 h-12 text-brand-neutral-darkest"
+                className="w-12 h-12 text-brand-neutral-dark"
                 aria-hidden="true"
               />
             </div>
@@ -61,7 +61,7 @@ export default function EventCard({
         ) : (
           <div className="h-48 bg-brand-neutral flex items-center justify-center">
             <Calendar
-              className="w-12 h-12 text-brand-neutral-darkest"
+              className="w-12 h-12 text-brand-neutral-dark"
               aria-hidden="true"
             />
           </div>

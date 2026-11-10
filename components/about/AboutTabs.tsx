@@ -1,6 +1,6 @@
 ﻿"use client";
 
-type AboutSection = "story" | "beliefs" | "pastors" | "board" | "leaders";
+type AboutSection = "who-we-are" | "our-story" | "beliefs" | "leadership";
 
 interface AboutTabsProps {
   activeTab: AboutSection;
@@ -9,11 +9,10 @@ interface AboutTabsProps {
 
 export default function AboutTabs({ activeTab, onTabChange }: AboutTabsProps) {
   const tabs: { id: AboutSection; label: string }[] = [
-    { id: "story", label: "Our Story" },
-    { id: "beliefs", label: "What We Believe" },
-    { id: "pastors", label: "Pastors" },
-    { id: "board", label: "Board Chairs" },
-    { id: "leaders", label: "Department Leaders" },
+    { id: "who-we-are", label: "Who We Are" },
+    { id: "our-story", label: "Our Story" },
+    { id: "beliefs", label: "Our Beliefs" },
+    { id: "leadership", label: "Leadership" },
   ];
 
   return (
@@ -63,7 +62,7 @@ export default function AboutTabs({ activeTab, onTabChange }: AboutTabsProps) {
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: var(--brand-navy);
+          background: var(--brand-blue);
         }
 
         .custom-scrollbar {

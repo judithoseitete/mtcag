@@ -157,7 +157,7 @@ export default function DepartmentTabs({
                 ${
                   activeTab === activeDropdownDept.id && activeSubTab === null
                     ? "bg-brand-blue text-white"
-                    : "text-brand-neutral-darkest hover:bg-brand-neutral"
+                    : "text-brand-neutral-dark hover:bg-brand-neutral"
                 }
               `}
             >
@@ -179,7 +179,7 @@ export default function DepartmentTabs({
                   activeTab === activeDropdownDept.id &&
                   activeSubTab === subDept.id
                     ? "bg-brand-blue text-white"
-                    : "text-brand-neutral-darkest hover:bg-brand-neutral"
+                    : "text-brand-neutral-dark hover:bg-brand-neutral"
                 }
               `}
             >
@@ -201,17 +201,17 @@ export default function DepartmentTabs({
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: var(--brand-navy);
+          background: var(--brand-blue);
           border-radius: 10px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: var(--brand-navy);
+          background: var(--brand-blue);
         }
 
         .custom-scrollbar {
           scrollbar-width: thin;
-          scrollbar-color: var(--brand-navy) var(--brand-neutral);
+          scrollbar-color: var(--brand-blue) var(--brand-neutral);
         }
 
         /* Desktop: hide scrollbar */
