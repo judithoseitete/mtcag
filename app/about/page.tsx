@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import BeliefItem from "@/components/about/BeliefItem";
@@ -14,6 +14,52 @@ type AboutSection = "who-we-are" | "our-story" | "beliefs" | "leadership";
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<AboutSection>("who-we-are");
+  const [activeStorySection, setActiveStorySection] =
+    useState<string>("ag-global");
+
+  // Load active tab from URL hash on mount
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "") as AboutSection;
+    const validTabs: AboutSection[] = ["who-we-are", "our-story", "beliefs", "leadership"];
+    if (hash && validTabs.includes(hash)) {
+      setActiveTab(hash);
+    }
+  }, []);
+
+  // Update URL hash when tab changes
+  const handleTabChange = (tab: AboutSection) => {
+    setActiveTab(tab);
+    window.history.replaceState(null, "", `#${tab}`);
+  };
+
+  // Track scroll position for active section highlighting
+  useEffect(() => {
+    if (activeTab !== "our-story") return;
+
+    const handleScroll = () => {
+      const sections = ["ag-global", "ag-ghana", "mtc-ag"];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveStorySection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeTab]);
 
   return (
     <>
@@ -22,17 +68,21 @@ export default function AboutPage() {
         <section className="bg-brand-blue min-h-[30vh] py-8 md:py-12 flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase">
-              we are more than conquerors.
+              {activeTab === "who-we-are" && "we are more than conquerors."}
+              {activeTab === "our-story" && "this is our story."}
+              {activeTab === "beliefs" &&
+                "we believe in sixteen fundamental truths."}
+              {activeTab === "leadership" && "meet our pastors & leaders."}
             </h1>
           </div>
         </section>
 
         {/* Tabs */}
-        <AboutTabs activeTab={activeTab} onTabChange={setActiveTab} />
+        <AboutTabs activeTab={activeTab} onTabChange={handleTabChange} />
 
         {/* Who We Are */}
         {activeTab === "who-we-are" && (
-          <section className="pt-8 pb-16 md:pt-10 md:pb-20">
+          <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Left column - Text content */}
               <div className="max-w-4xl pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8 flex flex-col justify-between h-full">
@@ -73,30 +123,39 @@ export default function AboutPage() {
 
         {/* Our Story */}
         {activeTab === "our-story" && (
-          <section className="py-16 md:py-20">
+          <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex gap-8">
+              <div className="flex gap-4 lg:gap-6">
                 {/* Sticky Side Navigation - Desktop and Tablet */}
-                <nav className="hidden md:block w-64 flex-shrink-0">
-                  <div className="sticky top-32 space-y-2">
-                    <h3 className="text-sm font-semibold text-brand-blue/60 uppercase tracking-wider mb-4">
-                      Our Story
-                    </h3>
+                <nav className="hidden md:block w-48 flex-shrink-0">
+                  <div className="sticky top-40 space-y-2 border-l-2 border-brand-blue pl-4">
                     <a
                       href="#ag-global"
-                      className="block px-4 py-2 text-brand-blue hover:bg-brand-neutral rounded-lg transition-colors font-medium"
+                      className={`block py-2 transition-colors text-lg font-medium ${
+                        activeStorySection === "ag-global"
+                          ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
+                          : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
+                      }`}
                     >
                       AG Global
                     </a>
                     <a
                       href="#ag-ghana"
-                      className="block px-4 py-2 text-brand-blue hover:bg-brand-neutral rounded-lg transition-colors font-medium"
+                      className={`block py-2 transition-colors text-lg font-medium ${
+                        activeStorySection === "ag-ghana"
+                          ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
+                          : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
+                      }`}
                     >
                       AG Ghana
                     </a>
                     <a
                       href="#mtc-ag"
-                      className="block px-4 py-2 text-brand-blue hover:bg-brand-neutral rounded-lg transition-colors font-medium"
+                      className={`block py-2 transition-colors text-lg font-medium ${
+                        activeStorySection === "mtc-ag"
+                          ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
+                          : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
+                      }`}
                     >
                       MTC AG
                     </a>
@@ -106,7 +165,7 @@ export default function AboutPage() {
                 {/* Main Content */}
                 <div className="flex-1 space-y-16">
                   {/* AG Global */}
-                  <div id="ag-global" className="scroll-mt-24">
+                  <div id="ag-global" className="scroll-mt-40">
                     <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
                       <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                         {ourStory.agGlobal.title}
@@ -131,7 +190,7 @@ export default function AboutPage() {
                   </div>
 
                   {/* AG Ghana */}
-                  <div id="ag-ghana" className="scroll-mt-24">
+                  <div id="ag-ghana" className="scroll-mt-40">
                     <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
                       <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                         {ourStory.agGhana.title}
@@ -156,7 +215,7 @@ export default function AboutPage() {
                   </div>
 
                   {/* MTC AG */}
-                  <div id="mtc-ag" className="scroll-mt-24">
+                  <div id="mtc-ag" className="scroll-mt-40">
                     <div>
                       <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-12 text-center">
                         {ourStory.mtcAg.title}
@@ -251,12 +310,9 @@ export default function AboutPage() {
 
         {/* Beliefs Section */}
         {activeTab === "beliefs" && (
-          <section className="py-16 md:py-20 bg-white">
+          <section className="pt-4 pb-16 md:pt-16 md:pb-32 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="bg-brand-blue rounded-3xl px-4 py-8 md:px-16 md:py-20 lg:px-24 lg:py-24">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-neutral mb-8 md:mb-12 text-center">
-                  We believe in sixteen fundamental truths
-                </h2>
                 <div className="space-y-0">
                   {beliefs.map((belief) => (
                     <BeliefItem
@@ -275,7 +331,7 @@ export default function AboutPage() {
 
         {/* Leadership */}
         {activeTab === "leadership" && (
-          <section className="py-16 md:py-20">
+          <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
               {/* Senior Pastor & Wife */}
               <div>
