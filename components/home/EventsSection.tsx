@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { useInfiniteCarousel } from "@/hooks/useInfiniteCarousel";
-import EventCard from "./EventCard";
+import EventCard from "@/components/events/EventCard";
 import { CAROUSEL_CONFIG } from "@/constants/carousel";
 import { getUpcomingEvents } from "@/constants/weeklySchedule";
 
@@ -59,7 +59,13 @@ export default function EventsSection() {
             }}
           >
             {infiniteEvents.map((event, index) => (
-              <EventCard key={`${event.id}-${index}`} event={event} />
+              <EventCard
+                key={`${event.id}-${index}`}
+                title={event.title}
+                description={event.description}
+                datetime={event.datetime}
+                variant="carousel"
+              />
             ))}
           </div>
 
@@ -73,6 +79,7 @@ export default function EventsSection() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -93,6 +100,7 @@ export default function EventsSection() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"

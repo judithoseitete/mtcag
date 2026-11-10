@@ -10,14 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          blue: "#303181",
-          yellow: "#EFE10F",
-          red: "#F73C4A",
-          neutral: "#F5F8FC",
-          "neutral-dark": "#E8EDF5",
-          "neutral-darker": "#DDE5F0",
-          "neutral-darkest": "#8A9AB8",
-          navy: "#1A1F3A",
+          blue: "var(--brand-blue)",
+          yellow: "var(--brand-yellow)",
+          red: "var(--brand-red)",
+          neutral: "var(--brand-neutral)",
+          "neutral-dark": "var(--brand-neutral-dark)",
+          "neutral-darker": "var(--brand-neutral-darker)",
+          "neutral-darkest": "var(--brand-neutral-darkest)",
+          navy: "var(--brand-navy)",
         },
       },
     },

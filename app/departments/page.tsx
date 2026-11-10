@@ -49,13 +49,13 @@ export default function DepartmentsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Department Header */}
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary mb-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-4">
                 {activeContent.name}
               </h2>
-              <p className="text-xl text-brand-blue-primary/80 mb-3">
+              <p className="text-xl text-brand-blue/80 mb-3">
                 {activeContent.description}
               </p>
-              <div className="flex flex-col md:flex-row gap-3 text-brand-blue-primary/70">
+              <div className="flex flex-col md:flex-row gap-3 text-brand-blue/70">
                 {activeContent.motto && (
                   <p className="text-lg italic">
                     &quot;{activeContent.motto}&quot;
@@ -77,14 +77,14 @@ export default function DepartmentsPage() {
                 <div className="flex flex-col md:flex-row gap-4 mt-4">
                   {"meetingTime" in activeContent &&
                     activeContent.meetingTime && (
-                      <div className="flex items-center gap-2 text-brand-blue-primary/70">
-                        <Clock className="w-5 h-5" />
+                      <div className="flex items-center gap-2 text-brand-blue/70">
+                        <Clock className="w-5 h-5" aria-hidden="true" />
                         <span>{activeContent.meetingTime}</span>
                       </div>
                     )}
                   {"location" in activeContent && activeContent.location && (
-                    <div className="flex items-center gap-2 text-brand-blue-primary/70">
-                      <MapPin className="w-5 h-5" />
+                    <div className="flex items-center gap-2 text-brand-blue/70">
+                      <MapPin className="w-5 h-5" aria-hidden="true" />
                       <span>{activeContent.location}</span>
                     </div>
                   )}

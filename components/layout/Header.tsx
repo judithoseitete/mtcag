@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,6 +17,55 @@ const navLinks = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Mobile menu toggle handler
+  const handleMobileMenuToggle = useCallback(() => {
+    setMobileMenuOpen((prev) => !prev);
+  }, []);
+
+  // Close menu handler
+  const handleCloseMenu = useCallback(() => {
+    setMobileMenuOpen(false);
+  }, []);
+
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      return;
+    }
+
+    // Focus first menu item when menu opens
+    const firstMenuItem = document.querySelector("[data-mobile-menu-item]");
+    if (firstMenuItem) {
+      (firstMenuItem as HTMLElement).focus();
+    }
+
+    // Trap focus within menu
+    const handleTabKey = (e: KeyboardEvent) => {
+      const focusableElements = document.querySelectorAll(
+        "[data-mobile-menu] a, [data-mobile-menu] button",
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[
+        focusableElements.length - 1
+      ] as HTMLElement;
+
+      if (e.key === "Tab") {
+        if (e.shiftKey && document.activeElement === firstElement) {
+          // Shift+Tab on first element: cycle to last
+          e.preventDefault();
+          lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          // Tab on last element: cycle to first
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleTabKey);
+    return () => document.removeEventListener("keydown", handleTabKey);
+  }, [mobileMenuOpen]);
+
   return (
     <header className="bg-white border-b-2 border-brand-blue/20 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,8 +74,9 @@ export default function Header() {
           <button
             type="button"
             className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-brand-blue hover:text-brand-red hover:bg-brand-neutral transition-colors mr-4"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            onClick={handleMobileMenuToggle}
+            aria-label="Open navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
             <svg
               className="h-6 w-6"
@@ -78,21 +128,23 @@ export default function Header() {
       {mobileMenuOpen && (
         <div
           className="md:hidden fixed inset-0 bg-black/50 z-40"
-          onClick={() => setMobileMenuOpen(false)}
+          onClick={handleCloseMenu}
         />
       )}
 
       {/* Mobile Menu */}
       <div
+        data-mobile-menu
         className={`md:hidden fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="p-4">
           <button
-            onClick={() => setMobileMenuOpen(false)}
+            data-mobile-menu-item
+            onClick={handleCloseMenu}
             className="mb-8 p-2 rounded-md text-brand-blue hover:text-brand-red hover:bg-brand-neutral transition-colors"
-            aria-label="Close menu"
+            aria-label="Close navigation menu"
           >
             <svg
               className="h-6 w-6"
@@ -100,6 +152,7 @@ export default function Header() {
               viewBox="0 0 24 24"
               strokeWidth="2"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -115,7 +168,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className="block px-4 py-3 rounded-md text-brand-blue hover:text-brand-red hover:bg-brand-neutral font-medium transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={handleCloseMenu}
               >
                 {link.label}
               </Link>

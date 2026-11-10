@@ -1,4 +1,8 @@
-﻿interface FeaturedEventHeroProps {
+﻿"use client";
+
+import Image from "next/image";
+
+interface FeaturedEventHeroProps {
   title: string;
   date: string;
   time: string;
@@ -16,13 +20,20 @@ export default function FeaturedEventHero({
   imageUrl,
 }: FeaturedEventHeroProps) {
   return (
-    <section className="relative bg-brand-blue-primary min-h-[60vh] md:min-h-[70vh] flex items-center">
+    <section className="relative bg-brand-blue min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
       {/* Background Image */}
       {imageUrl && (
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-        ></div>
+        <div className="absolute inset-0">
+          <Image
+            src={imageUrl}
+            alt={`${title} event image`}
+            fill
+            sizes="100vw"
+            className="object-cover opacity-30"
+            loading="lazy"
+            priority={false}
+          />
+        </div>
       )}
 
       {/* Content */}
@@ -46,6 +57,7 @@ export default function FeaturedEventHero({
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -62,6 +74,7 @@ export default function FeaturedEventHero({
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -78,6 +91,7 @@ export default function FeaturedEventHero({
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -97,7 +111,7 @@ export default function FeaturedEventHero({
           </div>
 
           {/* CTA Button */}
-          <button className="bg-brand-neutral text-brand-blue-primary px-8 py-4 rounded-lg text-lg font-bold hover:bg-brand-neutral/90 transition-colors">
+          <button className="bg-brand-neutral text-brand-blue px-8 py-4 rounded-lg text-lg font-bold hover:bg-brand-neutral/90 transition-colors">
             Learn More
           </button>
         </div>

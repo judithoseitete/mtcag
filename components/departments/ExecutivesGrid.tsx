@@ -53,7 +53,7 @@ export default function ExecutivesGrid({ executives }: ExecutivesGridProps) {
 
   return (
     <div>
-      <h3 className="text-2xl md:text-3xl font-bold text-brand-blue-primary mb-6">
+      <h3 className="text-2xl md:text-3xl font-bold text-brand-blue mb-6">
         Executive Team
       </h3>
 
@@ -81,17 +81,17 @@ export default function ExecutivesGrid({ executives }: ExecutivesGridProps) {
         {/* Navigation Buttons */}
         <button
           onClick={handlePrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/90 hover:bg-white text-brand-blue-primary p-2 rounded-full shadow-lg transition-all z-10"
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/90 hover:bg-white text-brand-blue p-2 rounded-full shadow-lg transition-all z-10"
           aria-label="Previous"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-6 h-6" aria-hidden="true" />
         </button>
         <button
           onClick={handleNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/90 hover:bg-white text-brand-blue-primary p-2 rounded-full shadow-lg transition-all z-10"
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/90 hover:bg-white text-brand-blue p-2 rounded-full shadow-lg transition-all z-10"
           aria-label="Next"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-6 h-6" aria-hidden="true" />
         </button>
 
         {/* Dots Indicator */}
@@ -102,8 +102,8 @@ export default function ExecutivesGrid({ executives }: ExecutivesGridProps) {
               onClick={() => setCurrentIndex(index)}
               className={`w-2 h-2 rounded-full transition-all ${
                 currentIndex === index
-                  ? "bg-brand-blue-primary w-8"
-                  : "bg-brand-blue-primary/30"
+                  ? "bg-brand-blue w-8"
+                  : "bg-brand-blue/30"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

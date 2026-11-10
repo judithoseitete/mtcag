@@ -1,16 +1,10 @@
-export interface Event {
-  id: number;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  description: string;
-  category?: string;
-  imageUrl?: string;
+import { Event } from "@/types";
+
+export interface EventExtended extends Event {
   featured?: boolean;
 }
 
-export const events: Event[] = [
+export const events: EventExtended[] = [
   {
     id: 1,
     title: "25th Anniversary Celebration",

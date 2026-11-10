@@ -12,8 +12,9 @@ export default function Section({
   className = "",
 }: SectionProps) {
   const sectionStyles = {
-    white: "bg-white min-h-[80vh] flex items-center py-8 md:py-20 px-4 sm:px-6 lg:px-8",
-    gray: "bg-brand-gray min-h-screen flex items-center py-8 md:py-20",
+    white:
+      "bg-white min-h-[80vh] flex items-center py-8 md:py-20 px-4 sm:px-6 lg:px-8",
+    gray: "bg-brand-neutral-dark min-h-screen flex items-center py-8 md:py-20",
     "full-height": "bg-white min-h-[80vh] flex items-center",
   };
 

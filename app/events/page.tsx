@@ -27,13 +27,14 @@ export default function EventsPage() {
       {/* Upcoming Events */}
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue-primary mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-8 md:mb-12">
             Other upcoming events
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {otherEvents.map((event) => (
               <EventCard
                 key={event.id}
+                variant="detailed"
                 title={event.title}
                 date={event.datetime.split(",")[0]}
                 time={event.datetime.split(",")[1]?.trim() || ""}
@@ -51,4 +52,3 @@ export default function EventsPage() {
     </main>
   );
 }
-

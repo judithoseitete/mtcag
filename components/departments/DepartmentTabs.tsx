@@ -91,7 +91,7 @@ export default function DepartmentTabs({
     <>
       <div
         ref={tabsRef}
-        className="sticky top-0 z-40 bg-white border-b-2 border-brand-blue-primary/20"
+        className="sticky top-0 z-40 bg-white border-b-2 border-brand-blue/20"
         style={{ top: "80px" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,7 +113,7 @@ export default function DepartmentTabs({
                       dropdown-container px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors flex items-center gap-1
                       ${
                         isActive
-                          ? "border-brand-blue-primary text-brand-blue"
+                          ? "border-brand-blue text-brand-blue"
                           : "border-transparent text-brand-blue/60 hover:text-brand-blue hover:border-brand-blue/30"
                       }
                     `}
@@ -124,6 +124,7 @@ export default function DepartmentTabs({
                         className={`w-4 h-4 transition-transform ${
                           isDropdownOpen ? "rotate-180" : ""
                         }`}
+                        aria-hidden="true"
                       />
                     )}
                   </button>
@@ -137,7 +138,7 @@ export default function DepartmentTabs({
       {/* Fixed Position Dropdown - Rendered at document level */}
       {openDropdown && activeDropdownDept && (
         <div
-          className="dropdown-container fixed bg-white shadow-2xl rounded-lg border-2 border-brand-blue-primary/30 py-2 min-w-[240px] z-[45]"
+          className="dropdown-container fixed bg-white shadow-2xl rounded-lg border-2 border-brand-blue/30 py-2 min-w-[240px] z-[45]"
           style={{
             top: `${dropdownPosition.top + 2}px`,
             left: `${dropdownPosition.left}px`,
@@ -156,7 +157,7 @@ export default function DepartmentTabs({
                 ${
                   activeTab === activeDropdownDept.id && activeSubTab === null
                     ? "bg-brand-blue text-white"
-                    : "text-brand-gray hover:bg-brand-neutral"
+                    : "text-brand-neutral-darkest hover:bg-brand-neutral"
                 }
               `}
             >
@@ -178,7 +179,7 @@ export default function DepartmentTabs({
                   activeTab === activeDropdownDept.id &&
                   activeSubTab === subDept.id
                     ? "bg-brand-blue text-white"
-                    : "text-brand-gray hover:bg-brand-neutral"
+                    : "text-brand-neutral-darkest hover:bg-brand-neutral"
                 }
               `}
             >
@@ -195,22 +196,22 @@ export default function DepartmentTabs({
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f5f4f2;
+          background: var(--brand-neutral);
           border-radius: 10px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #353533;
+          background: var(--brand-navy);
           border-radius: 10px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #2a2a28;
+          background: var(--brand-navy);
         }
 
         .custom-scrollbar {
           scrollbar-width: thin;
-          scrollbar-color: #353533 #f5f4f2;
+          scrollbar-color: var(--brand-navy) var(--brand-neutral);
         }
 
         /* Desktop: hide scrollbar */

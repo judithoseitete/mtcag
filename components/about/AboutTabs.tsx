@@ -53,22 +53,22 @@ export default function AboutTabs({ activeTab, onTabChange }: AboutTabsProps) {
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f5f8fc;
+          background: var(--brand-neutral);
           border-radius: 10px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #303181;
+          background: var(--brand-blue);
           border-radius: 10px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #1a1f3a;
+          background: var(--brand-navy);
         }
 
         .custom-scrollbar {
           scrollbar-width: thin;
-          scrollbar-color: #303181 #f5f8fc;
+          scrollbar-color: var(--brand-blue) var(--brand-neutral);
         }
 
         /* Desktop: hide scrollbar */

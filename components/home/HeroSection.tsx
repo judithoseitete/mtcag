@@ -26,11 +26,14 @@ export default function HeroSection() {
       if (e.key === "ArrowLeft" && currentSlide > 0) {
         changeSlide(currentSlide - 1);
       }
-      if (e.key === "ArrowRight" && currentSlide < CAROUSEL_CONFIG.HERO.totalSlides - 1) {
+      if (
+        e.key === "ArrowRight" &&
+        currentSlide < CAROUSEL_CONFIG.HERO.totalSlides - 1
+      ) {
         changeSlide(currentSlide + 1);
       }
     },
-    [currentSlide, changeSlide]
+    [currentSlide, changeSlide],
   );
 
   // Keyboard navigation setup
@@ -111,6 +114,7 @@ export default function HeroSection() {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -133,6 +137,7 @@ export default function HeroSection() {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
