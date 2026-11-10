@@ -41,14 +41,33 @@ export default function BeliefItem({
         </button>
         {isOpen && (
           <div className="px-6 pb-6 space-y-3">
-            {paragraphs.map((paragraph, index) => (
-              <p
-                key={index}
-                className="text-lg md:text-xl text-white/80 whitespace-pre-line"
-              >
-                {paragraph}
-              </p>
-            ))}
+            {paragraphs.map((paragraph, index) => {
+              // Check if this line is a subheader (ends with colon and has text before it)
+              const isSubheader = paragraph.match(/^([^:]+):\s*(.+)$/);
+              
+              if (isSubheader) {
+                const [, subheaderText, content] = isSubheader;
+                return (
+                  <div key={index} className="space-y-2">
+                    <h4 className="text-lg md:text-xl font-semibold text-white">
+                      {subheaderText}
+                    </h4>
+                    <p className="text-lg md:text-xl text-white/80 whitespace-pre-line">
+                      {content}
+                    </p>
+                  </div>
+                );
+              }
+              
+              return (
+                <p
+                  key={index}
+                  className="text-lg md:text-xl text-white/80 whitespace-pre-line"
+                >
+                  {paragraph}
+                </p>
+              );
+            })}
             {scripture && (
               <p className="text-sm md:text-base text-white/60 mt-4 italic">
                 {scripture}
