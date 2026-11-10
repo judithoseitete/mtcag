@@ -1,4 +1,4 @@
-export interface Belief {
+ï»¿export interface Belief {
   number: number;
   title: string;
   description: string;
@@ -10,7 +10,7 @@ export const beliefs: Belief[] = [
     number: 1,
     title: "The Scriptures Inspired",
     description:
-      "We believe that the Scriptures, both Old and New Testaments, are verbally inspired of God and are the revelation of God to man, the infallible, authoritative rule of faith and conduct",
+      "We believe that the Scriptures, both Old and New Testaments, are verbally inspired of God and are the revelation of God to man, the infallible, authoritative rule of faith and conduct.",
     scripture: "2 Timothy 3:15-17; 1 Thessalonians 2:13; 2 Peter 1:21",
   },
   {
@@ -24,14 +24,15 @@ export const beliefs: Belief[] = [
     number: 3,
     title: "The Deity of the Lord Jesus Christ",
     description:
-"We believe that the Lord Jesus Christ is the eternal Son of God. The Scriptures declare:\n• His virgin birth\n• His sinless life\n• His miracles\n• His substitutionary work on the cross\n• His bodily resurrection from the dead\n• His exaltation to the right hand of God",
-    scripture: "Matthew 1:23; Luke 1:31, 35; Hebrews 7:26; 1 Peter 2:22; Acts 2:22; 10:38; 1 Corinthians 15:3; 2 Corinthians 5:21; Matthew 28:6; Luke 24:39; 1 Corinthians 15:4; Acts 1:9, 11; 2:33; Philippians 2:9-11; Hebrews 1:3",
+      "We believe that the Lord Jesus Christ is the eternal Son of God. The Scriptures declare:\nâ€¢ His virgin birth\nâ€¢ His sinless life\nâ€¢ His miracles\nâ€¢ His substitutionary work on the cross\nâ€¢ His bodily resurrection from the dead\nâ€¢ His exaltation to the right hand of God",
+    scripture:
+      "Matthew 1:23; Luke 1:31, 35; Hebrews 7:26; 1 Peter 2:22; Acts 2:22; 10:38; 1 Corinthians 15:3; 2 Corinthians 5:21; Matthew 28:6; Luke 24:39; 1 Corinthians 15:4; Acts 1:9, 11; 2:33; Philippians 2:9-11; Hebrews 1:3",
   },
   {
     number: 4,
     title: "The Fall of Man",
     description:
-      'We believe that man was created good and upright; for God said, "Let us make man in our image, after our likeness." However, man by voluntary transgression fell and thereby incurred not only physical death but also spiritual death, which is separation from God',
+      'We believe that man was created good and upright; for God said, "Let us make man in our image, after our likeness." However, man by voluntary transgression fell and thereby incurred not only physical death but also spiritual death, which is separation from God.',
     scripture: "Genesis 1:26, 27; 2:17; 3:6; Romans 5:12-19",
   },
   {
@@ -83,7 +84,7 @@ export const beliefs: Belief[] = [
     number: 11,
     title: "The Ministry",
     description:
-      "We believe that a divine call and scripturally ordained ministry has been provided by our Lord for the threefold purpose of leading the Church in:\n? Evangelization of the world (Mark 16:15-20)\n? Worship of God (John 4:23, 24)\n? Building a Body of saints being perfected in the image of His son (Ephesians 4:11, 16)\n? Meeting human need with ministries of love and compassion. (Psalm 112:9; Galatians 2:10; 6:10, James 1:27)",
+      "We believe that a divine call and scripturally ordained ministry has been provided by our Lord for the threefold purpose of leading the Church in:\nâ€¢ Evangelization of the world (Mark 16:15-20)\nâ€¢ Worship of God (John 4:23, 24)\nâ€¢ Building a Body of saints being perfected in the image of His son (Ephesians 4:11, 16)\nâ€¢ Meeting human need with ministries of love and compassion. (Psalm 112:9; Galatians 2:10; 6:10, James 1:27)",
     scripture:
       "Mark 16:15-20; John 4:23, 24; Ephesians 4:11, 16; Psalm 112:9; Galatians 2:10; 6:10; James 1:27",
   },
