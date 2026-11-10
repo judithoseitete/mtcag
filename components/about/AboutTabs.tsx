@@ -17,10 +17,7 @@ export default function AboutTabs({ activeTab, onTabChange }: AboutTabsProps) {
 
   return (
     <>
-      <div
-        className="sticky z-40 bg-white border-b border-brand-blue/20"
-        style={{ top: "80px" }}
-      >
+      <div className="sticky top-16 md:top-20 z-40 bg-white border-b-2 border-brand-blue/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex overflow-x-auto -mb-px custom-scrollbar">
             <div className="flex space-x-2 md:space-x-4">
@@ -29,7 +26,7 @@ export default function AboutTabs({ activeTab, onTabChange }: AboutTabsProps) {
                   key={tab.id}
                   onClick={() => onTabChange(tab.id)}
                   className={`
-                    px-4 md:px-6 py-3 md:py-4 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors
+                    px-4 md:px-6 py-3 md:py-4 font-semibold text-base md:text-lg whitespace-nowrap border-b-4 transition-colors
                     ${
                       activeTab === tab.id
                         ? "border-brand-blue text-brand-blue"

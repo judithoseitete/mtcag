@@ -3,8 +3,9 @@
 export const whoWeAre = {
   title: "Who We Are",
   content: [
-    "More Than Conquerors Assemblies of God (MTC AG) is a pentecostal church located in Sowutoum, Accra, Ghana. We are a community united by faith in Jesus Christ and empowered by the Holy Spirit to live as more than conquerors in every area of life.",
-    "As part of AG Ghana and AG global—the largest pentecostal denomination in the world—we are committed to biblical teaching, preaching the Gospel, and serving our community.",
+    "More Than Conquerors Assemblies of God (MTC AG) is a pentecostal church located in Sowutoum, Accra, Ghana.",
+    "We are a family united by faith in Jesus Christ and empowered by the Holy Spirit to live as more than conquerors in every area of life.",
+    "As part of AG Ghana and AG global, the largest pentecostal denomination in the world, we are committed to biblical teaching, preaching the Gospel, and serving our community.",
   ],
   scripture: {
     text: '"In all these things, we are more than conquerors through Him who loved us."',

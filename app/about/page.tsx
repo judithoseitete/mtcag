@@ -19,10 +19,10 @@ export default function AboutPage() {
     <>
       <main className="bg-white">
         {/* Hero Section */}
-        <section className="bg-brand-blue min-h-[30vh] py-8 md:py-12">
+        <section className="bg-brand-blue min-h-[30vh] py-8 md:py-12 flex items-center justify-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-              About Us
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase">
+              we are more than conquerors.
             </h1>
           </div>
         </section>
@@ -32,28 +32,40 @@ export default function AboutPage() {
 
         {/* Who We Are */}
         {activeTab === "who-we-are" && (
-          <section className="py-16 md:py-20">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-blue mb-8">
-                {whoWeAre.title}
-              </h2>
-              <div className="space-y-6">
-                {whoWeAre.content.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className="text-lg md:text-xl text-brand-blue/80"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-                <div className="mt-12 pt-8 border-t-2 border-brand-blue/20">
-                  <p className="text-2xl md:text-3xl text-brand-blue italic mb-3">
+          <section className="pt-8 pb-16 md:pt-10 md:pb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Left column - Text content */}
+              <div className="max-w-4xl pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8 flex flex-col justify-between h-full">
+                <div className="space-y-6 text-left">
+                  {whoWeAre.content.map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className="text-xl md:text-2xl text-brand-blue/80"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-12">
+                  <p className="text-2xl md:text-3xl lg:text-4xl text-brand-blue mb-3">
                     {whoWeAre.scripture.text}
                   </p>
-                  <p className="text-lg md:text-xl text-brand-blue/70">
-                    — {whoWeAre.scripture.reference}
+                  <p className="text-xl md:text-2xl text-brand-blue/70">
+                    {whoWeAre.scripture.reference}
                   </p>
                 </div>
+              </div>
+
+              {/* Right column - Three tilted images */}
+              <div className="flex flex-col items-center justify-center p-8">
+                {/* First image - tilted left, shifted left */}
+                <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-blue rounded-lg transform -rotate-6 -translate-x-12 md:-translate-x-16 lg:-translate-x-24 shadow-lg"></div>
+
+                {/* Second image - tilted right, shifted right */}
+                <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-neutral-dark rounded-lg transform rotate-6 translate-x-12 md:translate-x-16 lg:translate-x-24 shadow-lg -mt-10 md:-mt-12 lg:-mt-16"></div>
+
+                {/* Third image - tilted left, shifted left (same as first) */}
+                <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-blue rounded-lg transform -rotate-6 -translate-x-12 md:-translate-x-16 lg:-translate-x-24 shadow-lg -mt-10 md:-mt-12 lg:-mt-16"></div>
               </div>
             </div>
           </section>
@@ -62,131 +74,175 @@ export default function AboutPage() {
         {/* Our Story */}
         {activeTab === "our-story" && (
           <section className="py-16 md:py-20">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-              {/* AG Global */}
-              <div className="bg-brand-neutral rounded-3xl p-8 md:p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-6">
-                  {ourStory.agGlobal.title}
-                </h2>
-                <div className="space-y-4">
-                  {ourStory.agGlobal.content.map((paragraph, index) => (
-                    <p key={index} className="text-lg text-brand-blue/80">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                <Link
-                  href={ourStory.agGlobal.link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-6 text-brand-blue hover:text-brand-red font-semibold transition-colors"
-                >
-                  {ourStory.agGlobal.link.text}
-                  <ExternalLink className="w-4 h-4" />
-                </Link>
-              </div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex gap-8">
+                {/* Sticky Side Navigation - Desktop and Tablet */}
+                <nav className="hidden md:block w-64 flex-shrink-0">
+                  <div className="sticky top-32 space-y-2">
+                    <h3 className="text-sm font-semibold text-brand-blue/60 uppercase tracking-wider mb-4">
+                      Our Story
+                    </h3>
+                    <a
+                      href="#ag-global"
+                      className="block px-4 py-2 text-brand-blue hover:bg-brand-neutral rounded-lg transition-colors font-medium"
+                    >
+                      AG Global
+                    </a>
+                    <a
+                      href="#ag-ghana"
+                      className="block px-4 py-2 text-brand-blue hover:bg-brand-neutral rounded-lg transition-colors font-medium"
+                    >
+                      AG Ghana
+                    </a>
+                    <a
+                      href="#mtc-ag"
+                      className="block px-4 py-2 text-brand-blue hover:bg-brand-neutral rounded-lg transition-colors font-medium"
+                    >
+                      MTC AG
+                    </a>
+                  </div>
+                </nav>
 
-              {/* AG Ghana */}
-              <div className="bg-brand-neutral rounded-3xl p-8 md:p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-6">
-                  {ourStory.agGhana.title}
-                </h2>
-                <div className="space-y-4">
-                  {ourStory.agGhana.content.map((paragraph, index) => (
-                    <p key={index} className="text-lg text-brand-blue/80">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                <Link
-                  href={ourStory.agGhana.link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-6 text-brand-blue hover:text-brand-red font-semibold transition-colors"
-                >
-                  {ourStory.agGhana.link.text}
-                  <ExternalLink className="w-4 h-4" />
-                </Link>
-              </div>
-
-              {/* MTC AG */}
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-12 text-center">
-                  {ourStory.mtcAg.title}
-                </h2>
-                <div className="space-y-12">
-                  {ourStory.mtcAg.sections.map((section, sectionIndex) => (
-                    <div key={sectionIndex} className="space-y-4">
-                      <h3 className="text-2xl md:text-3xl font-bold text-brand-blue">
-                        {section.heading}
-                      </h3>
+                {/* Main Content */}
+                <div className="flex-1 space-y-16">
+                  {/* AG Global */}
+                  <div id="ag-global" className="scroll-mt-24">
+                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                        {ourStory.agGlobal.title}
+                      </h2>
                       <div className="space-y-4">
-                        {section.content.map((paragraph, pIndex) => (
-                          <p
-                            key={pIndex}
-                            className="text-lg text-brand-blue/80"
-                          >
+                        {ourStory.agGlobal.content.map((paragraph, index) => (
+                          <p key={index} className="text-lg text-white/90">
                             {paragraph}
                           </p>
                         ))}
-                        {section.list && (
-                          <ul className="ml-6 space-y-2">
-                            {section.list.map((item, iIndex) => (
-                              <li
-                                key={iIndex}
-                                className="text-lg text-brand-blue/80 list-disc"
-                              >
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {section.contentAfter &&
-                          section.contentAfter.map((paragraph, pIndex) => (
-                            <p
-                              key={`after-${pIndex}`}
-                              className="text-lg text-brand-blue/80"
-                            >
-                              {paragraph}
-                            </p>
-                          ))}
-                        {section.sublist && (
-                          <div className="ml-6 space-y-3">
-                            {Object.entries(section.sublist).map(
-                              ([district, churches], dIndex) => (
-                                <div key={dIndex}>
-                                  <p className="font-semibold text-lg text-brand-blue">
-                                    {district}
+                      </div>
+                      <Link
+                        href={ourStory.agGlobal.link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-6 text-white hover:text-brand-yellow font-semibold transition-colors"
+                      >
+                        {ourStory.agGlobal.link.text}
+                        <ExternalLink className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* AG Ghana */}
+                  <div id="ag-ghana" className="scroll-mt-24">
+                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                        {ourStory.agGhana.title}
+                      </h2>
+                      <div className="space-y-4">
+                        {ourStory.agGhana.content.map((paragraph, index) => (
+                          <p key={index} className="text-lg text-white/90">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                      <Link
+                        href={ourStory.agGhana.link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-6 text-white hover:text-brand-yellow font-semibold transition-colors"
+                      >
+                        {ourStory.agGhana.link.text}
+                        <ExternalLink className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* MTC AG */}
+                  <div id="mtc-ag" className="scroll-mt-24">
+                    <div>
+                      <h2 className="text-4xl md:text-5xl font-bold text-brand-blue mb-12 text-center">
+                        {ourStory.mtcAg.title}
+                      </h2>
+                      <div className="space-y-12">
+                        {ourStory.mtcAg.sections.map(
+                          (section, sectionIndex) => (
+                            <div key={sectionIndex} className="space-y-4">
+                              <h3 className="text-2xl md:text-3xl font-bold text-brand-blue">
+                                {section.heading}
+                              </h3>
+                              <div className="space-y-4">
+                                {section.content.map((paragraph, pIndex) => (
+                                  <p
+                                    key={pIndex}
+                                    className="text-lg text-brand-blue/80"
+                                  >
+                                    {paragraph}
                                   </p>
-                                  <ul className="ml-6 space-y-1">
-                                    {(churches as string[]).map(
-                                      (church, cIndex) => (
-                                        <li
-                                          key={cIndex}
-                                          className="text-lg text-brand-blue/80 list-disc"
-                                        >
-                                          {church}
-                                        </li>
+                                ))}
+                                {section.list && (
+                                  <ul className="ml-6 space-y-2">
+                                    {section.list.map((item, iIndex) => (
+                                      <li
+                                        key={iIndex}
+                                        className="text-lg text-brand-blue/80 list-disc"
+                                      >
+                                        {item}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                                {section.contentAfter &&
+                                  section.contentAfter.map(
+                                    (paragraph, pIndex) => (
+                                      <p
+                                        key={`after-${pIndex}`}
+                                        className="text-lg text-brand-blue/80"
+                                      >
+                                        {paragraph}
+                                      </p>
+                                    ),
+                                  )}
+                                {section.sublist && (
+                                  <div className="ml-6 space-y-3">
+                                    {Object.entries(section.sublist).map(
+                                      ([district, churches], dIndex) => (
+                                        <div key={dIndex}>
+                                          <p className="font-semibold text-lg text-brand-blue">
+                                            {district}
+                                          </p>
+                                          <ul className="ml-6 space-y-1">
+                                            {(churches as string[]).map(
+                                              (church, cIndex) => (
+                                                <li
+                                                  key={cIndex}
+                                                  className="text-lg text-brand-blue/80 list-disc"
+                                                >
+                                                  {church}
+                                                </li>
+                                              ),
+                                            )}
+                                          </ul>
+                                        </div>
                                       ),
                                     )}
-                                  </ul>
-                                </div>
-                              ),
-                            )}
-                          </div>
+                                  </div>
+                                )}
+                                {section.contentAfter2 &&
+                                  section.contentAfter2.map(
+                                    (paragraph, pIndex) => (
+                                      <p
+                                        key={`after2-${pIndex}`}
+                                        className="text-lg text-brand-blue/80"
+                                      >
+                                        {paragraph}
+                                      </p>
+                                    ),
+                                  )}
+                              </div>
+                            </div>
+                          ),
                         )}
-                        {section.contentAfter2 &&
-                          section.contentAfter2.map((paragraph, pIndex) => (
-                            <p
-                              key={`after2-${pIndex}`}
-                              className="text-lg text-brand-blue/80"
-                            >
-                              {paragraph}
-                            </p>
-                          ))}
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
             </div>
