@@ -77,12 +77,14 @@ export default function SongDetailPage() {
               Back to Songs
             </Link>
             
-            <button
-              onClick={() => setShowTranslation(!showTranslation)}
-              className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm md:text-base"
-            >
-              {showTranslation ? "Hide" : "Show"} Translation
-            </button>
+            {(song.titleTranslation || song.sections.some(s => s.lines.some(l => l.translation))) && (
+              <button
+                onClick={() => setShowTranslation(!showTranslation)}
+                className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm md:text-base"
+              >
+                {showTranslation ? "Hide" : "Show"} Translation
+              </button>
+            )}
           </div>
 
           {/* Song Title */}
