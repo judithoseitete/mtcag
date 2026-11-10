@@ -1,16 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import BeliefItem from "@/components/about/BeliefItem";
-import PersonCard from "@/components/about/PersonCard";
 import AboutTabs from "@/components/about/AboutTabs";
+import StoryCard from "@/components/about/StoryCard";
+import OurStoryNav from "@/components/about/OurStoryNav";
+import MtcAgSection from "@/components/about/MtcAgSection";
+import LeadershipSection from "@/components/about/LeadershipSection";
 import { beliefs } from "@/constants/beliefs";
 import { whoWeAre, ourStory, leadership } from "@/constants/aboutContent";
-import { ExternalLink } from "lucide-react";
+import { HERO_TEXT } from "@/constants/aboutHeroText";
+import { useScrollTracking } from "@/hooks/useScrollTracking";
 
 type AboutSection = "who-we-are" | "our-story" | "beliefs" | "leadership";
+
+const STORY_NAV_ITEMS = [
+  { id: "ag-global", label: "AG Global" },
+  { id: "ag-ghana", label: "AG Ghana" },
+  { id: "mtc-ag", label: "MTC AG" },
+];
 
 export default function AboutPage() {
   const [mounted, setMounted] = useState(false);
@@ -30,43 +39,18 @@ export default function AboutPage() {
     }
     setMounted(true);
   }, []);
-  const [activeStorySection, setActiveStorySection] =
-    useState<string>("ag-global");
+
+  // Track scroll position for Our Story section
+  const activeStorySection = useScrollTracking(
+    ["ag-global", "ag-ghana", "mtc-ag"],
+    activeTab === "our-story",
+  );
 
   // Update URL hash when tab changes
   const handleTabChange = (tab: AboutSection) => {
     setActiveTab(tab);
     window.history.replaceState(null, "", `#${tab}`);
   };
-
-  // Track scroll position for active section highlighting
-  useEffect(() => {
-    if (activeTab !== "our-story") return;
-
-    const handleScroll = () => {
-      const sections = ["ag-global", "ag-ghana", "mtc-ag"];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveStorySection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeTab]);
 
   return (
     <>
@@ -78,16 +62,7 @@ export default function AboutPage() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase"
               suppressHydrationWarning
             >
-              {mounted &&
-                activeTab === "who-we-are" &&
-                "we are more than conquerors."}
-              {mounted && activeTab === "our-story" && "this is our story."}
-              {mounted &&
-                activeTab === "beliefs" &&
-                "we believe in sixteen fundamental truths."}
-              {mounted &&
-                activeTab === "leadership" &&
-                "meet our pastors & leaders."}
+              {mounted && HERO_TEXT[activeTab]}
             </h1>
           </div>
         </section>
@@ -143,182 +118,30 @@ export default function AboutPage() {
           <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex gap-4 lg:gap-6">
-                {/* Sticky Side Navigation - Desktop and Tablet */}
-                <nav className="hidden md:block w-48 flex-shrink-0">
-                  <div className="sticky top-40 space-y-2 border-l-2 border-brand-blue pl-4">
-                    <a
-                      href="#ag-global"
-                      className={`block py-2 transition-all duration-400 ease-in-out text-lg font-medium ${
-                        activeStorySection === "ag-global"
-                          ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
-                          : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
-                      }`}
-                    >
-                      AG Global
-                    </a>
-                    <a
-                      href="#ag-ghana"
-                      className={`block py-2 transition-all duration-400 ease-in-out text-lg font-medium ${
-                        activeStorySection === "ag-ghana"
-                          ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
-                          : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
-                      }`}
-                    >
-                      AG Ghana
-                    </a>
-                    <a
-                      href="#mtc-ag"
-                      className={`block py-2 transition-all duration-400 ease-in-out text-lg font-medium ${
-                        activeStorySection === "mtc-ag"
-                          ? "text-brand-neutral bg-brand-blue -ml-4 pl-8 pr-4"
-                          : "text-brand-blue/50 hover:text-brand-blue hover:bg-brand-neutral/50 rounded-lg px-4"
-                      }`}
-                    >
-                      MTC AG
-                    </a>
-                  </div>
-                </nav>
+                <OurStoryNav
+                  items={STORY_NAV_ITEMS}
+                  activeSection={activeStorySection}
+                />
 
-                {/* Main Content */}
                 <div className="flex-1 space-y-16">
-                  {/* AG Global */}
-                  <div id="ag-global" className="scroll-mt-40">
-                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
-                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                        {ourStory.agGlobal.title}
-                      </h2>
-                      <div className="space-y-4">
-                        {ourStory.agGlobal.content.map((paragraph, index) => (
-                          <p key={index} className="text-lg text-white/90">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                      <Link
-                        href={ourStory.agGlobal.link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-6 text-white hover:text-brand-yellow font-semibold transition-colors"
-                      >
-                        {ourStory.agGlobal.link.text}
-                        <ExternalLink className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
+                  <StoryCard
+                    id="ag-global"
+                    title={ourStory.agGlobal.title}
+                    content={ourStory.agGlobal.content}
+                    link={ourStory.agGlobal.link}
+                  />
 
-                  {/* AG Ghana */}
-                  <div id="ag-ghana" className="scroll-mt-40">
-                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
-                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                        {ourStory.agGhana.title}
-                      </h2>
-                      <div className="space-y-4">
-                        {ourStory.agGhana.content.map((paragraph, index) => (
-                          <p key={index} className="text-lg text-white/90">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                      <Link
-                        href={ourStory.agGhana.link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-6 text-white hover:text-brand-yellow font-semibold transition-colors"
-                      >
-                        {ourStory.agGhana.link.text}
-                        <ExternalLink className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
+                  <StoryCard
+                    id="ag-ghana"
+                    title={ourStory.agGhana.title}
+                    content={ourStory.agGhana.content}
+                    link={ourStory.agGhana.link}
+                  />
 
-                  {/* MTC AG */}
-                  <div id="mtc-ag" className="scroll-mt-40">
-                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
-                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
-                        {ourStory.mtcAg.title}
-                      </h2>
-                      <div className="space-y-12">
-                        {ourStory.mtcAg.sections.map(
-                          (section, sectionIndex) => (
-                            <div key={sectionIndex} className="space-y-4">
-                              <h3 className="text-2xl md:text-3xl font-bold text-white">
-                                {section.heading}
-                              </h3>
-                              <div className="space-y-4">
-                                {section.content.map((paragraph, pIndex) => (
-                                  <p
-                                    key={pIndex}
-                                    className="text-lg text-white/90"
-                                  >
-                                    {paragraph}
-                                  </p>
-                                ))}
-                                {section.list && (
-                                  <ul className="ml-6 space-y-2">
-                                    {section.list.map((item, iIndex) => (
-                                      <li
-                                        key={iIndex}
-                                        className="text-lg text-white/90 list-disc"
-                                      >
-                                        {item}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                )}
-                                {section.contentAfter &&
-                                  section.contentAfter.map(
-                                    (paragraph, pIndex) => (
-                                      <p
-                                        key={`after-${pIndex}`}
-                                        className="text-lg text-white/90"
-                                      >
-                                        {paragraph}
-                                      </p>
-                                    ),
-                                  )}
-                                {section.sublist && (
-                                  <div className="ml-6 space-y-3">
-                                    {Object.entries(section.sublist).map(
-                                      ([district, churches], dIndex) => (
-                                        <div key={dIndex}>
-                                          <p className="font-semibold text-lg text-white">
-                                            {district}
-                                          </p>
-                                          <ul className="ml-6 space-y-1">
-                                            {(churches as string[]).map(
-                                              (church, cIndex) => (
-                                                <li
-                                                  key={cIndex}
-                                                  className="text-lg text-white/90 list-disc"
-                                                >
-                                                  {church}
-                                                </li>
-                                              ),
-                                            )}
-                                          </ul>
-                                        </div>
-                                      ),
-                                    )}
-                                  </div>
-                                )}
-                                {section.contentAfter2 &&
-                                  section.contentAfter2.map(
-                                    (paragraph, pIndex) => (
-                                      <p
-                                        key={`after2-${pIndex}`}
-                                        className="text-lg text-white/90"
-                                      >
-                                        {paragraph}
-                                      </p>
-                                    ),
-                                  )}
-                              </div>
-                            </div>
-                          ),
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                  <MtcAgSection
+                    title={ourStory.mtcAg.title}
+                    sections={ourStory.mtcAg.sections}
+                  />
                 </div>
               </div>
             </div>
@@ -350,53 +173,26 @@ export default function AboutPage() {
         {mounted && activeTab === "leadership" && (
           <section className="pt-4 pb-16 md:pt-16 md:pb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-              {/* Senior Pastor & Wife */}
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
-                  {leadership.seniorPastor.title}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <PersonCard
-                    title={leadership.seniorPastor.title}
-                    name={leadership.seniorPastor.name}
-                    variant="primary"
-                    textColor="dark"
-                  />
-                </div>
-              </div>
+              <LeadershipSection
+                title={leadership.seniorPastor.title}
+                people={[leadership.seniorPastor]}
+                variant="primary"
+                columns="single"
+              />
 
-              {/* Senior Associate Pastor */}
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
-                  {leadership.seniorAssociate.title}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <PersonCard
-                    title={leadership.seniorAssociate.title}
-                    name={leadership.seniorAssociate.name}
-                    variant="primary"
-                    textColor="dark"
-                  />
-                </div>
-              </div>
+              <LeadershipSection
+                title={leadership.seniorAssociate.title}
+                people={[leadership.seniorAssociate]}
+                variant="primary"
+                columns="single"
+              />
 
-              {/* Associate Pastors */}
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
-                  Associate Pastors
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {leadership.associates.map((pastor, index) => (
-                    <PersonCard
-                      key={index}
-                      title={pastor.title}
-                      name={pastor.name}
-                      variant="secondary"
-                      textColor="dark"
-                    />
-                  ))}
-                </div>
-              </div>
+              <LeadershipSection
+                title="Associate Pastors"
+                people={leadership.associates}
+                variant="secondary"
+                columns="double"
+              />
 
               {/* Board Members */}
               <div className="bg-brand-neutral rounded-3xl p-8 md:p-12">
@@ -415,23 +211,12 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Department Heads */}
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8">
-                  Department Heads
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {leadership.departmentHeads.map((head, index) => (
-                    <PersonCard
-                      key={index}
-                      title={head.title}
-                      name={head.name}
-                      variant="secondary"
-                      textColor="dark"
-                    />
-                  ))}
-                </div>
-              </div>
+              <LeadershipSection
+                title="Department Heads"
+                people={leadership.departmentHeads}
+                variant="secondary"
+                columns="double"
+              />
             </div>
           </section>
         )}
