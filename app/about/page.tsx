@@ -36,6 +36,8 @@ const LEADERSHIP_NAV_ITEMS = [
 export default function AboutPage() {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<AboutSection>("who-we-are");
+  const [boardMembersSlide, setBoardMembersSlide] = useState(0);
+  const [departmentHeadsSlide, setDepartmentHeadsSlide] = useState(0);
 
   // Load active tab from URL hash on mount
   useEffect(() => {
@@ -212,26 +214,190 @@ export default function AboutPage() {
                     name={leadership.seniorAssociate.name}
                   />
 
-                  <LeadershipCard
-                    id="associate-pastors"
-                    title="Associate Pastors"
-                    people={leadership.associates}
-                    columns="double"
-                  />
+                  <div id="associate-pastors" className="scroll-mt-40">
+                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+                        Associate Pastors
+                      </h2>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {leadership.associates.map((associate, index) => (
+                          <div key={index}>
+                            {/* Photo with name below */}
+                            <div className="w-full">
+                              <div className="w-full h-64 md:h-80 lg:h-96 bg-brand-neutral-dark rounded-lg"></div>
+                              <p className="text-lg md:text-xl font-bold text-white text-center mt-4">
+                                {associate.name}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
 
-                  <LeadershipCard
-                    id="board-members"
-                    title="Board Members"
-                    people={leadership.board}
-                    columns="grid"
-                  />
+                  <div id="board-members" className="scroll-mt-40">
+                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+                        Board Members
+                      </h2>
+                      
+                      {(() => {
+                        const membersPerSlide = 2;
+                        const totalSlides = Math.ceil(leadership.board.length / membersPerSlide);
+                        
+                        const nextSlide = () => {
+                          setBoardMembersSlide((prev) => (prev + 1) % totalSlides);
+                        };
+                        
+                        const prevSlide = () => {
+                          setBoardMembersSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+                        };
+                        
+                        const currentMembers = leadership.board.slice(
+                          boardMembersSlide * membersPerSlide,
+                          (boardMembersSlide + 1) * membersPerSlide
+                        );
+                        
+                        return (
+                          <div className="relative flex items-start gap-4">
+                            {/* Left arrow */}
+                            <button
+                              onClick={prevSlide}
+                              className="flex-shrink-0 bg-white mt-32 md:mt-40 lg:mt-48 text-brand-blue rounded-full p-3 hover:bg-brand-neutral transition-colors shadow-lg"
+                              aria-label="Previous slide"
+                            >
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            
+                            {/* Content area */}
+                            <div className="flex-1">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {currentMembers.map((member, index) => (
+                                  <div key={index}>
+                                    <div className="w-full h-64 md:h-80 lg:h-96 bg-brand-neutral-dark rounded-lg"></div>
+                                    <p className="text-lg md:text-xl font-bold text-white text-center mt-4">
+                                      {member.name}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                              
+                              {/* Dot indicators at bottom */}
+                              <div className="flex items-center justify-center gap-2 mt-8">
+                                {Array.from({ length: totalSlides }).map((_, index) => (
+                                  <button
+                                    key={index}
+                                    onClick={() => setBoardMembersSlide(index)}
+                                    className={`w-3 h-3 rounded-full transition-colors ${
+                                      index === boardMembersSlide ? 'bg-white' : 'bg-white/40'
+                                    }`}
+                                    aria-label={`Go to slide ${index + 1}`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                            
+                            {/* Right arrow */}
+                            <button
+                              onClick={nextSlide}
+                              className="flex-shrink-0 bg-white mt-32 md:mt-40 lg:mt-48 text-brand-blue rounded-full p-3 hover:bg-brand-neutral transition-colors shadow-lg"
+                              aria-label="Next slide"
+                            >
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  </div>
 
-                  <LeadershipCard
-                    id="department-heads"
-                    title="Department Heads"
-                    people={leadership.departmentHeads}
-                    columns="double"
-                  />
+                  <div id="department-heads" className="scroll-mt-40">
+                    <div className="bg-brand-blue rounded-3xl p-8 md:p-12">
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+                        Department Heads
+                      </h2>
+                      
+                      {(() => {
+                        const membersPerSlide = 2;
+                        const totalSlides = Math.ceil(leadership.departmentHeads.length / membersPerSlide);
+                        
+                        const nextSlide = () => {
+                          setDepartmentHeadsSlide((prev) => (prev + 1) % totalSlides);
+                        };
+                        
+                        const prevSlide = () => {
+                          setDepartmentHeadsSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+                        };
+                        
+                        const currentMembers = leadership.departmentHeads.slice(
+                          departmentHeadsSlide * membersPerSlide,
+                          (departmentHeadsSlide + 1) * membersPerSlide
+                        );
+                        
+                        return (
+                          <div className="relative flex items-start gap-4">
+                            {/* Left arrow */}
+                            <button
+                              onClick={prevSlide}
+                              className="flex-shrink-0 bg-white mt-32 md:mt-40 lg:mt-48 text-brand-blue rounded-full p-3 hover:bg-brand-neutral transition-colors shadow-lg"
+                              aria-label="Previous slide"
+                            >
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            
+                            {/* Content area */}
+                            <div className="flex-1">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {currentMembers.map((member, index) => (
+                                  <div key={index}>
+                                    <div className="w-full h-64 md:h-80 lg:h-96 bg-brand-neutral-dark rounded-lg"></div>
+                                    <p className="text-sm md:text-base font-semibold text-white/80 text-center mt-4">
+                                      {member.title}
+                                    </p>
+                                    <p className="text-base md:text-lg font-bold text-white text-center mt-1">
+                                      {member.name}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                              
+                              {/* Dot indicators at bottom */}
+                              <div className="flex items-center justify-center gap-2 mt-8">
+                                {Array.from({ length: totalSlides }).map((_, index) => (
+                                  <button
+                                    key={index}
+                                    onClick={() => setDepartmentHeadsSlide(index)}
+                                    className={`w-3 h-3 rounded-full transition-colors ${
+                                      index === departmentHeadsSlide ? 'bg-white' : 'bg-white/40'
+                                    }`}
+                                    aria-label={`Go to slide ${index + 1}`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                            
+                            {/* Right arrow */}
+                            <button
+                              onClick={nextSlide}
+                              className="flex-shrink-0 bg-white mt-32 md:mt-40 lg:mt-48 text-brand-blue rounded-full p-3 hover:bg-brand-neutral transition-colors shadow-lg"
+                              aria-label="Next slide"
+                            >
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

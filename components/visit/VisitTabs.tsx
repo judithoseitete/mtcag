@@ -5,7 +5,7 @@ interface VisitTabsProps {
 
 export default function VisitTabs({ activeTab, onTabChange }: VisitTabsProps) {
   const tabs = [
-    { id: "service-times", label: "Weekly Schedule" },
+    { id: "weekly-schedule", label: "Weekly Schedule" },
     { id: "location", label: "Location" },
     { id: "what-to-expect", label: "What to Expect" },
   ];
