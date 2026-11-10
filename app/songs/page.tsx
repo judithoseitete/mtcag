@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -53,13 +53,13 @@ export default function SongsPage() {
   return (
     <main className="bg-white min-h-screen">
       {/* Search and Filters */}
-      <section className="py-8 border-b border-brand-blue/20">
+      <section className="sticky top-16 md:top-20 z-40 py-8 bg-brand-blue border-b-2 border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
               <Search
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-blue/40 w-5 h-5"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-blue/60 w-5 h-5"
                 aria-hidden="true"
               />
               <input
@@ -67,7 +67,7 @@ export default function SongsPage() {
                 placeholder="Search songs"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-brand-blue/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                className="w-full pl-10 pr-4 py-3 border-2 border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white bg-white text-brand-blue placeholder:text-brand-blue/60"
               />
             </div>
 
@@ -77,7 +77,7 @@ export default function SongsPage() {
               onChange={(e) =>
                 setLanguageFilter(e.target.value as "All" | "English" | "Twi")
               }
-              className="px-4 py-3 pr-10 border border-brand-blue/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/20 appearance-none bg-white text-sm md:text-base"
+              className="px-4 py-3 pr-10 border-2 border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white appearance-none bg-white text-brand-blue text-sm md:text-base font-medium"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
                 backgroundPosition: "right 0.75rem center",
@@ -94,7 +94,7 @@ export default function SongsPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-4 py-3 pr-10 border border-brand-blue/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/20 appearance-none bg-white text-sm md:text-base"
+              className="px-4 py-3 pr-10 border-2 border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white appearance-none bg-white text-brand-blue text-sm md:text-base font-medium"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
                 backgroundPosition: "right 0.75rem center",
@@ -113,7 +113,7 @@ export default function SongsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-3 pr-10 border border-brand-blue/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/20 appearance-none bg-white text-sm md:text-base"
+              className="px-4 py-3 pr-10 border-2 border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white appearance-none bg-white text-brand-blue text-sm md:text-base font-medium"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
                 backgroundPosition: "right 0.75rem center",
@@ -128,14 +128,13 @@ export default function SongsPage() {
               <option value="Category">Sort: Category</option>
             </select>
           </div>
-        </div>
-      </section>
+        </div>      </section>
 
       {/* Songs List */}
-      <section className="py-6 md:py-8 pb-24 md:pb-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-brand-blue pb-24 md:pb-32">
+        <div className="max-w-7xl mx-auto">
           {sortedSongs.length === 0 ? (
-            <p className="text-center text-brand-blue/60 text-lg">
+            <p className="text-center text-white/80 text-lg">
               No songs found. Try adjusting your filters.
             </p>
           ) : (
@@ -144,24 +143,24 @@ export default function SongsPage() {
                 <Link
                   key={song.id}
                   href={`/songs/${song.id}`}
-                  className="group flex items-center border-b border-brand-blue/10 hover:bg-brand-neutral/30 transition-all"
+                  className="group flex items-center border-b border-white/20 hover:bg-white/10 transition-all"
                 >
-                  <div className="flex-shrink-0 px-4 py-4 border-r border-brand-blue/20">
-                    <span className="text-lg font-bold text-brand-blue/40">
+                  <div className="flex-shrink-0 w-16 md:w-20 px-4 py-4 border-r border-white/20 flex items-center justify-center">
+                    <span className="text-lg font-bold text-white/60">
                       {index + 1}
                     </span>
                   </div>
                   <div className="flex-1 flex items-center justify-between px-4 py-4">
                     <div className="flex-1">
-                      <h3 className="text-base md:text-lg font-semibold text-brand-blue group-hover:text-brand-blue/80">
+                      <h3 className="text-base md:text-lg font-semibold text-white group-hover:text-white/80">
                         {song.title}
                       </h3>
                     </div>
-                    <div className="flex items-center gap-3 text-xs md:text-sm text-brand-blue/60 ml-4">
-                      <span className="bg-brand-neutral px-3 py-1 rounded-lg">
+                    <div className="flex items-center gap-3 text-xs md:text-sm text-white/80 ml-4">
+                      <span className="bg-white/20 px-3 py-1 rounded-lg">
                         {song.primaryLanguage}
                       </span>
-                      <span className="bg-brand-neutral px-3 py-1 rounded-lg">
+                      <span className="bg-white/20 px-3 py-1 rounded-lg">
                         {song.category}
                       </span>
                     </div>
@@ -171,6 +170,16 @@ export default function SongsPage() {
             </div>
           )}
         </div>
+      
+          
+          {/* Disclaimer */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+            <p className="text-center text-white text-base md:text-lg font-medium">
+              Disclaimer: The songs listed here are provided for worship and educational purposes. 
+              More Than Conquerors Assemblies of God does not claim ownership of these songs. 
+              All rights belong to their respective copyright holders.
+            </p>
+          </div>
       </section>
 
       <Footer bgColor="white" cardVariant="dark" />

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -11,21 +11,14 @@ export default function SongDetailPage() {
   const params = useParams();
   const songId = parseInt(params.id as string);
   const song = songs.find((s) => s.id === songId);
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [languageFilter, setLanguageFilter] = useState<
-    "All" | "English" | "Twi"
-  >("All");
-  const [categoryFilter, setCategoryFilter] = useState<string>("All");
   const [copiedSection, setCopiedSection] = useState<number | null>(null);
-
-  const categories = ["All", "Hymn", "Worship", "Praises", "Contemporary"];
+  const [showTranslation, setShowTranslation] = useState(true);
 
   if (!song) {
     return (
-      <main className="bg-white min-h-screen">
+      <main className="bg-brand-blue min-h-screen">
         <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
             <h1 className="text-3xl font-bold text-brand-blue mb-4">
               Song Not Found
             </h1>
@@ -54,7 +47,7 @@ export default function SongDetailPage() {
     const section = song!.sections[sectionIndex];
     const sectionText = section.lines
       .map((line) => {
-        if (line.translation) {
+        if (showTranslation && line.translation) {
           return `${line.primary} (${line.translation})`;
         }
         return line.primary;
@@ -68,101 +61,52 @@ export default function SongDetailPage() {
   };
 
   return (
-    <main className="bg-white min-h-screen">
-      {/* Search and Filters */}
-      <section className="py-8 border-b border-brand-blue/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4">
-            {/* Search */}
-            <div className="flex-1 relative">
-              <Search
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-blue/40 w-5 h-5"
-                aria-hidden="true"
-              />
-              <input
-                type="text"
-                placeholder="Search songs"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-brand-blue/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
-              />
-            </div>
-
-            {/* Language Filter */}
-            <select
-              value={languageFilter}
-              onChange={(e) =>
-                setLanguageFilter(e.target.value as "All" | "English" | "Twi")
-              }
-              className="px-4 py-3 pr-10 border border-brand-blue/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/20 appearance-none bg-white text-sm md:text-base"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                backgroundPosition: "right 0.75rem center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "1.5em 1.5em",
-              }}
-            >
-              <option value="All">All Languages</option>
-              <option value="English">English</option>
-              <option value="Twi">Twi</option>
-            </select>
-
-            {/* Category Filter */}
-            <select
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-4 py-3 pr-10 border border-brand-blue/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/20 appearance-none bg-white text-sm md:text-base"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                backgroundPosition: "right 0.75rem center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "1.5em 1.5em",
-              }}
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </section>
+    <main className="bg-brand-blue min-h-screen">
+      
 
       {/* Song Content */}
       <section className="py-12 md:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4 lg:px-6">
           {/* Back Button */}
-          <Link
-            href="/songs"
-            className="inline-flex items-center gap-2 text-brand-blue hover:text-brand-blue/70 mb-8"
-          >
-            <ChevronLeft className="w-5 h-5" aria-hidden="true" />
-            Back to Songs
-          </Link>
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              href="/songs"
+              className="inline-flex items-center gap-2 text-white hover:text-white/80"
+            >
+              <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+              Back to Songs
+            </Link>
+            
+            <button
+              onClick={() => setShowTranslation(!showTranslation)}
+              className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm md:text-base"
+            >
+              {showTranslation ? "Hide" : "Show"} Translation
+            </button>
+          </div>
 
           {/* Song Title */}
           <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-brand-blue mb-3">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
               {song.title}
             </h1>
-            {song.titleTranslation && (
-              <p className="text-2xl md:text-3xl text-brand-blue/60">
+            {showTranslation && song.titleTranslation && (
+              <p className="text-2xl md:text-3xl text-white/80">
                 ({song.titleTranslation})
               </p>
             )}
             <div className="flex flex-wrap items-center gap-3 mt-4">
-              <span className="bg-brand-neutral text-brand-blue px-4 py-2 rounded-lg text-sm md:text-base">
+              <span className="bg-white/20 text-white px-4 py-2 rounded-lg text-sm md:text-base">
                 {song.primaryLanguage}
               </span>
-              <span className="bg-brand-neutral text-brand-blue px-4 py-2 rounded-lg text-sm md:text-base">
+              <span className="bg-white/20 text-white px-4 py-2 rounded-lg text-sm md:text-base">
                 {song.category}
               </span>
               {song.author && (
-                <span className="text-brand-blue/60">by {song.author}</span>
+                <span className="text-white/70">by {song.author}</span>
               )}
               {song.year && (
-                <span className="text-brand-blue/60">({song.year})</span>
+                <span className="text-white/70">({song.year})</span>
               )}
             </div>
           </div>
@@ -172,15 +116,15 @@ export default function SongDetailPage() {
             {song.sections.map((section, sectionIndex) => (
               <div
                 key={sectionIndex}
-                className="bg-brand-neutral rounded-lg p-6 md:p-8 relative group"
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 relative group"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl md:text-2xl font-bold text-brand-blue">
+                  <h2 className="text-xl md:text-2xl font-bold text-white">
                     {getSectionTitle(section.type, section.number)}
                   </h2>
                   <button
                     onClick={() => copySectionToClipboard(sectionIndex)}
-                    className="flex items-center gap-2 px-3 py-2 text-brand-blue/60 hover:text-brand-blue hover:bg-white rounded-lg transition-all"
+                    className="flex items-center gap-2 px-3 py-2 text-white/70 hover:text-white hover:bg-white/20 rounded-lg transition-all"
                     title="Copy section"
                   >
                     {copiedSection === sectionIndex ? (
@@ -200,11 +144,11 @@ export default function SongDetailPage() {
                   {section.lines.map((line, lineIndex) => (
                     <p
                       key={lineIndex}
-                      className="text-lg md:text-xl text-brand-blue leading-relaxed"
+                      className="text-lg md:text-xl text-white leading-relaxed"
                     >
                       {line.primary}
-                      {line.translation && (
-                        <span className="text-brand-blue/60">
+                      {showTranslation && line.translation && (
+                        <span className="text-white/70">
                           {" "}
                           ({line.translation})
                         </span>
@@ -218,9 +162,9 @@ export default function SongDetailPage() {
 
           {/* Notes */}
           {song.notes && (
-            <div className="mt-8 p-6 bg-brand-neutral/50 rounded-lg">
-              <h3 className="font-bold text-brand-blue mb-2">Notes:</h3>
-              <p className="text-brand-blue/70">{song.notes}</p>
+            <div className="mt-8 p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+              <h3 className="font-bold text-white mb-2">Notes:</h3>
+              <p className="text-white/80">{song.notes}</p>
             </div>
           )}
         </div>
