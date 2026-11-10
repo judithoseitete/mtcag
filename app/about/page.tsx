@@ -10,8 +10,10 @@ import MtcAgSection from "@/components/about/MtcAgSection";
 import LeadershipSection from "@/components/about/LeadershipSection";
 import LeadershipNav from "@/components/about/LeadershipNav";
 import LeadershipCard from "@/components/about/LeadershipCard";
+import SeniorPastorCard from "@/components/about/SeniorPastorCard";
+import SimpleLeaderCard from "@/components/about/SimpleLeaderCard";
 import { beliefs } from "@/constants/beliefs";
-import { whoWeAre, ourStory, leadership } from "@/constants/aboutContent";
+import { whoWeAre, ourStory, leadership, seniorPastorBio } from "@/constants/aboutContent";
 import { HERO_TEXT } from "@/constants/aboutHeroText";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
 
@@ -197,18 +199,17 @@ export default function AboutPage() {
                 />
 
                 <div className="flex-1 space-y-16">
-                  <LeadershipCard
+                  <SeniorPastorCard
                     id="senior-pastor"
                     title={leadership.seniorPastor.title}
-                    people={[leadership.seniorPastor]}
-                    columns="single"
+                    name={leadership.seniorPastor.name}
+                    bio={seniorPastorBio}
                   />
 
-                  <LeadershipCard
+                  <SimpleLeaderCard
                     id="senior-associate"
                     title={leadership.seniorAssociate.title}
-                    people={[leadership.seniorAssociate]}
-                    columns="single"
+                    name={leadership.seniorAssociate.name}
                   />
 
                   <LeadershipCard

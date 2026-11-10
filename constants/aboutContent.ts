@@ -158,3 +158,58 @@ export const leadership = {
     },
   ],
 };
+
+export const seniorPastorBio = {
+  mainHeading: "Rev. Dr. Freeman Osei-Tete",
+  subHeading: "A Journey of Faith, Leadership, and Service",
+  sections: [
+    {
+      paragraphs: [
+        "Rev. Dr. Freeman Osei-Tete's journey of faith began in early 1985 when he was introduced to Christianity and the Assemblies of God, Ghana, through the ministry of Rev. Daniel Clarence Papa Nii Quansah (Rtd.), who invited him to fellowship at North Kaneshie Assemblies of God.",
+        "In 1986, Rev. Quansah was assigned to assist Rev. Daniel Maxwell Twenefour, who had recently established Living Word Assemblies of God at Kwashieman. As he transitioned to his new assignment, Rev. Quansah brought young Freeman along, marking the beginning of a significant chapter in his spiritual journey. On January 1, 1987, Freeman was baptized, affirming his commitment to the Christian faith.",
+        "For the next 23 years, he faithfully served at Living Word Assemblies of God, Kwashieman, holding various leadership positions and contributing to the church's growth and ministry. In July 2010, he was transferred to More Than Conquerors Assemblies of God, Auntie-Aku, where he assumed pastoral leadership.",
+      ],
+    },
+    {
+      heading: "Academic and Professional Background",
+      paragraphs: [
+        "Rev. Dr. Freeman Osei-Tete is an ordained minister of the Assemblies of God, Ghana, with a distinguished background in theology, academia, administration, and leadership.",
+        "He holds a Diploma in Theology from the Assemblies of God Theological and Missions Seminary (AGTMS), as well as a bachelor's degree, two master's degrees, and a Doctor of Philosophy (Ph.D.), all from the University of Ghana, Legon.",
+        "His professional career spans accounting, auditing, administration, career coaching, marriage counselling, and higher education. He served as a lecturer at the Central University Business School for 20 years, contributing to academic development and the training of future professionals and leaders.",
+        "Before transitioning into full-time administrative service at the Assemblies of God, Ghana Headquarters, he held the positions of Head of the Department of Management Studies and Public Administration and President of the Central University Lecturers' Association (CUTA).",
+        "In 2020, he assumed the position of Head of Operations at the Assemblies of God, Ghana Headquarters, bringing his extensive administrative and leadership experience to the service of the denomination.",
+        "He has also served as an adjunct lecturer at the Assemblies of God Theological and Missions Seminary (AGTMS), teaching at its Kormantse-Saltpond and Sakumono campuses.",
+      ],
+    },
+    {
+      heading: "Ministry and Leadership Experience",
+      paragraphs: [
+        "Rev. Dr. Freeman Osei-Tete's commitment to Christian service is reflected in his extensive involvement in youth ministry, church administration, theological education, and denominational leadership.",
+        "Beginning his leadership journey as a Royal Rangers Commander, he progressively served in several key positions, including Youth President, District Youth Secretary, Regional Youth Secretary, Regional Youth Sports Chairman, Regional Youth Director, and National Youth Secretary.",
+        "His contributions to the Assemblies of God, Ghana, also include service in the following capacities:",
+      ],
+      list: [
+        "Former Secretary, Assemblies of God Education Board, under the chairmanship of the late Prof. Ofori-Sarpong.",
+        "Former Secretary, Assemblies of God Technical Committee, under the chairmanship of Mr. Emmanuel Baba Mahama.",
+        "Former Campus Pastor, Assemblies of God Campus Ministry (AGCM), Central University Chapter, Accra.",
+      ],
+      paragraphsAfter: [
+        "His leadership experience further extends to governance, including service as a Governing Council Member of the Assemblies of God Institute of Higher Learning and a Governing Board Member of Assemblies of God Television (AGTV).",
+      ],
+    },
+    {
+      heading: "Teaching, Counselling, and Public Engagement",
+      paragraphs: [
+        "Beyond his pastoral and administrative responsibilities, Rev. Dr. Freeman Osei-Tete is actively involved in teaching, mentoring, career development, and marriage counselling.",
+        "His ministry and professional expertise have earned him invitations to speak and minister at churches across several Christian denominations, including the Assemblies of God, Ghana; International Central Gospel Church (ICGC); The Church of Pentecost; The Apostolic Church; and The Methodist Church, among others.",
+        "He has also shared his knowledge and insights through various media platforms, including Citi FM, Joy FM, Metro TV, TV3, and AGTV, participating in programmes addressing matters of faith, leadership, family life, and personal development.",
+      ],
+    },
+    {
+      heading: "Family Life",
+      paragraphs: [
+        "Rev. Dr. Freeman Osei-Tete is a devoted husband and father. He has been married to Mrs. Enid Osei-Tete since June 1, 1996, and their marriage has been blessed with four children: Junior, Joana, Joel, and Judith.",
+      ],
+    },
+  ],
+};
