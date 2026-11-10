@@ -75,39 +75,40 @@ export default function AboutPage() {
         {/* Who We Are */}
         {mounted && activeTab === "who-we-are" && (
           <section className="pt-4 pb-16 md:pt-16 md:pb-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Left column - Text content */}
-              <div className="max-w-4xl pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8 flex flex-col justify-between h-full">
-                <div className="space-y-6 text-left">
-                  {whoWeAre.content.map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className="text-xl md:text-2xl text-brand-blue/80"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="bg-brand-blue rounded-3xl px-8 py-12 md:px-16 md:py-20 lg:px-24 lg:py-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                  {/* Left column - Text content */}
+                  <div className="flex flex-col justify-between h-full">
+                    <div className="space-y-6 text-left">
+                      {whoWeAre.content.map((paragraph, index) => (
+                        <p
+                          key={index}
+                          className="text-xl md:text-2xl text-white/90"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                    <div className="mt-12">
+                      <p className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-3">
+                        {whoWeAre.scripture.text}
+                      </p>
+                      <p className="text-xl md:text-2xl text-white/80">
+                        {whoWeAre.scripture.reference}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right column - Two tilted images */}
+                  <div className="flex flex-col items-center justify-center p-8">
+                    {/* First image - tilted left, shifted left */}
+                    <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-neutral-dark rounded-lg transform -rotate-6 md:translate-x-6 lg:translate-x-8 shadow-lg"></div>
+
+                    {/* Second image - tilted right, shifted right */}
+                    <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-neutral-dark rounded-lg transform rotate-6 md:translate-x-20 lg:translate-x-28 shadow-lg -mt-10 md:-mt-12 lg:-mt-16"></div>
+                  </div>
                 </div>
-                <div className="mt-12">
-                  <p className="text-2xl md:text-3xl lg:text-4xl text-brand-blue mb-3">
-                    {whoWeAre.scripture.text}
-                  </p>
-                  <p className="text-xl md:text-2xl text-brand-blue/70">
-                    {whoWeAre.scripture.reference}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right column - Three tilted images */}
-              <div className="flex flex-col items-center justify-center p-8">
-                {/* First image - tilted left, shifted left */}
-                <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-blue rounded-lg transform -rotate-6 -translate-x-12 md:-translate-x-16 lg:-translate-x-24 shadow-lg"></div>
-
-                {/* Second image - tilted right, shifted right */}
-                <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-neutral-dark rounded-lg transform rotate-6 translate-x-12 md:translate-x-16 lg:translate-x-24 shadow-lg -mt-10 md:-mt-12 lg:-mt-16"></div>
-
-                {/* Third image - tilted left, shifted left (same as first) */}
-                <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-blue rounded-lg transform -rotate-6 -translate-x-12 md:-translate-x-16 lg:-translate-x-24 shadow-lg -mt-10 md:-mt-12 lg:-mt-16"></div>
               </div>
             </div>
           </section>

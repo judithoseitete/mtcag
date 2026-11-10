@@ -7,14 +7,14 @@ interface BeliefItemProps {
   title: string;
   description: string;
   scripture?: string;
-}
+  }
 
 export default function BeliefItem({
   number,
   title,
   description,
   scripture = "",
-}: BeliefItemProps) {
+  }: BeliefItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Split description by newlines for multi-paragraph content
